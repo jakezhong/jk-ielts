@@ -9,7 +9,11 @@
 /* ========================================================================= */
 
 	html, body {
-
+        font: {
+            family: $font_open;
+            size: 16px;
+            color: $color_dark_gray;
+        }
     }
 
 /* != SELECTION STYLES (Leaving these blank will show no indication of text selection) ===== */
@@ -75,6 +79,13 @@
 
     }
 
+    a {
+        color: $color_blue;
+        transition: 0.2s;
+        &:hover {
+            color: $color_dark_gray;
+        }
+    }
     .content-main ul:not([class*="gf"]) {
         > li {
             position: relative;
@@ -206,6 +217,97 @@
     }
 
 
+/* ========================================================================= */
+/* GLOBAL STYLE */
+/* ========================================================================= */
+.desktop {
+    display: block;
+}
+.mobile {
+    display: none;
+}
+.grids {
+    display: flex;
+    &.grids-3 {
+        .grid {
+            width: 32%;
+            margin-left: 2%;
+            &:nth-child(3n+1) { margin-left: 0; }
+        }
+    }
+}
+/* ========================================================================= */
+/* MAIN HEADER */
+/* ========================================================================= */
+#header {
+    background-color: $color_dark_gray;
+    #main-menu {
+        display: flex;
+        > li {
+            position: relative;
+            > a {
+                display: block;
+                padding: 20px 25px;
+                color: $white;
+                font-style: 18px;
+                font-weight: 500;
+                &:hover {
+                    background-color: $color_blue;
+                }
+            }
+            ul {
+                display: none;
+                position: absolute;
+                li {
+
+                }
+            }
+            &.menu-item-has-children {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    width: 7px;
+                    height: 2px;
+                    margin-top: -1px;
+                    margin-right: 10px;
+                    border-top: 1px solid $white;
+                    transform: rotate(45deg);
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    width: 7px;
+                    height: 2px;
+                    margin-top: -1px;
+                    margin-right: 5px;
+                    border-top: 1px solid $white;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}
+/* ========================================================================= */
+/* MAIN BANNER */
+/* ========================================================================= */
+
+/* ========================================================================= */
+/* MAIN CONTENT MODULES */
+/* ========================================================================= */
+
+/* ========================================================================= */
+/* FLEXIBLE CONTENT MODULES */
+/* ========================================================================= */
+/* ========================================================================= */
+/* MAIN FOOTER */
+/* ========================================================================= */
+#footer {
+
+}
 /* ========================================================================= */
 /* MEDIA QUERIES */
 /* ========================================================================= */

@@ -99,22 +99,22 @@ function my_login_stylesheet() {
 }
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
-function wp_login() {
+function new_login() {
     echo '<a href="" target="_blank">';
-    echo '<div id="wp-login"></div>';
+    echo '<div id="new-login"></div>';
     echo '</a>';
 }
-add_action( 'login_footer', 'wp_login' );
+add_action( 'login_footer', 'new_login' );
 
-function wp_login_url() {
+function new_login_url() {
     return get_bloginfo( 'url' );
 }
-add_action( 'login_headerurl', 'wp_login_url' );
+add_action( 'login_headerurl', 'new_login_url' );
 
-function wp_login_title() {
+function new_login_title() {
     return get_bloginfo( 'name' );
 }
-add_action( 'login_headertitle', 'wp_login_title' );
+add_action( 'login_headertitle', 'new_login_title' );
 
 
 /* ========================================================================= */
@@ -122,12 +122,10 @@ add_action( 'login_headertitle', 'wp_login_title' );
 /* ========================================================================= */
 
 function enqueue_scripts() {
-    wp_deregister_script( 'jquery' );
-    wp_enqueue_script( 'jquery',    '/ui/js/jquery.js', array(), null );
+    wp_enqueue_script( 'plugins',   '/ui/js/plugins.js', array( 'jquery' ), null, true );
     wp_enqueue_script( 'modernizr', '/ui/js/modernizr.js', array(), null, true );
     wp_enqueue_script( 'svgxuse',   '/ui/js/svgxuse.js', array(), null, true );
-    wp_enqueue_script( 'plugins',   '/ui/js/jquery.plugins.js', array( 'jquery' ), null, true );
-    wp_enqueue_script( 'init',      '/ui/js/jquery.init.js?v=' . filemtime( 'ui/js/jquery.init.js' ), array('jquery', 'plugins', 'modernizr'), null, true);
+    wp_enqueue_script( 'init',      '/ui/js/script.js?v=' . filemtime( 'ui/js/script.js' ), array('plugins', 'modernizr'), null, true);
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 

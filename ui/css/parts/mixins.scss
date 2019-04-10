@@ -89,3 +89,10 @@
 @function inline-svg($string) {
     @return url('data:image/svg+xml,#{url-encode($string)}');
 }
+$font_open: 'OpenSans';
+$color_yellow: #ffce00;
+$color_blue: #0375b4;
+$color_green: #007849;
+$color_dark_gray: #262228;
+$white: #fff;
+$black: #000;
