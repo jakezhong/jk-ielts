@@ -261,13 +261,13 @@ input[type=submit], button { display: inline-block; cursor: pointer; }
 
 .main-report table td { padding: 10px; text-align: center; }
 
-.main-report table td.blue { background-color: #cfe2f3; }
+.main-report table td.good { background-color: #cfe2f3; }
 
-.main-report table td.red { background-color: #f4cccc; }
+.main-report table td.false, .main-report table td.bad { background-color: #f4cccc; }
 
-.main-report table td.green { background-color: #d9ead3; }
+.main-report table td.true { background-color: #d9ead3; }
 
-.main-report table td.yellow { background-color: #fff2cc; }
+.main-report table td.ok { background-color: #fff2cc; }
 
 .divider { width: 100%; max-width: 1140px; margin: 80px auto 0; border-top: 1px solid #eee; }
 

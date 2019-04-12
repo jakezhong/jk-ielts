@@ -442,16 +442,16 @@
         td {
             padding: 10px;
             text-align: center;
-            &.blue {
+            &.good {
                 background-color: $color_light_blue;
             }
-            &.red {
+            &.false, &.bad {
                 background-color: $color_light_red;
             }
-            &.green {
+            &.true {
                 background-color: $color_light_green;
             }
-            &.yellow {
+            &.ok {
                 background-color: $color_light_yellow;
             }
         }
