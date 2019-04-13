@@ -257,7 +257,7 @@ input[type=submit], button { display: inline-block; cursor: pointer; }
 
 .main-report table { width: 1500px; font-size: 12px; }
 
-.main-report table th { padding: 10px 5px; background-color: #0375b4; color: #fff; border: 1px solid #fff; font-size: 14px; font-weight: 500; }
+.main-report table th { padding: 10px 5px; background-color: #0375b4; color: #fff; border: 1px solid #fff; text-align: center; font-size: 14px; font-weight: 500; }
 
 .main-report table td { padding: 10px; text-align: center; }
 
