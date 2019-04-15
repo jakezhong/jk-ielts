@@ -114,11 +114,11 @@ html, body { background-color: #262228; font-family: "OpenSans"; font-size: 16px
 .alignnone { display: inline-block; }
 
 /* != LAYOUT STYLES ===== */
-h1 { color: #0375b4; font-size: 60px; line-height: 1.2; }
+h1 { color: #0375b4; font-size: 60px; font-weight: 500; line-height: 1.2; }
 
-h2 { color: #262228; font-size: 40px; line-height: 1.2; }
+h2 { color: #262228; font-size: 40px; font-weight: 500; line-height: 1.2; }
 
-h3 { color: #0375b4; font-size: 30px; line-height: 1.2; }
+h3 { color: #0375b4; font-size: 30px; font-weight: 500; line-height: 1.2; }
 
 h4 { color: #0375b4; font-size: 20px; line-height: 1.2; }
 
@@ -178,9 +178,13 @@ input[type=submit], button { display: inline-block; cursor: pointer; }
 
 .main-content.right-sidebar .content-main h1, .main-content.right-sidebar .content-main h2, .main-content.right-sidebar .content-main h3, .main-content.right-sidebar .content-main h4, .main-content.right-sidebar .content-main h5, .main-content.right-sidebar .content-main h6 { margin-bottom: 20px; }
 
-.main-content.right-sidebar .content-main h5 { margin-top: 40px; }
+.main-content.right-sidebar .content-main h1:last-child, .main-content.right-sidebar .content-main h2:last-child, .main-content.right-sidebar .content-main h3:last-child, .main-content.right-sidebar .content-main h4:last-child, .main-content.right-sidebar .content-main h5:last-child, .main-content.right-sidebar .content-main h6:last-child { margin-bottom: 0; }
 
-.main-content.right-sidebar .content-main p { margin-top: 20px; }
+.main-content.right-sidebar .content-main h5 { margin-top: 30px; }
+
+.main-content.right-sidebar .content-main p { margin-bottom: 20px; }
+
+.main-content.right-sidebar .content-main p:last-child { margin-bottom: 0; }
 
 .main-content.right-sidebar .content-main ul, .main-content.right-sidebar .content-main ol { margin-top: 20px; }
 
@@ -212,6 +216,10 @@ input[type=submit], button { display: inline-block; cursor: pointer; }
 .header { margin-bottom: 40px; }
 
 .header h2 { margin-bottom: 10px; }
+
+@media screen and (max-width: 768px) { .header { margin-bottom: 35px; } }
+
+@media screen and (max-width: 480px) { .header { margin-bottom: 30px; } }
 
 .main-sheet { margin-top: 40px; overflow-x: scroll; }
 
@@ -340,19 +348,17 @@ input[type=submit], button { display: inline-block; cursor: pointer; }
 /* ========================================================================= */
 #main { padding-top: 120px; }
 
-@media screen and (max-width: 768px) { .schedule-module { margin-top: 50px; } }
-
-@media screen and (max-width: 480px) { .schedule-module { margin-top: 40px; } }
+@media screen and (max-width: 480px) { #main { padding-top: 90px; } }
 
 .missions-module .main-sheet table tr td { padding: 15px 10px 50px 10px; }
 
 .missions-module .main-sheet table tr td:nth-child(1) { padding: 15px 10px; }
 
-@media screen and (max-width: 768px) { .missions-module { margin-top: 50px; } }
-
-@media screen and (max-width: 480px) { .missions-module { margin-top: 40px; } }
-
 .plans-module .plan-field { margin-top: 60px; }
+
+@media screen and (max-width: 768px) { .plans-module .plan-field { margin-top: 50px; } }
+
+@media screen and (max-width: 480px) { .plans-module .plan-field { margin-top: 40px; } }
 
 /* ========================================================================= */
 /* FLEXIBLE CONTENT MODULES */
@@ -375,6 +381,20 @@ input[type=submit], button { display: inline-block; cursor: pointer; }
 /* ========================================================================= */
 @media screen and (max-width: 768px) { .desktop { display: none; }
   .mobile { display: block; }
-  h1 { font-size: 40px; } }
+  html, body { font-size: 14px; }
+  h1 { font-size: 45px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 25px; }
+  h4 { font-size: 18px; }
+  h5 { ont-size: 16px; }
+  h6 { font-size: 14px; } }
+
+@media screen and (max-width: 480px) { html, body { font-size: 12px; }
+  h1 { font-size: 30px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 20px; }
+  h4 { font-size: 16px; }
+  h5 { ont-size: 14px; }
+  h6 { font-size: 12px; } }
 
 /*# sourceMappingURL=style.css.map */

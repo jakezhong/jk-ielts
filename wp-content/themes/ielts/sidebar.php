@@ -12,12 +12,16 @@
         <ul>
             <?php
                 while ( have_rows('resources') ) : the_row();
-                $link = get_sub_field('resource');
-                    if ( $link ) :
-                        $link_url = $link['url'];
-                        $link_title = $link['title'];
-                        $link_target = $link['target'] ? $link['target'] : '_self';
-                        echo '<li><a href="'.$link_url.'" target="'.$link_target.'">'.$link_title.'</a></li>';
+                    if ( get_sub_field('type') == 'internal' ) :
+                        $post_object = get_field('internal_resource');
+                        if ( $post_object ) :
+                            $post = $post_object;
+                            setup_postdata( $post ); 
+                            echo '<li><a href="'.get_the_permalink().'">'.get_sub_field('name').'</a></li>';
+                            wp_reset_postdata();
+                        endif;
+                    elseif ( get_sub_field('type') == 'external' ) :
+                        echo '<li><a href="'.get_sub_field('external_link').'" target="_blank">'.get_sub_field('name').'</a></li>';
                     endif;
                 endwhile;
             ?>
