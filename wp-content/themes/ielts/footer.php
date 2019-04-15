@@ -3,7 +3,7 @@
     <!-- START FOOTER -->
     <footer id="footer">
         <div class="wrap">
-            <p>@<?php echo date('Y'); ?> Copyright <a href="http://www.jakezhong.com">Jake Zhong</a></p>
+            <p>@<?php echo date('Y'); ?> Copyright <a href="<?php echo get_home_url(); ?>">屠鸭抱抱团</a></p>
         </div>
     </footer>
     <!-- END FOOTER -->

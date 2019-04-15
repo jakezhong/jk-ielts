@@ -9,8 +9,6 @@
     <link type="image/x-icon" rel="shortcut icon" href="../favicon.ico" />
     <!-- Remove When Adding <?php wp_head(); ?> -->
     <link type="text/css" rel="stylesheet" media="all" href="../ui/css/style.css" />
-    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"/>
     <script src="../ui/js/jquery.js" type="text/javascript"></script>
     <!-- End Remove -->
 </head>
@@ -23,8 +21,10 @@
     <div class="site" id="app">
         <header id="header">
             <div class="wrap">
-                <nav role="nav">
-                    <a class="logo"></a>
+                <nav id="nav" role="nav">
+                    <a class="logo">
+                        <img src="../ui/svg/logo.svg" alt="">
+                    </a>
                     <div class="desktop">
                         <ul id="main-menu">
                             <li><a href="#">主页</a></li>
@@ -51,6 +51,25 @@
                             <li><a href="#">学习计划</a></li>
                             <li><a href="#">相关资料</a></li>
                         </ul>
+                    </div>
+                    <div class="mobile">
+                        <button id="mobile-menu-toggle" aria-expanded=false><span></span></button>
+                        <div class="mobile-menu-container">
+                            <ul id="mobile-menu">
+                                <li class="menu-item-has-children">
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
             </div>
@@ -452,7 +471,7 @@
                                                     <td>{{ form.name }}</td>
                                                     <td>C12 T1</td>
                                                     <td>{{ form.times }}</td>
-                                                    <td v-bind:class="form.completion">{{ form.completion }}</td>
+                                                    <td v-bind:class="addClass(form.completion)"></td>
                                                     <td>{{ form.s1 }}</td>
                                                     <td>{{ form.s2 }}</td>
                                                     <td>{{ form.s3 }}</td>
@@ -460,65 +479,104 @@
                                                     <td>{{ form.correct }}</td>
                                                     <td>{{ form.result }}</td>
                                                     <td>{{ form.wrong }}</td>
-                                                    <td v-bind:class="form.satisfaction"></td>
-                                                    <td v-bind:class="form.review"></td>
+                                                    <td v-bind:class="addClass(form.satisfaction)"></td>
                                                     <td>{{ form.problems }}</td>
                                                     <td class="content-main">{{ form.questions }}</td>
+                                                    <td v-bind:class="addClass(form.review)"></td>
                                                 </tr>
                                             </table>
                                         </div>
                                         <b-form @submit="onSubmit" @reset="onReset">
-                                            <b-form-group label="名字" label-for="name"
+                                            <b-form-group label="名字" label-for="report-name"
                                             >
-                                                <b-form-input id="name" v-model="form.name" type="text" required></b-form-input>
+                                                <b-form-input
+                                                    id="report-name"
+                                                    v-model="form.name"
+                                                    type="text"
+                                                    required></b-form-input>
                                             </b-form-group>
 
-                                            <b-form-group label="第几遍做" label-for="times">
-                                                <b-form-input id="times" v-model="form.times" required></b-form-input>
+                                            <b-form-group label="第几遍做" label-for="report-times">
+                                                <b-form-input
+                                                    id="report-times"
+                                                    v-model="form.times"
+                                                    required></b-form-input>
                                             </b-form-group>
 
-                                            <b-form-group label="完成度" label-for="completion">
-                                                <b-form-select id="completion" v-model="form.completion" :options="[{text: '已完成', value: true}, {text: '未完成', value: false}]" required ></b-form-select>
+                                            <b-form-group label="完成度" label-for="report-completion">
+                                                <b-form-select
+                                                    id="report-completion"
+                                                    v-model="form.completion"
+                                                    :options="finished"
+                                                    required></b-form-select>
                                             </b-form-group>
 
-                                            <b-form-group label="S1对题数" label-for="s1">
-                                                <b-form-select id="s1" v-model="form.s1" :options="[1,2,3,4,5,6,7,8,9,10]" required ></b-form-select>
+                                            <b-form-group
+                                                label="S1对题数" label-for="report-s1">
+                                                <b-form-select
+                                                    id="report-s1"
+                                                    v-model="form.s1"
+                                                    :options="questionsRange(1,10,'请选择')"
+                                                    required></b-form-select>
                                             </b-form-group>
 
-                                            <b-form-group label="S2对题数" label-for="s2">
-                                                <b-form-select id="s2" v-model="form.s2" :options="[1,2,3,4,5,6,7,8,9,10]" required ></b-form-select>
+                                            <b-form-group label="S2对题数" label-for="report-s2">
+                                                <b-form-select
+                                                    id="report-s2"
+                                                    v-model="form.s2"
+                                                    :options="questionsRange(11,20,'请选择')"
+                                                    required></b-form-select>
                                             </b-form-group>
 
-                                            <b-form-group label="S3对题数" label-for="s3">
-                                                <b-form-select id="s3" v-model="form.s3" :options="[1,2,3,4,5,6,7,8,9,10]" required ></b-form-select>
-                                            </b-form-group>
+                                            <b-form-group label="S3对题数" label-for="report-s3">
+                                                <b-form-select
+                                                id="report-s3"
+                                                v-model="form.s3"
+                                                :options="questionsRange(21,30,'请选择')"
+                                                required></b-form-select>
+                                        </b-form-group>
 
-                                            <b-form-group label="S4对题数" label-for="s4">
-                                                <b-form-select id="s4" v-model="form.s4" :options="[1,2,3,4,5,6,7,8,9,10]" required ></b-form-select>
-                                            </b-form-group>
+                                            <b-form-group label="S4对题数" label-for="report-s4">
+                                                <b-form-select
+                                                id="report-s4"
+                                                v-model="form.s4"
+                                                :options="questionsRange(31,40,'请选择')"
+                                                required></b-form-select>
+                                        </b-form-group>
 
-                                            <b-form-group label="满意度" label-for="satisfaction">
-                                                    <b-form-select id="satisfaction" v-model="form.satisfaction" :options="[{text: '超棒', value: 'good'}, {text: '满意', value: 'ok'}, {text: '不满意', value: 'bad'}]" required ></b-form-select>
+                                            <b-form-group label="满意度" label-for="report-satisfaction">
+                                                    <b-form-select id="report-satisfaction" v-model="form.satisfaction" :options="satisfaction"
+                                                    required ></b-form-select>
                                                 </b-form-group>
 
-                                            <b-form-group label="错题" label-for="wrong">
-                                                <b-form-checkbox-group v-model="form.wrong" id="wrong">
-                                                <b-form-checkbox value="true" v-for="n in 40">{{n}}</b-form-checkbox>
+                                            <b-form-group label="错题" label-for="report-wrong">
+                                                <b-form-checkbox-group
+                                                    id="report-wrong"
+                                                    v-model="form.wrong"
+                                                    :options="questionsRange(1,40,'')"
+                                                    name="report-wrong"
+                                                ></b-form-checkbox-group>
+                                            </b-form-group>
+
+                                            <b-form-group label="不懂题目" label-for="report-problems">
+                                                <b-form-checkbox-group v-model="form.problems" id="report-problems">
+                                                    <b-form-checkbox
+                                                        value="true"
+                                                        v-for="n in 40">{{n}}</b-form-checkbox>
                                                 </b-form-checkbox-group>
                                             </b-form-group>
 
-                                            <b-form-group label="精听/解析" label-for="review">
-                                                <b-form-select id="review" v-model="form.review" :options="[{text: '已完成', value: true}, {text: '未完成', value: false}]" required ></b-form-select>
+                                            <b-form-group label="提问问题" label-for="report-questions">
+                                                <b-form-textarea
+                                                    id="report-questions"
+                                                    v-model="form.questions"></b-form-textarea>
                                             </b-form-group>
 
-                                            <b-form-group label="不懂题目" label-for="problems">
-                                                <b-form-checkbox-group v-model="form.problems" id="problems">
-                                                <b-form-checkbox value="true" v-for="n in 40">{{n}}</b-form-checkbox>
-                                                </b-form-checkbox-group>
-                                            </b-form-group>
-
-                                            <b-form-group label="提问问题" label-for="questions">
-                                                <b-form-textarea id="questions" v-model="form.questions"></b-form-textarea>
+                                            <b-form-group label="精听/解析" label-for="report-review">
+                                                <b-form-select
+                                                    id="report-review" v-model="form.review"
+                                                    :options="finished"
+                                                    required ></b-form-select>
                                             </b-form-group>
 
                                             <b-button type="submit" variant="primary">Submit</b-button>

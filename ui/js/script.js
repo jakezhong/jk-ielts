@@ -4,15 +4,27 @@
 jQuery(function($){
     var header = {
         dropdown: function() {
-            var $item = $('.menu-item-has-children');
-            $('.menu-item-has-children').hover(function() {
+            var item = $('#main-menu .menu-item-has-children');
+            $(item).hover(function() {
                 $(this).find('ul').stop().slideDown(300);
             }, function() {
                 $(this).find('ul').stop().slideUp(300);
             });
+        },
+        mobileToggle: function() {
+            var toggle = $("#mobile-menu-toggle");
+            var expanded;
+            $(toggle).on("click", function() {
+                var self = this;
+                var menu = $(".mobile-menu-container");
+                expanded = !expanded;
+                $(self).attr("aria-expanded", expanded);
+                $(menu).stop().slideToggle(300);
+            });
         }
     }
     header.dropdown();
+    header.mobileToggle();
 });
 
 var app = new Vue({
@@ -20,19 +32,30 @@ var app = new Vue({
     data: {
         form: {
             name: '',
-            times: '',
-            completion: Boolean,
+            times: null,
+            completion: null,
             result: '',
-            s1: 0,
-            s2: 0,
-            s3: 0,
-            s4: 0,
-            satisfaction: '',
+            s1: null,
+            s2: null,
+            s3: null,
+            s4: null,
+            satisfaction: null,
             wrong: null,
-            review: Boolean,
+            review: null,
             problems: null,
-            questions: ''
-        }
+            questions: '',
+        },
+        finished: [
+            { text: '请选择', value: null },
+            { text: '已完成', value: true },
+            { text: '未完成', value: false }
+        ],
+        satisfaction: [
+            { text: '请选择', value: null },
+            { text: '超棒', value: 'good' },
+            { text: '满意', value: 'ok' },
+            { text: '不满意', value: 'bad' }
+        ]
     },
     methods: {
         onSubmit(evt) {
@@ -51,9 +74,27 @@ var app = new Vue({
             this.$nextTick(() => {
                 this.show = true
             })
+        },
+        addClass: function(original) {
+            var classes = {}
+            classes[original] = true
+            return classes
+        },
+        questionsRange: function(start, end, first) {
+            var range = [];
+            if ( first !== '' ) {
+                range.push(
+                    { text: first, value: null }
+                )
+            }
+            for ( var i = start; i <= end; i++ ) {
+                range.push(
+                    { text: `${i}`, value: i }
+                );
+            }
+            return range;
         }
     },
     computed: {
-
     }
 });

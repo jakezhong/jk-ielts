@@ -12,12 +12,15 @@
     ?>
 </head>
 <body <?php body_class(); ?>>
-    <div class="site">
+    <div class="site" id="app">
         <!-- START HEADER -->
         <header id="header">
             <div class="wrap">
-                <nav role="nav">
-                    <a class="logo"></a>
+                <nav id="nav" role="nav">
+                    <a href="<? echo get_home_url(); ?>" class="logo">
+                        <img src="<?php echo get_home_url(); ?>/ui/svg/logo.svg" alt="">
+                    </a>
+                    <div class="desktop">
                     <?php
                         wp_nav_menu( array(
                             'menu'              => "Main Menu",
@@ -28,6 +31,20 @@
                             'theme_location'    => "main-menu",
                         ) );
                     ?>
+                    </div>
+                    <div class="mobile">
+                        <button id="mobile-menu-toggle" aria-expanded=false><span></span></button>
+                        <?php
+                            wp_nav_menu( array(
+                                'menu'              => "Main Menu",
+                                'menu_class'        => "",
+                                'menu_id'           => "mobile-menu",
+                                'container'         => "div",
+                                'container_class'   => "mobile-menu-container",
+                                'theme_location'    => "main-menu",
+                            ) );
+                        ?>
+                    </div>
                 </nav>
             </div>
         </header>
