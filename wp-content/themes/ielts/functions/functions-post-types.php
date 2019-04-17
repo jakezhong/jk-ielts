@@ -523,3 +523,48 @@ register_taxonomy(
 		 )
 	)
 );
+
+// Sample Register Post
+$postName         = '打卡项目'; // Name of post type
+$postNameSlug     = 'report'; // Name of post type
+$postNameSingular = '打卡项目'; // Singular Name
+$postNamePlural   = '打卡项目'; // Plural Name
+$postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
+
+register_post_type(
+	$postNameSlug, array(
+		'labels' => array(
+	       'name' => $postName,
+	       'singular_name' => $postNameSingular,
+	       'add_new' => 'Add ' . $postNameSingular,
+	       'add_new_item' => 'Add ' . $postNameSingular,
+	       'edit_item' => 'Edit ' . $postNameSingular,
+	       'search_items' => 'Search ' . $postNamePlural,
+	       'not_found' => 'No ' . $postNamePlural. ' found',
+	       'not_found_in_trash' => 'No ' . $postNamePlural. ' found in trash'
+	    ),
+		'public' => true,
+		'show_ui' => true,
+		'capability_type' => 'post',
+        'menu_icon' => $postDashIcon,
+		'hierarchical' => true,
+		'rest_api' => true,
+		'rewrite' => array( 'slug' => $postNameSlug ),
+		'query_var' => true,
+		'show_in_nav_menus' => true,
+		'exclude_from_search' => false,
+		'has_archive' => false,
+		'supports' => array(
+    		'title',
+    		'editor',
+    		'author',
+    		'thumbnail', //featured image, theme must also support thumbnails
+    		'excerpt',
+    		'trackbacks',
+    		'custom-fields',
+    		'comments',
+    		'revisions',
+    		'page-attributes' //template and menu order, hierarchical must be true
+		)
+	)
+);
