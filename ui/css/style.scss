@@ -547,6 +547,11 @@
                     background-color: $color_blue;
                 }
             }
+            &.current-menu-item {
+                a {
+                    background-color: $color_blue;
+                }
+            }
             &.menu-item-has-children {
                 &::before {
                     content: '';

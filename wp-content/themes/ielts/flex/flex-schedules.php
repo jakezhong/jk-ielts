@@ -1,8 +1,16 @@
+<?php
+    $post_object = get_sub_field('schedule');
+    if( $post_object ):
+        $post = $post_object;
+        setup_postdata( $post );
+        $morning = get_field('morning');
+        $afternoon = get_field('afternoon');
+        $evening = get_field('evening');
+?>
 <section class="schedule-module">
     <div class="wrap">
         <div class="header">
-            <h2>本周雅思团时间表</h2>
-            <h4>周目标：Listening 刷题 x 3， Reading 刷题 x 3，作文段落练习 x 5，口语练习 x 6，作文 x 1</h4>
+            <?php the_content(); ?>
         </div>
         <div class="main-sheet">
             <table>
@@ -16,92 +24,202 @@
                     <th>Saturday</th>
                     <th>Sunday</th>
                 </tr>
+                <?php
+                    if( $morning ) :
+                ?>
                 <tr>
                     <td class="morning">Morning</td>
-                    <td v-for="n in 7">
+                    <?php
+                        $monday = $morning['monday'];
+                        $tuesday = $morning['tuesday'];
+                        $wednesday = $morning['wednesday'];
+                        $thursday = $morning['thursday'];
+                        $friday = $morning['friday'];
+                        $saturday = $morning['saturday'];
+                        $sunday = $morning['sunday'];
+                        $index = 0;
+                        foreach( $morning as $day ) :
+                            if( $index == 0 ) :
+                                $items = $monday['items'];
+                            elseif( $index == 1 ) :
+                                $items = $tuesday['items'];
+                            elseif( $index == 2 ) :
+                                $items = $wednesday['items'];
+                            elseif( $index == 3 ) :
+                                $items = $thursday['items'];
+                            elseif( $index == 4 ) :
+                                $items = $friday['items'];
+                            elseif( $index == 5 ) :
+                                $items = $saturday['items'];
+                            elseif( $index == 6 ) :
+                                $items = $sunday['items'];
+                            endif;
+                    ?>
+                    <td>
+                        <?php
+                            if( $items ):
+                        ?>
                         <ul>
-                            <li>
-                                <time>8:00</time>
-                                <p>背范文，录音读范文</p>
-                                <small>(剑桥雅思12 Test6)</small>
-                            </li>
-                            <li>
-                                <time>9:00</time>
-                                <p>Listening 刷题</p>
-                            </li>
-                            <li>
-                                <time>10:00</time>
-                                <p>对答案</p>
-                            </li>
-                            <li>
-                                <time>10:30</time>
-                                <p>讨论问题，答案</p>
-                            </li>
-                            <li>
-                                <time>11:00</time>
-                                <p>Listening 精听</p>
-                                <p>录音读原文</p>
-                            </li>   
+                            <?php
+                                foreach( $items as $item ) :
+                                    $time = $item['time'];
+                                    $post_object = $item['item'];
+                                    if( $post_object ):
+                                        $post = $post_object;
+                                        setup_postdata( $post );
+                                        $name = get_the_title();
+                                        $note = get_field('note');
+                                        wp_reset_postdata();
+                                    endif;
+                                    $item = '<li>';
+                                    $item .= '<time>'.$time.'</time>';
+                                    $item .= '<p>'.$name.'</p>';
+                                    $item .= '<small>'.$note.'</small>';
+                                    echo $item;
+                                endforeach;
+                            ?>
                         </ul>
+                <?php
+                            endif;
+                            $index ++;
+                        endforeach;
+                ?>
                     </td>
                 </tr>
+                <?php
+                    endif;
+                    if( $afternoon ) :
+                ?>
                 <tr>
-                    <td class="">Afternoon</td>
-                    <td v-for="n in 7">
+                    <td class="afternoon">Afternoon</td>
+                <?php
+                        $monday = $afternoon['monday'];
+                        $tuesday = $afternoon['tuesday'];
+                        $wednesday = $afternoon['wednesday'];
+                        $thursday = $afternoon['thursday'];
+                        $friday = $afternoon['friday'];
+                        $saturday = $afternoon['saturday'];
+                        $sunday = $afternoon['sunday'];
+                        $index = 0;
+                        foreach( $afternoon as $day ) :
+                            if( $index == 0 ) :
+                                $items = $monday['items'];
+                            elseif( $index == 1 ) :
+                                $items = $tuesday['items'];
+                            elseif( $index == 2 ) :
+                                $items = $wednesday['items'];
+                            elseif( $index == 3 ) :
+                                $items = $thursday['items'];
+                            elseif( $index == 4 ) :
+                                $items = $friday['items'];
+                            elseif( $index == 5 ) :
+                                $items = $saturday['items'];
+                            elseif( $index == 6 ) :
+                                $items = $sunday['items'];
+                            endif;
+                ?>
+                    <td>
+                        <?php
+                            if( $items ):
+                        ?>
                         <ul>
-                            <li>
-                                <time>8:00</time>
-                                <p>背范文，录音读范文</p>
-                            </li>
-                            <li>
-                                <time>9:00</time>
-                                <p>Listening 刷题</p>
-                            </li>
-                            <li>
-                                <time>10:00</time>
-                                <p>对答案</p>
-                            </li>
-                            <li>
-                                <time>10:30<</time>
-                                <p>讨论问题，答案</p>
-                            </li>
-                            <li>
-                                <time>11:00</time>
-                                <p>Listening 精听</p>
-                                <p>录音读原文</p>
-                            </li>   
+                            <?php
+                                foreach( $items as $item ) :
+                                    $time = $item['time'];
+                                    $post_object = $item['item'];
+                                    if( $post_object ):
+                                        $post = $post_object;
+                                        setup_postdata( $post );
+                                        $name = get_the_title();
+                                        $note = get_field('note');
+                                        wp_reset_postdata();
+                                    endif;
+                                    $item = '<li>';
+                                    $item .= '<time>'.$time.'</time>';
+                                    $item .= '<p>'.$name.'</p>';
+                                    $item .= '<small>'.$note.'</small>';
+                                    echo $item;
+                                endforeach;
+                            ?>
                         </ul>
+                <?php
+                            endif;
+                            $index ++;
+                        endforeach;
+                ?>
                     </td>
                 </tr>
+                <?php
+                    endif;
+                    if( $evening ) :
+                ?>
                 <tr>
-                    <td>Evening</td>
-                    <td v-for="n in 7">
+                    <td class="evening">Evening</td>
+                <?php
+                        $monday = $evening['monday'];
+                        $tuesday = $evening['tuesday'];
+                        $wednesday = $evening['wednesday'];
+                        $thursday = $evening['thursday'];
+                        $friday = $evening['friday'];
+                        $saturday = $evening['saturday'];
+                        $sunday = $evening['sunday'];
+                        $index = 0;
+                        foreach( $evening as $day ) :
+                            if( $index == 0 ) :
+                                $items = $monday['items'];
+                            elseif( $index == 1 ) :
+                                $items = $tuesday['items'];
+                            elseif( $index == 2 ) :
+                                $items = $wednesday['items'];
+                            elseif( $index == 3 ) :
+                                $items = $thursday['items'];
+                            elseif( $index == 4 ) :
+                                $items = $friday['items'];
+                            elseif( $index == 5 ) :
+                                $items = $saturday['items'];
+                            elseif( $index == 6 ) :
+                                $items = $sunday['items'];
+                            endif;
+                ?>
+                    <td>
+                        <?php
+                            if( $items ):
+                        ?>
                         <ul>
-                            <li>
-                                <time>8:00</time>
-                                <p>背范文，录音读范文</p>
-                            </li>
-                            <li>
-                                <time>9:00</time>
-                                <p>Listening 刷题</p>
-                            </li>
-                            <li>
-                                <time>10:00</time>
-                                <p>对答案</p>
-                            </li>
-                            <li>
-                                <time>10:30</time>
-                                <p>讨论问题，答案</p>
-                            </li>
-                            <li>
-                                <time>11:00</time>
-                                <p>Listening 精听</p>
-                                <p>录音读原文</p>
-                            </li>   
+                            <?php
+                                foreach( $items as $item ) :
+                                    $time = $item['time'];
+                                    $post_object = $item['item'];
+                                    if( $post_object ):
+                                        $post = $post_object;
+                                        setup_postdata( $post );
+                                        $name = get_the_title();
+                                        $note = get_field('note');
+                                        wp_reset_postdata();
+                                    endif;
+                                    $item = '<li>';
+                                    $item .= '<time>'.$time.'</time>';
+                                    $item .= '<p>'.$name.'</p>';
+                                    $item .= '<small>'.$note.'</small>';
+                                    echo $item;
+                                endforeach;
+                            ?>
                         </ul>
+                <?php
+                            endif;
+                            $index ++;
+                        endforeach;
+                ?>
                     </td>
                 </tr>
+                <?php
+                    endif;
+                ?>
             </table>
         </div>
     </div>
 </section>
+<?php
+        wp_reset_postdata();
+    endif;
+?>

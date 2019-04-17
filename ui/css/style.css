@@ -308,6 +308,8 @@ input[type=submit], button { display: inline-block; cursor: pointer; }
 
 #header #main-menu > li:hover a { background-color: #0375b4; }
 
+#header #main-menu > li.current-menu-item a { background-color: #0375b4; }
+
 #header #main-menu > li.menu-item-has-children::before { content: ''; position: absolute; top: 50%; right: 0; width: 7px; height: 2px; margin-top: -1px; margin-right: 10px; border-top: 1px solid #fff; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); }
 
 #header #main-menu > li.menu-item-has-children::after { content: ''; position: absolute; top: 50%; right: 0; width: 7px; height: 2px; margin-top: -1px; margin-right: 5px; border-top: 1px solid #fff; -webkit-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); }
