@@ -229,10 +229,10 @@ register_post_type(
 );
 
 // Sample Register Post
-$postName         = '时间表项目'; // Name of post type
+$postName         = '时间项目'; // Name of post type
 $postNameSlug     = 'schedule-item'; // Name of post type
-$postNameSingular = '时间表项目'; // Singular Name
-$postNamePlural   = '时间表项目'; // Plural Name
+$postNameSingular = '时间项目'; // Singular Name
+$postNamePlural   = '时间项目'; // Plural Name
 $postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
 
 register_post_type(
@@ -303,10 +303,10 @@ register_taxonomy(
 );
 
 // Sample Register Post
-$postName         = '任务表项目'; // Name of post type
+$postName         = '任务项目'; // Name of post type
 $postNameSlug     = 'mission-item-type'; // Name of post type
-$postNameSingular = '任务表项目'; // Singular Name
-$postNamePlural   = '任务表项目'; // Plural Name
+$postNameSingular = '任务项目'; // Singular Name
+$postNamePlural   = '任务项目'; // Plural Name
 $postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
 
 register_post_type(
@@ -376,6 +376,34 @@ register_taxonomy(
 	)
 );
 
+// Sample Register Taxonomy
+$taxonomyName         = '标签';
+$taxonomyNameSlug     = 'mission-item-tag';
+$taxonomyNameSingular = '标签';
+$taxonomyNamePlural   = '标签';
+register_taxonomy(
+	$taxonomyNameSlug, array( $postNameSlug ), array(
+		'hierarchical' => true, // Category or Tag functionality
+		'query_var' => true,
+		'rewrite' => array( 'slug' => $taxonomyNameSlug ),
+		'labels' => array(
+		     'name' => $taxonomyName,
+		     'singular_name' => $taxonomyNameSingular,
+		     'search_items' => 'Search ' . $taxonomyNamePlural,
+		     'popular_items' => 'Popular ' . $taxonomyNamePlural,
+		     'all_items' => 'All ' . $taxonomyNamePlural,
+		     'parent_item' => null,
+		     'parent_item_colon' => null,
+		     'edit_item' => 'Edit ' . $taxonomyNameSingular,
+		     'update_item' => 'Update ' . $taxonomyNameSingular,
+		     'add_new_item' => 'Add New ' . $taxonomyNameSingular,
+		     'new_item_name' => 'New ' . $taxonomyNameSingular,
+		     'separate_items_with_commas' => 'Separate ' . $taxonomyNamePlural . ' with commas',
+		     'add_or_remove_items' => 'Add or remove ' . $taxonomyNamePlural,
+		     'choose_from_most_used' => 'Choose from most used ' . $taxonomyNamePlural
+		 )
+	)
+);
 // Sample Register Post
 $postName         = '学习计划项目'; // Name of post type
 $postNameSlug     = 'plan-item'; // Name of post type
@@ -526,7 +554,7 @@ register_taxonomy(
 
 // Sample Register Post
 $postName         = '打卡项目'; // Name of post type
-$postNameSlug     = 'report'; // Name of post type
+$postNameSlug     = 'report-item'; // Name of post type
 $postNameSingular = '打卡项目'; // Singular Name
 $postNamePlural   = '打卡项目'; // Plural Name
 $postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
@@ -566,5 +594,33 @@ register_post_type(
     		'revisions',
     		'page-attributes' //template and menu order, hierarchical must be true
 		)
+	)
+);
+// Sample Register Taxonomy
+$taxonomyName         = '分类';
+$taxonomyNameSlug     = 'report-item-type';
+$taxonomyNameSingular = '分类';
+$taxonomyNamePlural   = '分类';
+register_taxonomy(
+	$taxonomyNameSlug, array( $postNameSlug ), array(
+		'hierarchical' => true, // Category or Tag functionality
+		'query_var' => true,
+		'rewrite' => array( 'slug' => $taxonomyNameSlug ),
+		'labels' => array(
+		     'name' => $taxonomyName,
+		     'singular_name' => $taxonomyNameSingular,
+		     'search_items' => 'Search ' . $taxonomyNamePlural,
+		     'popular_items' => 'Popular ' . $taxonomyNamePlural,
+		     'all_items' => 'All ' . $taxonomyNamePlural,
+		     'parent_item' => null,
+		     'parent_item_colon' => null,
+		     'edit_item' => 'Edit ' . $taxonomyNameSingular,
+		     'update_item' => 'Update ' . $taxonomyNameSingular,
+		     'add_new_item' => 'Add New ' . $taxonomyNameSingular,
+		     'new_item_name' => 'New ' . $taxonomyNameSingular,
+		     'separate_items_with_commas' => 'Separate ' . $taxonomyNamePlural . ' with commas',
+		     'add_or_remove_items' => 'Add or remove ' . $taxonomyNamePlural,
+		     'choose_from_most_used' => 'Choose from most used ' . $taxonomyNamePlural
+		 )
 	)
 );
