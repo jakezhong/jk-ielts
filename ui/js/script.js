@@ -13,10 +13,21 @@ jQuery(function($){
         },
         mobileToggle: function() {
             var toggle = $("#mobile-menu-toggle");
-            var expanded;
+            var expanded = false;
             $(toggle).on("click", function() {
                 var self = this;
                 var menu = $(".mobile-menu-container");
+                expanded = !expanded;
+                $(self).attr("aria-expanded", expanded);
+                $(menu).stop().slideToggle(300);
+            });
+        },
+        mobileDropdown: function() {
+            var item = $('#mobile-menu .menu-item-has-children button');
+            var expanded = false;
+            $(item).on("click", function() {
+                var self = this;
+                var menu = $(self).next("ul");
                 expanded = !expanded;
                 $(self).attr("aria-expanded", expanded);
                 $(menu).stop().slideToggle(300);
@@ -25,6 +36,7 @@ jQuery(function($){
     }
     header.dropdown();
     header.mobileToggle();
+    header.mobileDropdown();
 });
 
 var app = new Vue({

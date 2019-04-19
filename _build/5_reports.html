@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8" />
+    <meta name="MSSmartTagsPreventParsing" content="true" /><!--[if lte IE 9]><meta http-equiv="X-UA-Compatible" content="IE=Edge"/><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Title</title>
+    <link type="text/plain" rel="author" href="../authors.txt" />
+    <link type="image/x-icon" rel="shortcut icon" href="../favicon.ico" />
+    <!-- Remove When Adding <?php wp_head(); ?> -->
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="../ui/css/style.css" />
+    <script src="../ui/js/jquery.js" type="text/javascript"></script>
+    <!-- End Remove -->
+</head>
+
+<body>
+<!--
+    When starting wp replace body with this
+    <body <?php body_class(); ?>>
+-->
+    <div class="site" id="app">
+        <header id="header">
+            <div class="wrap">
+                <nav id="nav" role="nav">
+                    <a class="logo">
+                        <img src="../ui/svg/logo.svg" alt="">
+                    </a>
+                    <div class="desktop">
+                        <ul id="main-menu">
+                            <li><a href="#">主页</a></li>
+                            <li class="menu-item-has-children" @hover="">
+                                <a href="#">任务表</a>
+                                <ul v-show="">
+                                    <li><a href="#">听力</a></li>
+                                    <li><a href="#">阅读</a></li>
+                                    <li><a href="#">写作</a></li>
+                                    <li><a href="#">口语</a></li>
+                                    <li><a href="#">词汇</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">时间表</a>
+                                <ul>
+                                    <li><a href="#">听力</a></li>
+                                    <li><a href="#">阅读</a></li>
+                                    <li><a href="#">写作</a></li>
+                                    <li><a href="#">口语</a></li>
+                                    <li><a href="#">词汇</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">学习计划</a></li>
+                            <li><a href="#">相关资料</a></li>
+                        </ul>
+                    </div>
+                    <div class="mobile">
+                        <button id="mobile-menu-toggle" aria-expanded=false><span></span></button>
+                        <div class="mobile-menu-container">
+                            <ul id="mobile-menu">
+                                <li class="menu-item-has-children">
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main id="main">
+            <section class="report-module">
+                <div class="wrap">
+                    <div class="header">
+                        <h2>刷题打卡</h2>
+                        <h4>打卡项目：Week 1 Listening</h4>
+                        <div>
+                            <b-button v-b-modal.report-form-modal>立即打卡！</b-button>
+                            <b-modal id="report-form-modal" title="Report Form" size="xl">
+                                <template>
+                                    <div>
+                                        <div class="main-report">
+                                            <table>
+                                                <tr>
+                                                    <th>名字</th>
+                                                    <th>项目</th>
+                                                    <th>第几遍做</th>
+                                                    <th>完成度</th>
+                                                    <th>S1 (10)</th>
+                                                    <th>S2 (10)</th>
+                                                    <th>S3 (10)</th>
+                                                    <th>S4 (10)</th>
+                                                    <th>对题数 (40)</th>
+                                                    <th>分数</th>
+                                                    <th>错题</th>
+                                                    <th>满意度</th>
+                                                    <th>精听/解析</th>
+                                                    <th>不懂题目</th>
+                                                    <th>提问问题</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ form.name }}</td>
+                                                    <td>C12 T1</td>
+                                                    <td>{{ form.times }}</td>
+                                                    <td v-bind:class="addClass(form.completion)"></td>
+                                                    <td>{{ form.s1 }}</td>
+                                                    <td>{{ form.s2 }}</td>
+                                                    <td>{{ form.s3 }}</td>
+                                                    <td>{{ form.s4 }}</td>
+                                                    <td>{{ form.correct }}</td>
+                                                    <td>{{ form.result }}</td>
+                                                    <td>{{ form.wrong }}</td>
+                                                    <td v-bind:class="addClass(form.satisfaction)"></td>
+                                                    <td>{{ form.problems }}</td>
+                                                    <td class="content-main">{{ form.questions }}</td>
+                                                    <td v-bind:class="addClass(form.review)"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <b-form @submit="onSubmit" @reset="onReset">
+                                            <b-form-group label="名字" label-for="report-name"
+                                            >
+                                                <b-form-input
+                                                    id="report-name"
+                                                    v-model="form.name"
+                                                    type="text"
+                                                    required></b-form-input>
+                                            </b-form-group>
+
+                                            <b-form-group label="第几遍做" label-for="report-times">
+                                                <b-form-input
+                                                    id="report-times"
+                                                    v-model="form.times"
+                                                    required></b-form-input>
+                                            </b-form-group>
+
+                                            <b-form-group label="完成度" label-for="report-completion">
+                                                <b-form-select
+                                                    id="report-completion"
+                                                    v-model="form.completion"
+                                                    :options="finished"
+                                                    required></b-form-select>
+                                            </b-form-group>
+
+                                            <b-form-group
+                                                label="S1对题数" label-for="report-s1">
+                                                <b-form-select
+                                                    id="report-s1"
+                                                    v-model="form.s1"
+                                                    :options="questionsRange(1,10,'请选择')"
+                                                    required></b-form-select>
+                                            </b-form-group>
+
+                                            <b-form-group label="S2对题数" label-for="report-s2">
+                                                <b-form-select
+                                                    id="report-s2"
+                                                    v-model="form.s2"
+                                                    :options="questionsRange(11,20,'请选择')"
+                                                    required></b-form-select>
+                                            </b-form-group>
+
+                                            <b-form-group label="S3对题数" label-for="report-s3">
+                                                <b-form-select
+                                                id="report-s3"
+                                                v-model="form.s3"
+                                                :options="questionsRange(21,30,'请选择')"
+                                                required></b-form-select>
+                                        </b-form-group>
+
+                                            <b-form-group label="S4对题数" label-for="report-s4">
+                                                <b-form-select
+                                                id="report-s4"
+                                                v-model="form.s4"
+                                                :options="questionsRange(31,40,'请选择')"
+                                                required></b-form-select>
+                                        </b-form-group>
+
+                                            <b-form-group label="满意度" label-for="report-satisfaction">
+                                                    <b-form-select id="report-satisfaction" v-model="form.satisfaction" :options="satisfaction"
+                                                    required ></b-form-select>
+                                                </b-form-group>
+
+                                            <b-form-group label="错题" label-for="report-wrong">
+                                                <b-form-checkbox-group
+                                                    id="report-wrong"
+                                                    v-model="form.wrong"
+                                                    :options="questionsRange(1,40,'')"
+                                                    name="report-wrong"
+                                                ></b-form-checkbox-group>
+                                            </b-form-group>
+
+                                            <b-form-group label="不懂题目" label-for="report-problems">
+                                                <b-form-checkbox-group v-model="form.problems" id="report-problems">
+                                                    <b-form-checkbox
+                                                        value="true"
+                                                        v-for="n in 40">{{n}}</b-form-checkbox>
+                                                </b-form-checkbox-group>
+                                            </b-form-group>
+
+                                            <b-form-group label="提问问题" label-for="report-questions">
+                                                <b-form-textarea
+                                                    id="report-questions"
+                                                    v-model="form.questions"></b-form-textarea>
+                                            </b-form-group>
+
+                                            <b-form-group label="精听/解析" label-for="report-review">
+                                                <b-form-select
+                                                    id="report-review" v-model="form.review"
+                                                    :options="finished"
+                                                    required ></b-form-select>
+                                            </b-form-group>
+
+                                            <b-button type="submit" variant="primary">Submit</b-button>
+                                            <b-button type="reset" variant="danger">Reset</b-button>
+                                        </b-form>
+                                    </div>
+                                </template>
+                            </b-modal>
+                        </div>
+                    </div>
+                    <div class="main-report">
+                        <table>
+                            <tr>
+                                <th>名字</th>
+                                <th>项目</th>
+                                <th>第几遍做</th>
+                                <th>完成度</th>
+                                <th>S1 (10)</th>
+                                <th>S2 (10)</th>
+                                <th>S3 (10)</th>
+                                <th>S4 (10)</th>
+                                <th>对题数 (40)</th>
+                                <th>分数</th>
+                                <th>错题</th>
+                                <th>满意度</th>
+                                <th>精听/解析</th>
+                                <th>不懂题目</th>
+                                <th>提问问题</th>
+                            </tr>
+                            <tr>
+                                <td>Jake</td>
+                                <td>C12 T1</td>
+                                <td>1</td>
+                                <td class="true"></td>
+                                <td>7</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>36</td>
+                                <td>8</td>
+                                <td>1, 3, 7, 13</td>
+                                <td class="good"></td>
+                                <td class="false"></td>
+                                <td>1，3</td>
+                                <td class="content-main">
+                                    <ol>
+                                        <li>第一题为什么需要大写</li>
+                                        <li>第三题为什么是人名</li>
+                                    </ol>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer id="footer">
+            <div class="wrap">
+                <p>@2019 Copyright <a href="#">屠鸭抱抱团</a></p>
+            </div>
+        </footer>
+    </div>
+    <!-- Remove when adding <?php wp_footer(); ?> -->
+    <script src="../ui/js/modernizr.js"></script>
+    <script src="../ui/js/svgxuse.js"></script> <!-- SVG Polyfill -->
+    <script src="../ui/js/plugins.js" type="text/javascript"></script>
+    <script src="../ui/js/script.js" type="text/javascript"></script>
+    <!-- End Remove -->
+</body>
+</html>

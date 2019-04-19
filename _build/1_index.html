@@ -58,17 +58,39 @@
                         <button id="mobile-menu-toggle" aria-expanded=false><span></span></button>
                         <div class="mobile-menu-container">
                             <ul id="mobile-menu">
+                                <li>
+                                    <a href="#">主页</a>
+                                    <button aria-expanded=false></button>
+                                </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">Parent Menu</a>
+                                    <a href="#">任务表</a>
+                                    <button aria-expanded=false></button>
+                                    <ul>
+                                        <li><a href="#">听力</a></li>
+                                        <li><a href="#">阅读</a></li>
+                                        <li><a href="#">写作</a></li>
+                                        <li><a href="#">口语</a></li>
+                                        <li><a href="#">词汇</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">时间表</a>
+                                    <button aria-expanded=false></button>
+                                    <ul>
+                                        <li><a href="#">听力</a></li>
+                                        <li><a href="#">阅读</a></li>
+                                        <li><a href="#">写作</a></li>
+                                        <li><a href="#">口语</a></li>
+                                        <li><a href="#">词汇</a></li>
+                                    </ul>
                                 </li>
                                 <li>
-                                    <a href="#">Parent Menu</a>
+                                    <a href="#">学习计划</a>
+                                    <button aria-expanded=false></button>
                                 </li>
                                 <li>
-                                    <a href="#">Parent Menu</a>
-                                </li>
-                                <li>
-                                    <a href="#">Parent Menu</a>
+                                    <a href="#">相关资料</a>
+                                    <button aria-expanded=false></button>
                                 </li>
                             </ul>
                         </div>
@@ -77,583 +99,57 @@
             </div>
         </header>
         <main id="main">
-            <section class="schedule-module">
+            <div class="daily-missions">
                 <div class="wrap">
                     <div class="header">
-                        <h2>本周雅思团时间表</h2>
-                        <h4>周目标：Listening 刷题 x 3， Reading 刷题 x 3，作文段落练习 x 5，口语练习 x 6，作文 x 1</h4>
+                        <h2>今日打卡任务</h2>
                     </div>
-                    <div class="main-sheet">
-                        <table>
-                            <tr>
-                                <th>Time</th>
-                                <th>Monday</th>
-                                <th>Tuesday</th>
-                                <th>Wednesday</th>
-                                <th>Thursday</th>
-                                <th>Friday</th>
-                                <th>Saturday</th>
-                                <th>Sunday</th>
-                            </tr>
-                            <tr>
-                                <td class="morning">Morning</td>
-                                <td v-for="n in 7">
-                                    <ul>
-                                        <li>
-                                            <time>8:00</time>
-                                            <p>背范文，录音读范文</p>
-                                            <small>(剑桥雅思12 Test6)</small>
-                                        </li>
-                                        <li>
-                                            <time>9:00</time>
-                                            <p>Listening 刷题</p>
-                                        </li>
-                                        <li>
-                                            <time>10:00</time>
-                                            <p>对答案</p>
-                                        </li>
-                                        <li>
-                                            <time>10:30</time>
-                                            <p>讨论问题，答案</p>
-                                        </li>
-                                        <li>
-                                            <time>11:00</time>
-                                            <p>Listening 精听</p>
-                                            <p>录音读原文</p>
-                                        </li>   
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="">Afternoon</td>
-                                <td v-for="n in 7">
-                                    <ul>
-                                        <li>
-                                            <time>8:00</time>
-                                            <p>背范文，录音读范文</p>
-                                        </li>
-                                        <li>
-                                            <time>9:00</time>
-                                            <p>Listening 刷题</p>
-                                        </li>
-                                        <li>
-                                            <time>10:00</time>
-                                            <p>对答案</p>
-                                        </li>
-                                        <li>
-                                            <time>10:30<</time>
-                                            <p>讨论问题，答案</p>
-                                        </li>
-                                        <li>
-                                            <time>11:00</time>
-                                            <p>Listening 精听</p>
-                                            <p>录音读原文</p>
-                                        </li>   
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Evening</td>
-                                <td v-for="n in 7">
-                                    <ul>
-                                        <li>
-                                            <time>8:00</time>
-                                            <p>背范文，录音读范文</p>
-                                        </li>
-                                        <li>
-                                            <time>9:00</time>
-                                            <p>Listening 刷题</p>
-                                        </li>
-                                        <li>
-                                            <time>10:00</time>
-                                            <p>对答案</p>
-                                        </li>
-                                        <li>
-                                            <time>10:30</time>
-                                            <p>讨论问题，答案</p>
-                                        </li>
-                                        <li>
-                                            <time>11:00</time>
-                                            <p>Listening 精听</p>
-                                            <p>录音读原文</p>
-                                        </li>   
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </section>
-            <div class="divider"></div>
-            <section class="missions-module">
-                <div class="wrap">
-                    <div class="header">
-                        <h2>本周雅思团任务表</h2>
-                        <h4>周目标：Listening 刷题 x 3， Reading 刷题 x 3，作文段落练习 x 5，口语练习 x 6，作文 x 1</h4>
-                    </div>
-                    <div class="main-sheet">
-                        <table>
-                            <tr>
-                                <th>Time</th>
-                                <th>Monday</th>
-                                <th>Tuesday</th>
-                                <th>Wednesday</th>
-                                <th>Thursday</th>
-                                <th>Friday</th>
-                                <th>Saturday</th>
-                                <th>Sunday</th>
-                            </tr>
-                            <tr>
-                                <td class="listening">Listening</td>
-                                <td v-for="n in 7">
-                                    <ul>
-                                        <li>
-                                            <ol>
-                                                <li>
-                                                    <p>剑桥12 Test 2</p>
-                                                    <div class="resources">
-                                                        <small>参考资料：</small>
-                                                        <ul>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="reading">Reading</td>
-                                <td v-for="n in 7">
-                                    <ul>
-                                        <li>
-                                            <ol>
-                                                <li>
-                                                    <p>剑桥12 Test 2</p>
-                                                    <div class="resources">
-                                                        <small>参考资料：</small>
-                                                        <ul>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <p>剑桥12 Test 2</p>
-                                                    <div class="resources">
-                                                        <small>参考资料：</small>
-                                                        <ul>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="writing">Writing</td>
-                                <td v-for="n in 7">
-                                    <ul>
-                                        <li>
-                                            <ol>
-                                                <li>
-                                                    <p>剑桥12 Test 2</p>
-                                                    <div class="resources">
-                                                        <small>参考资料：</small>
-                                                        <ul>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="speaking">Speaking</td>
-                                <td v-for="n in 7">
-                                    <ul>
-                                        <li>
-                                            <ol>
-                                                <li>
-                                                    <p>剑桥12 Test 2</p>
-                                                    <div class="resources">
-                                                        <small>参考资料：</small>
-                                                        <ul>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="vocabulary">Vocabulary</td>
-                                <td v-for="n in 7">
-                                    <ul>
-                                        <li>
-                                            <ol>
-                                                <li>
-                                                    <p>剑桥12 Test 2</p>
-                                                    <div class="resources">
-                                                        <small>参考资料：</small>
-                                                        <ul>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                            <li><a href="#">剑桥雅思12</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ol>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </section>
-            <div class="divider"></div>
-            <section class="plans-module">
-                <div class="wrap">
-                    <div class="plan-field main-content right-sidebar">
-                        <div class="content-main">
-                            <div class="header">
-                                <h2>刷题小分队学习计划</h2>
-                            </div>
-                            <h5>💕刷题正经人课堂💕</h5>
-                            <p>
-                                每天（除周天）9点此群汇合
-                            </p>
-                            <ol>
-                                <li>每人尽量提出自己遇到的问题。</li>
-                                <li>试想下次如何避免犯同样的错误。</li>
-                                <li>大家开始精听或者细读，消化文本，相互交流。</li>
-                                <li>试着整理长难句，根据实际需求抄长难句，把原句成分结构搞清楚。</li>
-                                <li>争取下次回过头再做同样试图争取拿到满分</li>
-                            </ol>
-                            <p>刷题完后，大家可以一起集思广益雅思四项的干货 我有一定会发群里 有疑问@我 第一时间看到就会回复 我相信大家不会被八卦带跑 我就不在群里说类似的规定了 希望大家考完试也继续是朋友 预祝成功!!!</p>
-                        </div>
-                        <aside class="content-sub">
-                            <div class="sidebar sidebar-list">
-                                <h4>参考资料:</h4>
-                                <ul>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                    </div>
-                    <div class="plan-field main-content right-sidebar">
-                        <div class="content-main">
-                            <div class="header">
-                                <h2>写作小分队学习计划</h2>
-                            </div>
-                            <h5>写作任务（时间安排在下午）</h5>
-                            <ol>
-                                <li>Simon短语记忆。(参考资料Simon词伙)</li>
-                                <li>段落练习</li>
-                                <li>小组互改</li>
-                                <li>复习范文+视频课（目标7分以下杜仕明网课，目标7分以上Simon网课）</li>
-                            </ol>
-                            <p>注：具体每日练习计划和时间，当天发送，写作需要的资料我会整理好百度云，包括小分队每日必须的资料+全网中其他好的雅思作文资料（大家按需索取，重点还是小分队必修的内容)</p>
-                            <p>链接: <a href="#">https://pan.baidu.com/s/1TUF_Q8QW3rZA_mbPJDjwnA</a>  密码:au08</p>
-                            <p>周一至周六打卡，不限时间，截止到第二天中午12点。周六要测一套完整的作文，我会提醒大家</p>
-                            <p>打卡方式：发送下午写的段落练习（照片/word）就算打卡成功。我会在晚上统计并@没有完成任务的人，截止到第二天中午12点，都算打卡成功。因为我也在备考冲刺阶段，所以我就@一遍，希望大家可以自觉完成打卡。</p>
-                            <p>惩罚！！！！！！！忘记打卡就选一篇自己觉得好的范文给大家讲解。连续三次没有打卡就提出群，希望大家每天积极参与，有什么问题可以随时联系我，共同进步，努力学习。</p>
-                            <p>我想说一下，因为身体原因和考试日期临近，所以我也不能时时刻刻监督大家。如果大家接受惩罚和打卡方式，就希望可以尽力去遵守。有问题可以提前请假（比如要考试什么的），群里高度自由，任何疑问见群公告</p>
-                        </div>
-                        <aside class="content-sub">
-                            <div class="sidebar sidebar-list">
-                                <h4>参考资料:</h4>
-                                <ul>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                    </div>
-                    <div class="plan-field main-content right-sidebar">
-                        <div class="content-main">
-                            <div class="header">
-                                <h2>口语小分队学习计划</h2>
-                            </div>
-                            <p>hi 大家晚上好。接下来我们来玩一些好玩的东西。依旧是分组，3-6人一组，请各小组选好自己的组名，并选出一位小组长（私聊我），大家改好群备注【组名-姓名-分数（不考试的小伙伴忽略分数）】。</p>
-                            <p>依旧是每天一个话题，但由不同的小组主导这个话题。请各个小组私下花半小时到一小时的时间，根据话题提前准备好：【通用句型】【亮点词】【同义替换】</p>
-                            <h5>为什么这样做：</h5>
-                            <ol>
-                                <li>大家每天都可以积累不同的知识，不用担心每天开口说完没收获。</li>
-                                <li>同时雅思考试很重要的paraphrase，就是同义词替换。也就是考官问你问题的时候，你需要时间去思考，就可以同义替换一下问题，同时也是为自己挣一点时间。</li>
-                                <li>把每个话题钻研透的话，学习起来效率高很多。</li>
-                            </ol>
-                            <p>因为这是一个免费的口语群，群主也要复习，为了方便统一管理，每人必须进一个小组并盖好群备注，明晚12点前没有按要求改好的小伙伴就t出群聊咯！</p>
-                        </div>
-                        <aside class="content-sub">
-                            <div class="sidebar sidebar-list">
-                                <h4>参考资料:</h4>
-                                <ul>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                    </div>
-                    <div class="plan-field main-content right-sidebar">
-                        <div class="content-main">
-                            <div class="header">
-                                <h2>单词小分队学习计划</h2>
-                            </div>
-                            <h5>我们单词打卡群，暂定这么搞</h5>
-                            <ol>
-                                <li>自愿打卡（写一句或者说一句英语）</li>
-                                <li>每天截图发自己完成的单词量，（例如百词斩就是复习量＋新学习量）</li>
-                                <li>如忘记背单词（截图），朗诵英文诗歌或者唱英文歌，</li>
-                            </ol>
-                        </div>
-                        <aside class="content-sub">
-                            <div class="sidebar sidebar-list">
-                                <h4>参考资料:</h4>
-                                <ul>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                    <li><a href="#">剑桥雅思8 - 13</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                    </div>
-                </div>
-            </section>
-            <section class="resource-module">
-                <div class="wrap">
-                    <div class="main-content">
-                        <div class="header">
-                            <h1>雅思写作Task1范文</h1>
-                            <h4>资料简介:</h4>
+                    <article class="mission-card">
+                        <div class="image" style="background-image: url(https://picsum.photos/600/300)"></div>
+                        <div class="content">
+                            <h3><a href="#">剑桥雅思11 Test1 听力</a></h3>
                             <ul>
-                                <li>作者: 顾家北</li>
-                                <li>年份: 2017</li>
-                                <li>类型: 写作</li>
-                                <li>视频1链接: www.sample.com</li>
-                                <li>查看链接: www.sample.com</li>
+                                <li>类型: 听力</li>
+                                <li>时间: 9:00 - 11:00 AM</li>
                             </ul>
+                            <a href="#" class="btn">进入练习</a>
                         </div>
-                        <div class="content-main">
-
+                    </article>
+                    <article class="mission-card">
+                        <div class="image" style="background-image: url(https://picsum.photos/600/300)"></div>
+                        <div class="content">
+                            <h3><a href="#">剑桥雅思11 Test1 听力</a></h3>
+                            <ul>
+                                <li>类型: 听力</li>
+                                <li>时间: 9:00 - 11:00 AM</li>
+                            </ul>
+                            <a href="#" class="btn">进入练习</a>
                         </div>
-                    </div>
+                    </article>
+                    <article class="mission-card">
+                        <div class="image" style="background-image: url(https://picsum.photos/600/300)"></div>
+                        <div class="content">
+                            <h3><a href="#">剑桥雅思11 Test1 听力</a></h3>
+                            <ul>
+                                <li>类型: 听力</li>
+                                <li>时间: 9:00 - 11:00 AM</li>
+                            </ul>
+                            <a href="#" class="btn">进入练习</a>
+                        </div>
+                    </article>
+                    <article class="mission-card">
+                        <div class="image" style="background-image: url(https://picsum.photos/600/300)"></div>
+                        <div class="content">
+                            <h3><a href="#">剑桥雅思11 Test1 听力</a></h3>
+                            <ul>
+                                <li>类型: 听力</li>
+                                <li>时间: 9:00 - 11:00 AM</li>
+                            </ul>
+                            <a href="#" class="btn">进入练习</a>
+                        </div>
+                    </article>
                 </div>
-            </section>
-            <section class="report-module">
-                <div class="wrap">
-                    <div class="header">
-                        <h2>刷题打卡</h2>
-                        <h4>打卡项目：Week 1 Listening</h4>
-                        <div>
-                            <b-button v-b-modal.report-form-modal>立即打卡！</b-button>
-                            <b-modal id="report-form-modal" title="Report Form" size="xl">
-                                <template>
-                                    <div>
-                                        <div class="main-report">
-                                            <table>
-                                                <tr>
-                                                    <th>名字</th>
-                                                    <th>项目</th>
-                                                    <th>第几遍做</th>
-                                                    <th>完成度</th>
-                                                    <th>S1 (10)</th>
-                                                    <th>S2 (10)</th>
-                                                    <th>S3 (10)</th>
-                                                    <th>S4 (10)</th>
-                                                    <th>对题数 (40)</th>
-                                                    <th>分数</th>
-                                                    <th>错题</th>
-                                                    <th>满意度</th>
-                                                    <th>精听/解析</th>
-                                                    <th>不懂题目</th>
-                                                    <th>提问问题</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>{{ form.name }}</td>
-                                                    <td>C12 T1</td>
-                                                    <td>{{ form.times }}</td>
-                                                    <td v-bind:class="addClass(form.completion)"></td>
-                                                    <td>{{ form.s1 }}</td>
-                                                    <td>{{ form.s2 }}</td>
-                                                    <td>{{ form.s3 }}</td>
-                                                    <td>{{ form.s4 }}</td>
-                                                    <td>{{ form.correct }}</td>
-                                                    <td>{{ form.result }}</td>
-                                                    <td>{{ form.wrong }}</td>
-                                                    <td v-bind:class="addClass(form.satisfaction)"></td>
-                                                    <td>{{ form.problems }}</td>
-                                                    <td class="content-main">{{ form.questions }}</td>
-                                                    <td v-bind:class="addClass(form.review)"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <b-form @submit="onSubmit" @reset="onReset">
-                                            <b-form-group label="名字" label-for="report-name"
-                                            >
-                                                <b-form-input
-                                                    id="report-name"
-                                                    v-model="form.name"
-                                                    type="text"
-                                                    required></b-form-input>
-                                            </b-form-group>
-
-                                            <b-form-group label="第几遍做" label-for="report-times">
-                                                <b-form-input
-                                                    id="report-times"
-                                                    v-model="form.times"
-                                                    required></b-form-input>
-                                            </b-form-group>
-
-                                            <b-form-group label="完成度" label-for="report-completion">
-                                                <b-form-select
-                                                    id="report-completion"
-                                                    v-model="form.completion"
-                                                    :options="finished"
-                                                    required></b-form-select>
-                                            </b-form-group>
-
-                                            <b-form-group
-                                                label="S1对题数" label-for="report-s1">
-                                                <b-form-select
-                                                    id="report-s1"
-                                                    v-model="form.s1"
-                                                    :options="questionsRange(1,10,'请选择')"
-                                                    required></b-form-select>
-                                            </b-form-group>
-
-                                            <b-form-group label="S2对题数" label-for="report-s2">
-                                                <b-form-select
-                                                    id="report-s2"
-                                                    v-model="form.s2"
-                                                    :options="questionsRange(11,20,'请选择')"
-                                                    required></b-form-select>
-                                            </b-form-group>
-
-                                            <b-form-group label="S3对题数" label-for="report-s3">
-                                                <b-form-select
-                                                id="report-s3"
-                                                v-model="form.s3"
-                                                :options="questionsRange(21,30,'请选择')"
-                                                required></b-form-select>
-                                        </b-form-group>
-
-                                            <b-form-group label="S4对题数" label-for="report-s4">
-                                                <b-form-select
-                                                id="report-s4"
-                                                v-model="form.s4"
-                                                :options="questionsRange(31,40,'请选择')"
-                                                required></b-form-select>
-                                        </b-form-group>
-
-                                            <b-form-group label="满意度" label-for="report-satisfaction">
-                                                    <b-form-select id="report-satisfaction" v-model="form.satisfaction" :options="satisfaction"
-                                                    required ></b-form-select>
-                                                </b-form-group>
-
-                                            <b-form-group label="错题" label-for="report-wrong">
-                                                <b-form-checkbox-group
-                                                    id="report-wrong"
-                                                    v-model="form.wrong"
-                                                    :options="questionsRange(1,40,'')"
-                                                    name="report-wrong"
-                                                ></b-form-checkbox-group>
-                                            </b-form-group>
-
-                                            <b-form-group label="不懂题目" label-for="report-problems">
-                                                <b-form-checkbox-group v-model="form.problems" id="report-problems">
-                                                    <b-form-checkbox
-                                                        value="true"
-                                                        v-for="n in 40">{{n}}</b-form-checkbox>
-                                                </b-form-checkbox-group>
-                                            </b-form-group>
-
-                                            <b-form-group label="提问问题" label-for="report-questions">
-                                                <b-form-textarea
-                                                    id="report-questions"
-                                                    v-model="form.questions"></b-form-textarea>
-                                            </b-form-group>
-
-                                            <b-form-group label="精听/解析" label-for="report-review">
-                                                <b-form-select
-                                                    id="report-review" v-model="form.review"
-                                                    :options="finished"
-                                                    required ></b-form-select>
-                                            </b-form-group>
-
-                                            <b-button type="submit" variant="primary">Submit</b-button>
-                                            <b-button type="reset" variant="danger">Reset</b-button>
-                                        </b-form>
-                                    </div>
-                                </template>
-                            </b-modal>
-                        </div>
-                    </div>
-                    <div class="main-report">
-                        <table>
-                            <tr>
-                                <th>名字</th>
-                                <th>项目</th>
-                                <th>第几遍做</th>
-                                <th>完成度</th>
-                                <th>S1 (10)</th>
-                                <th>S2 (10)</th>
-                                <th>S3 (10)</th>
-                                <th>S4 (10)</th>
-                                <th>对题数 (40)</th>
-                                <th>分数</th>
-                                <th>错题</th>
-                                <th>满意度</th>
-                                <th>精听/解析</th>
-                                <th>不懂题目</th>
-                                <th>提问问题</th>
-                            </tr>
-                            <tr>
-                                <td>Jake</td>
-                                <td>C12 T1</td>
-                                <td>1</td>
-                                <td class="true"></td>
-                                <td>7</td>
-                                <td>9</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>36</td>
-                                <td>8</td>
-                                <td>1, 3, 7, 13</td>
-                                <td class="good"></td>
-                                <td class="false"></td>
-                                <td>1，3</td>
-                                <td class="content-main">
-                                    <ol>
-                                        <li>第一题为什么需要大写</li>
-                                        <li>第三题为什么是人名</li>
-                                    </ol>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </section>
+            </div>
         </main>
         <footer id="footer">
             <div class="wrap">
