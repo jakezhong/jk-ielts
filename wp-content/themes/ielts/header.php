@@ -42,6 +42,7 @@
                                 'container'         => "div",
                                 'container_class'   => "mobile-menu-container",
                                 'theme_location'    => "main-menu",
+                                'after'             => "<button aria-expanded=false></button>",
                             ) );
                         ?>
                     </div>

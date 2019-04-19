@@ -24,13 +24,16 @@ jQuery(function($){
         },
         mobileDropdown: function() {
             var item = $('#mobile-menu .menu-item-has-children button');
-            var expanded = false;
-            $(item).on("click", function() {
+            $(item).each(function() {
+                var expanded = false;
                 var self = this;
-                var menu = $(self).next("ul");
-                expanded = !expanded;
-                $(self).attr("aria-expanded", expanded);
-                $(menu).stop().slideToggle(300);
+                $(self).on("click", function() {
+                    var self = this;
+                    var menu = $(self).next("ul");
+                    expanded = !expanded;
+                    $(self).attr("aria-expanded", expanded);
+                    $(menu).stop().slideToggle(300);
+                });
             });
         }
     }
