@@ -115,7 +115,7 @@
                         </div>
                         <div class="main-content right-sidebar detail-center">
                             <aside class="content-sub">
-                                <b-button v-b-modal.report-form-modal>立即打卡！</b-button>
+                                <b-button v-b-modal.report-form-modal class="blue">立即打卡！</b-button>
                             </aside>
                         </div>
                         <div class="main-content right-sidebar detail-lower">
@@ -149,7 +149,7 @@
                     <div class="header">
                         <h3>历史打卡</h3
                         <h4>打卡项目：剑桥雅思11 Test1 听力</h4>
-                        <div>
+                        <div class="report-modal">
                             <b-modal id="report-form-modal" title="打卡项目：剑桥雅思11 Test1 听力" size="xl">
                                 <template>
                                     <div>
@@ -260,10 +260,11 @@
                                                     :options="finished"
                                                     required ></b-form-select>
                                             </b-form-group>
-
-                                            <b-button type="submit" variant="primary">Submit</b-button>
-                                            <b-button type="reset" variant="danger">Reset</b-button>
                                         </b-form>
+                                    </div>
+                                    <div slot="modal-footer">
+                                        <b-button type="reset" variant="danger">Reset</b-button>
+                                        <b-button type="submit" variant="primary">Submit</b-button>
                                     </div>
                                 </template>
                             </b-modal>

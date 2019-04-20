@@ -162,10 +162,13 @@
         display: inline-block;
         padding: 8px 20px;
         cursor: pointer;
-        background-color: $color_blue;
         border: 0;
-        &:hover {
-            background-color: $color_green;
+        &.blue {
+            background-color: $color_blue;
+            color: $white;
+            &:hover {
+                background-color: $color_green;
+            }
         }
     }
 
@@ -331,10 +334,10 @@
         margin-bottom: 10px;
     }
     @include break(768) {
-        margin-bottom: 35px;
+        margin-bottom: 30px;
     }
     @include break(480) {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 }
 .section-header {
@@ -349,7 +352,7 @@
             content: '';
             position: absolute;
             top: 50%;
-            width: 50%;
+            width: 100%;
             margin-top: -0.5px;
             border-top: 2px solid $color_blue;
         }
@@ -361,6 +364,12 @@
             left: 100%;
             margin-left: 10px;
         }
+    }
+    @include break(768) {
+        margin-bottom: 35px;
+    }
+    @include break(480) {
+        margin-bottom: 30px;
     }
 }
 .main-sheet {
@@ -508,10 +517,10 @@
     margin: 80px auto;
     border-top: 1px solid $color_border;
     @include break(768) {
-        margin: 60px auto;
+        margin: 55px auto;
     }
     @include break(480) {
-        margin: 40px auto;
+        margin: 30px auto;
     }
 }
 .spacer {
@@ -791,25 +800,25 @@
         border-radius: 4px;
         background-color: $color_blue;
         overflow: hidden;
+        a {
+            display: block;;
+        }
         .image {
+            display: block;
             position: absolute;
+            top: 0;
+            right: 0;
             width: 25%;
             height: 100%;
-            display: block;
+            z-index: 1;
         }
         .content {
             width: 75%;
-            margin-left: 25%;
             padding: 40px;
             color: $white;
             h4 {
                 margin-bottom: 15px;
-                a {
-                    color: $white;
-                    &:hover {
-                        color: $color_yellow;
-                    }
-                }
+                color: $white;
             }
             ul {
                 li {
@@ -826,25 +835,22 @@
             margin-top: 40px;
         }
         @include break(768) {
-            .image {
-                display: block;
-                position: relative;
-                width: 100%;
-                padding-bottom: 50%;
-            }
             .content {
-                width: 100%;
-                margin-left: 0;
-                padding: 30px;
-                .btn {
-                    width: 100%;
-                    margin-top: 20px;
-                }
+                padding: 25px;
+            }
+            & + .mission-card {
+                margin-top: 30px;
             }
         }
         @include break(480) {
             .content {
-                padding: 20px;
+                padding: 15px;
+                h4 {
+                    margin-bottom: 10px;
+                }
+            }
+            & + .mission-card {
+                margin-top: 10px;
             }
 
         }
@@ -933,7 +939,30 @@
 .main-frame {
     border: 1px solid $color_border;
 }
-.report-module {
+.report-modal {
+    .report-form {
+        margin-top: 20px;
+    }
+    .modal-dialog {
+        margin: 0;
+        border-radius: 0;
+        .modal-header {
+            padding: 20px;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .modal-footer {
+            padding: 20px;
+        }
+        .modal-content {
+            border: 0;
+        }
+    }
+    .modal-backdrop {
+        background-color: $white;
+        opacity: 1;
+    }
 }
 .plans-module {
     .plan-field {

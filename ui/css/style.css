@@ -144,9 +144,11 @@ a:hover { color: #262228; text-decoration: none; }
 
 /* != PLACEHOLDER ATTRIBUTE STYLES = input or textarea - placeholder="whatever" ===== */
 /* ::-webkit-input-placeholder { color: #aaa; } ::-moz-placeholder { color: #aaa; } */
-input[type=submit], button, .btn { display: inline-block; padding: 8px 20px; cursor: pointer; background-color: #0375b4; border: 0; }
+input[type=submit], button, .btn { display: inline-block; padding: 8px 20px; cursor: pointer; border: 0; }
 
-input[type=submit]:hover, button:hover, .btn:hover { background-color: #007849; }
+input[type=submit].blue, button.blue, .btn.blue { background-color: #0375b4; color: #fff; }
+
+input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-color: #007849; }
 
 /* != Select menus with a .select-menu container or gform-select-menu applied in gravity forms ===== */
 .select-menu, .gform-select-menu div { position: relative; width: 260px; border: 1px solid #f00; vertical-align: middle; display: inline-block; overflow: hidden; margin: 0 10px 0 0; }
@@ -221,19 +223,23 @@ input[type=submit]:hover, button:hover, .btn:hover { background-color: #007849; 
 
 .header h2 { margin-bottom: 10px; }
 
-@media screen and (max-width: 768px) { .header { margin-bottom: 35px; } }
+@media screen and (max-width: 768px) { .header { margin-bottom: 30px; } }
 
-@media screen and (max-width: 480px) { .header { margin-bottom: 30px; } }
+@media screen and (max-width: 480px) { .header { margin-bottom: 20px; } }
 
 .section-header { position: relative; text-align: center; overflow: hidden; }
 
 .section-header h2 { position: relative; display: inline-block; text-align: center; }
 
-.section-header h2::before, .section-header h2::after { content: ''; position: absolute; top: 50%; width: 50%; margin-top: -0.5px; border-top: 2px solid #0375b4; }
+.section-header h2::before, .section-header h2::after { content: ''; position: absolute; top: 50%; width: 100%; margin-top: -0.5px; border-top: 2px solid #0375b4; }
 
 .section-header h2::before { right: 100%; margin-right: 10px; }
 
 .section-header h2::after { left: 100%; margin-left: 10px; }
+
+@media screen and (max-width: 768px) { .section-header { margin-bottom: 35px; } }
+
+@media screen and (max-width: 480px) { .section-header { margin-bottom: 30px; } }
 
 .main-sheet { margin-top: 40px; overflow-x: scroll; }
 
@@ -293,9 +299,9 @@ input[type=submit]:hover, button:hover, .btn:hover { background-color: #007849; 
 
 .divider { width: 100%; max-width: 1140px; margin: 80px auto; border-top: 1px solid #eee; }
 
-@media screen and (max-width: 768px) { .divider { margin: 60px auto; } }
+@media screen and (max-width: 768px) { .divider { margin: 55px auto; } }
 
-@media screen and (max-width: 480px) { .divider { margin: 40px auto; } }
+@media screen and (max-width: 480px) { .divider { margin: 30px auto; } }
 
 .spacer { margin-top: 80px; }
 
@@ -394,15 +400,13 @@ input[type=submit]:hover, button:hover, .btn:hover { background-color: #007849; 
 
 .daily-missions .mission-card { position: relative; margin: 0 auto; border-radius: 4px; background-color: #0375b4; overflow: hidden; }
 
-.daily-missions .mission-card .image { position: absolute; width: 25%; height: 100%; display: block; }
+.daily-missions .mission-card a { display: block; }
 
-.daily-missions .mission-card .content { width: 75%; margin-left: 25%; padding: 40px; color: #fff; }
+.daily-missions .mission-card .image { display: block; position: absolute; top: 0; right: 0; width: 25%; height: 100%; z-index: 1; }
 
-.daily-missions .mission-card .content h4 { margin-bottom: 15px; }
+.daily-missions .mission-card .content { width: 75%; padding: 40px; color: #fff; }
 
-.daily-missions .mission-card .content h4 a { color: #fff; }
-
-.daily-missions .mission-card .content h4 a:hover { color: #ffce00; }
+.daily-missions .mission-card .content h4 { margin-bottom: 15px; color: #fff; }
 
 .daily-missions .mission-card .content ul li + li { margin-top: 5px; }
 
@@ -410,11 +414,12 @@ input[type=submit]:hover, button:hover, .btn:hover { background-color: #007849; 
 
 .daily-missions .mission-card + .mission-card { margin-top: 40px; }
 
-@media screen and (max-width: 768px) { .daily-missions .mission-card .image { display: block; position: relative; width: 100%; padding-bottom: 50%; }
-  .daily-missions .mission-card .content { width: 100%; margin-left: 0; padding: 30px; }
-  .daily-missions .mission-card .content .btn { width: 100%; margin-top: 20px; } }
+@media screen and (max-width: 768px) { .daily-missions .mission-card .content { padding: 25px; }
+  .daily-missions .mission-card + .mission-card { margin-top: 30px; } }
 
-@media screen and (max-width: 480px) { .daily-missions .mission-card .content { padding: 20px; } }
+@media screen and (max-width: 480px) { .daily-missions .mission-card .content { padding: 15px; }
+  .daily-missions .mission-card .content h4 { margin-bottom: 10px; }
+  .daily-missions .mission-card + .mission-card { margin-top: 10px; } }
 
 .main-detail .detail-upper { position: relative; min-height: 320px; padding: 40px 20px 40px 0; background-color: #007849; overflow: hidden; }
 
@@ -448,6 +453,20 @@ input[type=submit]:hover, button:hover, .btn:hover { background-color: #007849; 
 @media screen and (max-width: 768px) { .main-detail .detail-lower { padding: 40px 20px; } }
 
 .main-frame { border: 1px solid #eee; }
+
+.report-modal .report-form { margin-top: 20px; }
+
+.report-modal .modal-dialog { margin: 0; border-radius: 0; }
+
+.report-modal .modal-dialog .modal-header { padding: 20px; }
+
+.report-modal .modal-dialog .modal-body { padding: 20px; }
+
+.report-modal .modal-dialog .modal-footer { padding: 20px; }
+
+.report-modal .modal-dialog .modal-content { border: 0; }
+
+.report-modal .modal-backdrop { background-color: #fff; opacity: 1; }
 
 .plans-module .plan-field { margin-top: 60px; }
 

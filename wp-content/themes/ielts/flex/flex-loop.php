@@ -7,6 +7,8 @@
                 get_template_part('flex/flex', 'missions');
             elseif ( get_row_layout() == 'plans' ) :
                 get_template_part('flex/flex', 'plans');
+                elseif ( get_row_layout() == 'daily_missions' ) :
+                    get_template_part('flex/flex', 'daily-missions');
             elseif ( get_row_layout() == 'divider' ) :
                 get_template_part('flex/flex', 'divider');
             endif;
