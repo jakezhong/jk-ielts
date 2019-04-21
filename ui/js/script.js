@@ -47,15 +47,17 @@ var app = new Vue({
     data: {
         form: {
             name: '',
-            times: null,
+            amount: null,
             completion: null,
-            result: '',
             s1: null,
             s2: null,
             s3: null,
             s4: null,
+            p1: null,
+            p2: null,
+            p3: null,
+            right: null,
             satisfaction: null,
-            wrong: null,
             review: null,
             problems: null,
             questions: '',
@@ -74,21 +76,25 @@ var app = new Vue({
     },
     methods: {
         onSubmit(evt) {
-            evt.preventDefault()
             alert(JSON.stringify(this.form))
         },
         onReset(evt) {
             evt.preventDefault()
-            // Reset our form values
-            this.form.email = ''
             this.form.name = ''
-            this.form.food = null
-            this.form.checked = []
-            // Trick to reset/clear native browser form validation state
-            this.show = false
-            this.$nextTick(() => {
-                this.show = true
-            })
+            this.form.amount = null
+            this.form.completion = null
+            this.form.s1 = null
+            this.form.s2 = null
+            this.form.s3 = null
+            this.form.s4 = null
+            this.form.p1 = null
+            this.form.p2 = null
+            this.form.p3 = null
+            this.form.right = null
+            this.form.satisfaction = null
+            this.form.review = null
+            this.form.problems = null
+            this.form.questions = ''
         },
         addClass: function(original) {
             var classes = {}
@@ -108,6 +114,147 @@ var app = new Vue({
                 );
             }
             return range;
+        },
+        calcRight: function(nums) {
+            var sum = 0;
+            for( var i = 0; i < nums.length; i++ ) {
+                if( nums[i] == null ) {
+                    return;
+                }
+                sum += nums[i];
+            }
+            this.form.right = sum;
+            return sum;
+        },
+        calcScore: function() {
+            switch(this.form.right) {
+                case 0:
+                    this.score = 0;
+                    break;
+                case 1:
+                    this.score = 1;
+                    break;
+                case 2:
+                    this.score = 2;
+                    break;
+                case 3:
+                    this.score = 2.5;
+                    break;
+                case 4:
+                    this.score = 3;
+                    break;
+                case 5:
+                    this.score = 3;
+                    break;
+                case 6:
+                    this.score = 3.5;
+                    break;
+                case 7:
+                    this.score = 3.5;
+                    break;
+                case 8:
+                    this.score = 3.5;
+                    break;
+                case 9:
+                    this.score = 3.5;
+                    break;
+                case 10:
+                    this.score = 4;
+                    break;
+                case 11:
+                    this.score = 4;
+                    break;
+                case 12:
+                    this.score = 4;
+                    break;
+                case 13:
+                    this.score = 4.5;
+                    break;
+                case 14:
+                    this.score = 4.5;
+                    break;
+                case 15:
+                    this.score = 4.5;
+                    break;
+                case 16:
+                    this.score = 5;
+                    break;
+                case 17:
+                    this.score = 5;
+                    break;
+                case 18:
+                    this.score = 5;
+                    break;
+                case 19:
+                    this.score = 5;
+                    break;
+                case 20:
+                    this.score = 5.5;
+                    break;
+                case 21:
+                    this.score = 5.5;
+                    break;
+                case 22:
+                    this.score = 5.5;
+                    break;
+                case 23:
+                    this.score = 6;
+                    break;
+                case 24:
+                    this.score = 6;
+                    break;
+                case 25:
+                    this.score = 6;
+                    break;
+                case 26:
+                    this.score = 6;
+                    break;
+                case 27:
+                    this.score = 6.5;
+                    break;
+                case 28:
+                    this.score = 6.5;
+                    break;
+                case 29:
+                    this.score = 6.5;
+                    break;
+                case 30:
+                    this.score = 7;
+                    break;
+                case 31:
+                    this.score = 7;
+                    break;
+                case 32:
+                    this.score = 7;
+                    break;
+                case 33:
+                    this.score = 7.5;
+                    break;
+                case 34:
+                    this.score = 7.5;
+                    break;
+                case 35:
+                    this.score = 8;
+                    break;
+                case 36:
+                    this.score = 8;
+                    break;
+                case 37:
+                    this.score = 8.5;
+                    break;
+                case 38:
+                    this.score = 8.5;
+                    break;
+                case 39:
+                    this.score = 9;
+                    break;
+                case 40:
+                    this.score = 9;
+                    break;
+                default:
+                    this.score = null;
+            }
+            return this.form.score;
         }
     },
     computed: {

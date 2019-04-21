@@ -171,7 +171,7 @@
             }
         }
     }
-
+    
     /* != Select menus with a .select-menu container or gform-select-menu applied in gravity forms ===== */
     .select-menu,
     .gform-select-menu div {
@@ -376,7 +376,6 @@
     margin-top: 40px;
     overflow-x: scroll;
     table {
-        width: 1500px;
         font-size: 14px;
         time {
             display: block;
@@ -482,16 +481,16 @@
         }
     }
     table {
-        width: 1500px;
-        font-size: 12px;
+        font-size: 13px;
         th {
-            padding: 10px 5px;
+            padding: 10px 25px;
             background-color: $color_blue;
             color: $white;
             border: 1px solid $white;
             text-align: center;
             font-size: 14px;
             font-weight: 500;
+            white-space: nowrap;
         }
         td {
             padding: 7px 10px;
@@ -801,7 +800,7 @@
         background-color: $color_blue;
         overflow: hidden;
         a {
-            display: block;;
+            display: block;
         }
         .image {
             display: block;
@@ -820,10 +819,8 @@
                 margin-bottom: 15px;
                 color: $white;
             }
-            ul {
-                li {
-                    & + li { margin-top: 5px; }
-                }
+            h6 {
+                color: $white;
             }
             .btn {
                 margin-top: 30px;
@@ -940,11 +937,19 @@
     border: 1px solid $color_border;
 }
 .report-modal {
+    background-color: $white;
     .report-form {
         margin-top: 20px;
+        label {
+            margin-bottom: 5px;
+        }
+        textarea.form-control {
+            height: 120px;
+        }
     }
     .modal-dialog {
-        margin: 0;
+        max-width: 850px;
+        margin: 0 auto;
         border-radius: 0;
         .modal-header {
             padding: 20px;
@@ -953,7 +958,7 @@
             padding: 20px;
         }
         .modal-footer {
-            padding: 20px;
+            display: none;
         }
         .modal-content {
             border: 0;

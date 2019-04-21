@@ -243,7 +243,7 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .main-sheet { margin-top: 40px; overflow-x: scroll; }
 
-.main-sheet table { width: 1500px; font-size: 14px; }
+.main-sheet table { font-size: 14px; }
 
 .main-sheet table time { display: block; font-weight: 500; letter-spacing: 1px; }
 
@@ -283,9 +283,9 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .main-report ul li + li, .main-report ol li + li { margin-top: 5px; }
 
-.main-report table { width: 1500px; font-size: 12px; }
+.main-report table { font-size: 13px; }
 
-.main-report table th { padding: 10px 5px; background-color: #0375b4; color: #fff; border: 1px solid #fff; text-align: center; font-size: 14px; font-weight: 500; }
+.main-report table th { padding: 10px 25px; background-color: #0375b4; color: #fff; border: 1px solid #fff; text-align: center; font-size: 14px; font-weight: 500; white-space: nowrap; }
 
 .main-report table td { padding: 7px 10px; text-align: center; }
 
@@ -408,7 +408,7 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .daily-missions .mission-card .content h4 { margin-bottom: 15px; color: #fff; }
 
-.daily-missions .mission-card .content ul li + li { margin-top: 5px; }
+.daily-missions .mission-card .content h6 { color: #fff; }
 
 .daily-missions .mission-card .content .btn { margin-top: 30px; background-color: #ffce00; color: #262228; }
 
@@ -454,15 +454,21 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .main-frame { border: 1px solid #eee; }
 
+.report-modal { background-color: #fff; }
+
 .report-modal .report-form { margin-top: 20px; }
 
-.report-modal .modal-dialog { margin: 0; border-radius: 0; }
+.report-modal .report-form label { margin-bottom: 5px; }
+
+.report-modal .report-form textarea.form-control { height: 120px; }
+
+.report-modal .modal-dialog { max-width: 850px; margin: 0 auto; border-radius: 0; }
 
 .report-modal .modal-dialog .modal-header { padding: 20px; }
 
 .report-modal .modal-dialog .modal-body { padding: 20px; }
 
-.report-modal .modal-dialog .modal-footer { padding: 20px; }
+.report-modal .modal-dialog .modal-footer { display: none; }
 
 .report-modal .modal-dialog .modal-content { border: 0; }
 

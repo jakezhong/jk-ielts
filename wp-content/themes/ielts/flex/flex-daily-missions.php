@@ -6,34 +6,40 @@
         </div>
         <?php
             $terms = get_terms( array(
-                'taxonomy' => 'mission-item-type',
-                'hide_empty' => false,
+                'taxonomy'      => 'mission-type',
+                'hide_empty'    => true,
             ) );
             if( have_rows('items') ) :
                 foreach ($terms as $term) :
         ?>
         <div class="cards">
             <div class="header">
-                <h3>听力打卡</h3>
+                <h3><?php echo $term -> name; ?>打卡</h3>
             </div>
             <ul>
-                <?php 
-                    while( have_rows('items') ) : the_row();
-                    $item = get_the_field('item');
+                <?php
+                while( have_rows('items') ) : the_row();
+                    $item = get_sub_field('item');
+                    $type = get_the_terms( get_the_ID(), 'mission-type' );
+                    if( $item ) :
+                        $post = $item;
+                        setup_postdata( $post );
+                        if( $type[0] -> slug == $term -> slug ) :
                 ?>
                 <li class="mission-card">
-                    <a href="#">
+                    <a href="<?php the_permalink(); ?>">
                         <div class="content">
-                            <h4>剑桥雅思11 Test1 听力</h4>
-                            <ul>
-                                <li>时间: 9:00 - 11:00 AM</li>
-                            </ul>
+                            <?php echo tag_wrap(get_the_title(), 'h4'); ?>
+                            <h6>时间: <?php the_field('start_time'); ?></h6>
                         </div>
                         <picture class="image" style="background-image: url(https://picsum.photos/600/300)"></picture>
                     </a>
                 </li>
                 <?php
-                    endwhile;
+                        endif;
+                        wp_reset_postdata();
+                    endif;
+                endwhile;
                 ?>
             </ul>
         </div>

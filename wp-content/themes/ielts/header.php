@@ -7,6 +7,8 @@
     <title><?php wp_title(); ?></title>
     <link type="text/plain" rel="author" href="../authors.txt" />
     <link type="image/x-icon" rel="shortcut icon" href="../favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"/>
     <?php
     wp_head();
     ?>
