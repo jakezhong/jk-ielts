@@ -1,4 +1,30 @@
-<?php global $type; ?>
+<?php
+    global $type;
+    $username = $_GET['username'];
+    $amount = $_GET['username'];
+    $completion = $_GET['completion'];
+    $s1 = $_GET['s1'];
+    $s2 = $_GET['s2'];
+    $s3 = $_GET['s3'];
+    $s4 = $_GET['s4'];
+    $satisfaction = $_GET['satisfaction'];
+    $review = $_GET['review'];
+    $problems = $_GET['problems'];
+    $questions = $_GET['questions'];
+    
+    $myData = $_POST['data'];
+
+    echo '<h1>'.$myData.'</h1>';
+    // $new_report = array(
+    //     'post_title'	=> 'My post',
+    //     'post_type'		=> 'post',
+    //     'post_status'	=> 'publish'
+    // );
+    
+    
+    // // insert the post into the database
+    // $post_id = wp_insert_post( $my_post );
+?>
 <section class="report-module">
     <div class="wrap">
         <div class="header">

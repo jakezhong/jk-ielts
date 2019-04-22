@@ -157,9 +157,11 @@
                     <b-button type="reset" variant="danger">Reset</b-button>
                     <b-button type="submit" variant="primary">Submit</b-button>
                     
-                            </form>
+                </borm>
             </div>
         </template>
+
+        <hidden-property v-bind:permalink="<?php the_permalink(); ?>"></hidden-property>
 
     <?php
         elseif( $type[0]->slug =='reading' ) :

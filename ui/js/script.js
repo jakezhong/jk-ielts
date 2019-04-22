@@ -61,6 +61,7 @@ var app = new Vue({
             review: null,
             problems: null,
             questions: '',
+            permalink: '',
         },
         finished: [
             { text: '请选择', value: null },
@@ -76,7 +77,6 @@ var app = new Vue({
     },
     methods: {
         onSubmit(evt) {
-            alert(JSON.stringify(this.form))
         },
         onReset(evt) {
             evt.preventDefault()
@@ -95,6 +95,7 @@ var app = new Vue({
             this.form.review = null
             this.form.problems = null
             this.form.questions = ''
+            console.log(this.form.permalink);
         },
         addClass: function(original) {
             var classes = {}
