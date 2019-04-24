@@ -347,6 +347,35 @@ register_taxonomy(
 	)
 );
 
+// Sample Register Taxonomy
+$taxonomyName         = '项目标签';
+$taxonomyNameSlug     = 'program-tag';
+$taxonomyNameSingular = '项目标签';
+$taxonomyNamePlural   = '项目标签';
+register_taxonomy(
+	$taxonomyNameSlug, array( $postNameSlug ), array(
+		'hierarchical' => true, // Category or Tag functionality
+		'query_var' => true,
+		'rewrite' => array( 'slug' => $taxonomyNameSlug ),
+		'labels' => array(
+		     'name' => $taxonomyName,
+		     'singular_name' => $taxonomyNameSingular,
+		     'search_items' => 'Search ' . $taxonomyNamePlural,
+		     'popular_items' => 'Popular ' . $taxonomyNamePlural,
+		     'all_items' => 'All ' . $taxonomyNamePlural,
+		     'parent_item' => null,
+		     'parent_item_colon' => null,
+		     'edit_item' => 'Edit ' . $taxonomyNameSingular,
+		     'update_item' => 'Update ' . $taxonomyNameSingular,
+		     'add_new_item' => 'Add New ' . $taxonomyNameSingular,
+		     'new_item_name' => 'New ' . $taxonomyNameSingular,
+		     'separate_items_with_commas' => 'Separate ' . $taxonomyNamePlural . ' with commas',
+		     'add_or_remove_items' => 'Add or remove ' . $taxonomyNamePlural,
+		     'choose_from_most_used' => 'Choose from most used ' . $taxonomyNamePlural
+		 )
+	)
+);
+
 // Sample Register Post
 $postName         = '任务步骤'; // Name of post type
 $postNameSlug     = 'step'; // Name of post type
@@ -389,6 +418,35 @@ register_post_type(
     		'revisions',
     		'page-attributes' //template and menu order, hierarchical must be true
 		)
+	)
+);
+
+// Sample Register Taxonomy
+$taxonomyName         = '任务步骤分类';
+$taxonomyNameSlug     = 'step-type';
+$taxonomyNameSingular = '任务步骤分类';
+$taxonomyNamePlural   = '任务步骤分类';
+register_taxonomy(
+	$taxonomyNameSlug, array( $postNameSlug ), array(
+		'hierarchical' => true, // Category or Tag functionality
+		'query_var' => true,
+		'rewrite' => array( 'slug' => $taxonomyNameSlug ),
+		'labels' => array(
+		     'name' => $taxonomyName,
+		     'singular_name' => $taxonomyNameSingular,
+		     'search_items' => 'Search ' . $taxonomyNamePlural,
+		     'popular_items' => 'Popular ' . $taxonomyNamePlural,
+		     'all_items' => 'All ' . $taxonomyNamePlural,
+		     'parent_item' => null,
+		     'parent_item_colon' => null,
+		     'edit_item' => 'Edit ' . $taxonomyNameSingular,
+		     'update_item' => 'Update ' . $taxonomyNameSingular,
+		     'add_new_item' => 'Add New ' . $taxonomyNameSingular,
+		     'new_item_name' => 'New ' . $taxonomyNameSingular,
+		     'separate_items_with_commas' => 'Separate ' . $taxonomyNamePlural . ' with commas',
+		     'add_or_remove_items' => 'Add or remove ' . $taxonomyNamePlural,
+		     'choose_from_most_used' => 'Choose from most used ' . $taxonomyNamePlural
+		 )
 	)
 );
 
@@ -494,6 +552,7 @@ register_taxonomy(
 		 )
 	)
 );
+
 // Sample Register Post
 $postName         = '学习计划'; // Name of post type
 $postNameSlug     = 'plan'; // Name of post type
