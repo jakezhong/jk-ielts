@@ -6,8 +6,47 @@
     $start_time = get_field('start_time', false, false);
     $display_time = new DateTime($start_time);
     $cache_time = $display_time;
+    $mission_args = array(
+        'post_type'     =>      'mission',
+        'post_parent'   =>      $mission_ID,
+    );
+    $missions = new WP_Query($mission_args);
+    if( $missions -> have_posts() ) :
 ?>
-
+    <section class="mission-detail">
+        <div class="wrap">
+            <div class="main-detail main-frame">
+                <div class="main-content right-sidebar detail-upper">
+                    <picture class="content-main image full-bg" style="background-image: url(https://picsum.photos/900/450);">
+                    </picture>
+                    <div class="content-sub title">
+                        <?php echo tag_wrap(get_the_title(), 'h3'); ?>
+                        <ul>
+                            <li>类型: <?php echo $type[0] -> name; ?></li>
+                            <li>时间: <?php echo $display_time->format('g:i A') ?></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-content right-sidebar detail-lower">
+                    <div class="content-main">
+                        <h3>选择内容</h3>
+                        <ul>
+                            <?php
+                                while( $missions -> have_posts() ) : $missions -> the_post();
+                            ?>
+                            <li><a href="<?php the_permalink(); ?>" class="link"><?php the_title(); ?></a></li>
+                            <?php
+                                endwhile; wp_reset_postdata();
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php
+    else :
+?>
     <section class="mission-detail">
         <div class="wrap">
             <div class="main-detail main-frame">
@@ -29,11 +68,11 @@
                 </div>
                 <div class="main-content right-sidebar detail-lower">
                     <div class="content-main">
-                        <h3>具体流程:</h3>
+                        <h3>具体流程</h3>
                         <?php
                             if( have_rows('steps') ) :
                         ?>
-                        <ol>
+                        <ol class="steps">
                         <?php
                             while( have_rows('steps') ) : the_row();
                                 $step = get_sub_field('step');
@@ -43,7 +82,7 @@
                                     $title = $step -> post_title;
                                     $step_start = $cache_time -> format('g:i');
                                     $step_end = $cache_time -> modify('+'.$duration.' minute')->format('g:i');
-                                    echo $title.' '.$step_start.' - '.$step_end;
+                                    echo $title.': '.$step_start.' - '.$step_end;
                                 ?></li>
                         <?php
                                 $step_start = $step_end;
@@ -60,7 +99,7 @@
                             if( $resources ) :
                         ?>
                         <div class="sidebar sidebar-list">
-                            <h4>参考资料:</h4>
+                            <h4>参考资料</h4>
                             <ul>
                                 <?php
                                     foreach( $resources as $post ) :
@@ -84,4 +123,7 @@
     <div class="spacer"></div>
     <?php get_template_part('inc/inc', 'report'); ?>
     <?php get_template_part('inc/inc', 'report-modal'); ?>
+<?php
+    endif;
+?>
 <?php get_footer(); ?>

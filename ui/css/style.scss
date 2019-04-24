@@ -81,7 +81,7 @@
     h4 {
         color: $color_blue;
         font-size: 20px;
-        line-height: 1.2;
+        line-height: 1.5;
     }
 
     h5 {
@@ -102,6 +102,12 @@
         &:hover {
             color: $color_dark_gray;
             text-decoration: none;
+        }
+        &.link {
+            display: inline-block;
+            padding-left: 15px;
+            background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNiIgaGVpZ2h0PSIxMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgPGRlZnM+CiAgICA8cGF0aCBkPSJNMi41MTYgOC43MTZhLjc4NC43ODQgMCAwIDAgMCAxLjA2NC42ODIuNjgyIDAgMCAwIDEuMDAzIDBsMy45NjUtNC4yNDhhLjc4NS43ODUgMCAwIDAgMC0xLjA2NEwzLjUyLjIyYS42OC42OCAwIDAgMC0xLjAwMyAwIC43ODUuNzg1IDAgMCAwIDAgMS4wNjRMNS43NjcgNSAyLjUxNiA4LjcxNnoiIGlkPSJhIi8+CiAgPC9kZWZzPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yKSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxtYXNrIGlkPSJiIiBmaWxsPSIjZmZmIj4KICAgICAgPHVzZSB4bGluazpocmVmPSIjYSIvPgogICAgPC9tYXNrPgogICAgPGcgbWFzaz0idXJsKCNiKSIgZmlsbD0iI0ZGRiI+CiAgICAgIDxwYXRoIGQ9Ik0wIDBoMTB2MTBIMHoiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=) no-repeat;
+            background-position: 0 50%;
         }
     }
 
@@ -333,6 +339,9 @@
     h2 {
         margin-bottom: 10px;
     }
+    h3 {
+        margin-bottom: 10px;
+    }
     @include break(768) {
         margin-bottom: 30px;
     }
@@ -529,6 +538,11 @@
     }
     @include break(480) {
         margin-top: 40px auto;
+    }
+}
+.steps {
+    li {
+        letter-spacing: 1px;
     }
 }
 /* ========================================================================= */
@@ -1011,7 +1025,7 @@
 @include break(768) {
     .desktop { display: none; }
     .mobile { display: block; }
-    html, body { font-size: 14px; }
+    html, body { font-size: 15px; }
     h1 { font-size: 45px; }
     h2 { font-size: 32px; }
     h3 { font-size: 25px; }
@@ -1020,7 +1034,7 @@
     h6 { font-size: 14px; }
 }
 @include break(480) {
-    html, body { font-size: 13px; }
+    html, body { font-size: 14px; }
     h1 { font-size: 30px; }
     h2 { font-size: 24px; }
     h3 { font-size: 20px; }
