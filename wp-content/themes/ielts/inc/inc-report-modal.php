@@ -48,7 +48,7 @@
                     </table>
                 </div>
 
-                <form @submit="onSubmit" @reset="onReset" class="report-form">
+                <form @submit="onSubmit" @reset="onReset" id="listening-form" class="report-form">
                     <b-form-group label="名字" label-for="report-name"
                     >
                         <b-form-input
@@ -289,3 +289,10 @@
     ?>
     </b-modal>
 </div>
+<?php
+    add_action( 'admin_footer', 'my_action_javascript' ); // Write our JS below here
+    function my_action_javascript() {
+?>
+        <script type="text/javascript" >
+        </script>
+<?php } ?>

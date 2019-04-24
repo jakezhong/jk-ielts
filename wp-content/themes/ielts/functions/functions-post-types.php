@@ -229,10 +229,55 @@ register_taxonomy(
 // );
 
 // Sample Register Post
-$postName         = '时间项目'; // Name of post type
+$postName         = '时间表'; // Name of post type
 $postNameSlug     = 'schedule'; // Name of post type
-$postNameSingular = '时间项目'; // Singular Name
-$postNamePlural   = '时间项目'; // Plural Name
+$postNameSingular = '时间表'; // Singular Name
+$postNamePlural   = '时间表'; // Plural Name
+$postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
+
+register_post_type(
+	$postNameSlug, array(
+		'labels' => array(
+	       'name' => $postName,
+	       'singular_name' => $postNameSingular,
+	       'add_new' => 'Add ' . $postNameSingular,
+	       'add_new_item' => 'Add ' . $postNameSingular,
+	       'edit_item' => 'Edit ' . $postNameSingular,
+	       'search_items' => 'Search ' . $postNamePlural,
+	       'not_found' => 'No ' . $postNamePlural. ' found',
+	       'not_found_in_trash' => 'No ' . $postNamePlural. ' found in trash'
+	    ),
+		'public' => true,
+		'show_ui' => true,
+		'capability_type' => 'post',
+        'menu_icon' => $postDashIcon,
+		'hierarchical' => true,
+		'rest_api' => true,
+		'rewrite' => array( 'slug' => $postNameSlug ),
+		'query_var' => true,
+		'show_in_nav_menus' => true,
+		'exclude_from_search' => false,
+		'has_archive' => false,
+		'supports' => array(
+    		'title',
+    		'editor',
+    		'author',
+    		'thumbnail', //featured image, theme must also support thumbnails
+    		'excerpt',
+    		'trackbacks',
+    		'custom-fields',
+    		'comments',
+    		'revisions',
+    		'page-attributes' //template and menu order, hierarchical must be true
+		)
+	)
+);
+
+// Sample Register Post
+$postName         = '项目'; // Name of post type
+$postNameSlug     = 'program'; // Name of post type
+$postNameSingular = '项目'; // Singular Name
+$postNamePlural   = '项目'; // Plural Name
 $postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
 
 register_post_type(
@@ -274,10 +319,10 @@ register_post_type(
 );
 
 // Sample Register Taxonomy
-$taxonomyName         = '时间分类';
-$taxonomyNameSlug     = 'schedule-type';
-$taxonomyNameSingular = '时间分类';
-$taxonomyNamePlural   = '时间分类';
+$taxonomyName         = '项目分类';
+$taxonomyNameSlug     = 'program-type';
+$taxonomyNameSingular = '项目分类';
+$taxonomyNamePlural   = '项目分类';
 register_taxonomy(
 	$taxonomyNameSlug, array( $postNameSlug ), array(
 		'hierarchical' => true, // Category or Tag functionality
@@ -303,10 +348,55 @@ register_taxonomy(
 );
 
 // Sample Register Post
-$postName         = '任务项目'; // Name of post type
+$postName         = '任务步骤'; // Name of post type
+$postNameSlug     = 'step'; // Name of post type
+$postNameSingular = '任务步骤'; // Singular Name
+$postNamePlural   = '任务步骤'; // Plural Name
+$postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
+
+register_post_type(
+	$postNameSlug, array(
+		'labels' => array(
+	       'name' => $postName,
+	       'singular_name' => $postNameSingular,
+	       'add_new' => 'Add ' . $postNameSingular,
+	       'add_new_item' => 'Add ' . $postNameSingular,
+	       'edit_item' => 'Edit ' . $postNameSingular,
+	       'search_items' => 'Search ' . $postNamePlural,
+	       'not_found' => 'No ' . $postNamePlural. ' found',
+	       'not_found_in_trash' => 'No ' . $postNamePlural. ' found in trash'
+	    ),
+		'public' => true,
+		'show_ui' => true,
+		'capability_type' => 'post',
+        'menu_icon' => $postDashIcon,
+		'hierarchical' => true,
+		'rest_api' => true,
+		'rewrite' => array( 'slug' => $postNameSlug ),
+		'query_var' => true,
+		'show_in_nav_menus' => true,
+		'exclude_from_search' => false,
+		'has_archive' => false,
+		'supports' => array(
+    		'title',
+    		'editor',
+    		'author',
+    		'thumbnail', //featured image, theme must also support thumbnails
+    		'excerpt',
+    		'trackbacks',
+    		'custom-fields',
+    		'comments',
+    		'revisions',
+    		'page-attributes' //template and menu order, hierarchical must be true
+		)
+	)
+);
+
+// Sample Register Post
+$postName         = '任务'; // Name of post type
 $postNameSlug     = 'mission'; // Name of post type
-$postNameSingular = '任务项目'; // Singular Name
-$postNamePlural   = '任务项目'; // Plural Name
+$postNameSingular = '任务'; // Singular Name
+$postNamePlural   = '任务'; // Plural Name
 $postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
 
 register_post_type(
@@ -405,10 +495,10 @@ register_taxonomy(
 	)
 );
 // Sample Register Post
-$postName         = '学习计划项目'; // Name of post type
+$postName         = '学习计划'; // Name of post type
 $postNameSlug     = 'plan'; // Name of post type
-$postNameSingular = '学习计划项目'; // Singular Name
-$postNamePlural   = '学习计划项目'; // Plural Name
+$postNameSingular = '学习计划'; // Singular Name
+$postNamePlural   = '学习计划'; // Plural Name
 $postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
 
 register_post_type(
@@ -479,10 +569,10 @@ register_taxonomy(
 );
 
 // Sample Register Post
-$postName         = '参考资料项目'; // Name of post type
+$postName         = '参考资料'; // Name of post type
 $postNameSlug     = 'resource'; // Name of post type
-$postNameSingular = '参考资料项目'; // Singular Name
-$postNamePlural   = '参考资料项目'; // Plural Name
+$postNameSingular = '参考资料'; // Singular Name
+$postNamePlural   = '参考资料'; // Plural Name
 $postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
 
 register_post_type(
@@ -553,10 +643,10 @@ register_taxonomy(
 );
 
 // Sample Register Post
-$postName         = '打卡项目'; // Name of post type
+$postName         = '打卡'; // Name of post type
 $postNameSlug     = 'report'; // Name of post type
-$postNameSingular = '打卡项目'; // Singular Name
-$postNamePlural   = '打卡项目'; // Plural Name
+$postNameSingular = '打卡'; // Singular Name
+$postNamePlural   = '打卡'; // Plural Name
 $postDashIcon     = 'dashicons-pressthis'; // Define Dashicon | Commonly Used: News = dashicons-welcome-widgets-menus, Clients - dashicons-businessman, Team - dashicons-groups, Event - dashicons-calendar, Full List - https://developer.wordpress.org/resource/dashicons/
 
 register_post_type(

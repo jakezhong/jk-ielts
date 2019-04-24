@@ -40,6 +40,28 @@ jQuery(function($){
     header.dropdown();
     header.mobileToggle();
     header.mobileDropdown();
+    
+    jQuery(function($){
+        $(".report-form").submit(function(e) {
+            e.preventDefault();
+            console.log('works');
+            var formData = $('#listening-form').serialize();
+            console.table(formData);
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                data: formData,
+                url: "https://ielts.jakezhong.com/wp-admin/admin-ajax.php",
+                success: function(result) {
+                    console.log('data sent!');
+                    console.log('sent to: ' + templateDir + loadUrl );
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+                }                       
+            });
+        });
+    });
 });
 
 var app = new Vue({
@@ -95,7 +117,6 @@ var app = new Vue({
             this.form.review = null
             this.form.problems = null
             this.form.questions = ''
-            console.log(this.form.permalink);
         },
         addClass: function(original) {
             var classes = {}
@@ -259,5 +280,5 @@ var app = new Vue({
         }
     },
     computed: {
-    }
+    },
 });

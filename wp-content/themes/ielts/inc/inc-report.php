@@ -1,7 +1,5 @@
 <?php
     global $type;
-    $username = $_GET['username'];
-    $amount = $_GET['username'];
     $completion = $_GET['completion'];
     $s1 = $_GET['s1'];
     $s2 = $_GET['s2'];
@@ -11,10 +9,6 @@
     $review = $_GET['review'];
     $problems = $_GET['problems'];
     $questions = $_GET['questions'];
-    
-    $myData = $_POST['data'];
-
-    echo '<h1>'.$myData.'</h1>';
     // $new_report = array(
     //     'post_title'	=> 'My post',
     //     'post_type'		=> 'post',
@@ -24,6 +18,20 @@
     
     // // insert the post into the database
     // $post_id = wp_insert_post( $my_post );
+?>
+<?php
+    // Same handler function...
+    add_action( 'wp_ajax_my_action', 'my_action' );
+    add_action( 'wp_ajax_nopriv_my_action', 'my_action' );
+
+    function my_action() {
+        global $wpdb; // this is how you get access to the database
+
+        $username = $_POST['username'];
+        echo '<h1>'.$username.'</h1>';
+
+        wp_die(); // this is required to terminate immediately and return a proper response
+    }
 ?>
 <section class="report-module">
     <div class="wrap">
