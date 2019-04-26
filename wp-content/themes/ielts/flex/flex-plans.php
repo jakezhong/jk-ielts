@@ -2,7 +2,7 @@
     <div class="wrap">
         <?php
             $plan_args = array(
-                'post_type'         =>  'plan-item',
+                'post_type'         =>  'plan',
                 'order'             =>  'DESC',
                 'posts_per_page'    =>  -1,
             );

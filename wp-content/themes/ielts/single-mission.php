@@ -30,11 +30,11 @@
                 <div class="main-content right-sidebar detail-lower">
                     <div class="content-main">
                         <h3>选择内容</h3>
-                        <ul>
+                        <ul class="links-list">
                             <?php
                                 while( $missions -> have_posts() ) : $missions -> the_post();
                             ?>
-                            <li><a href="<?php the_permalink(); ?>" class="link"><?php the_title(); ?></a></li>
+                            <li class="link"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
                             <?php
                                 endwhile; wp_reset_postdata();
                             ?>
@@ -61,17 +61,17 @@
                         </ul>
                     </div>
                 </div>
-                <div class="main-content right-sidebar detail-center">
+                <!-- <div class="main-content right-sidebar detail-center">
                     <aside class="content-sub">
                         <b-button v-b-modal.report-form-modal class="blue">立即打卡！</b-button>
                     </aside>
-                </div>
+                </div> -->
                 <div class="main-content right-sidebar detail-lower">
                     <div class="content-main">
-                        <h3>具体流程</h3>
                         <?php
                             if( have_rows('steps') ) :
                         ?>
+                        <h3>具体流程</h3>
                         <ol class="steps">
                         <?php
                             while( have_rows('steps') ) : the_row();
@@ -121,8 +121,8 @@
         </div>
     </section>
     <div class="spacer"></div>
-    <?php get_template_part('inc/inc', 'report'); ?>
-    <?php get_template_part('inc/inc', 'report-modal'); ?>
+    <?php //get_template_part('inc/inc', 'report'); ?>
+    <?php //get_template_part('inc/inc', 'report-modal'); ?>
 <?php
     endif;
 ?>

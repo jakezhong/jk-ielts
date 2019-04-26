@@ -90,11 +90,13 @@
     @return url('data:image/svg+xml,#{url-encode($string)}');
 }
 $font_open: 'OpenSans';
-$color_yellow: #ffce00;
-$color_blue: #0375b4;
+$color_yellow: #FFB701;
+$color_orange: #EA8250;
+$color_blue: #2F69F8;
 $color_green: #007849;
+$color_purple: #7750EA;
 $color_dark_gray: #262228;
-$color_border: #eee;
+$color_border: #DADADA;
 $color_light_blue: #cfe2f3;
 $color_light_red: #f4cccc;
 $color_light_green: #d9ead3;

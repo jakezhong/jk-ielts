@@ -1,1 +1,0 @@
-Remember to add a redirect from this file if there are lightboxes.
