@@ -95,7 +95,8 @@ var app = new Vue({
             { text: '超棒', value: 'good' },
             { text: '满意', value: 'ok' },
             { text: '不满意', value: 'bad' }
-        ]
+        ],
+        todayTrigger: false,
     },
     methods: {
         onSubmit(evt) {
