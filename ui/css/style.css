@@ -418,19 +418,15 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .missions-module .main-sheet table tr td:nth-child(1) { padding: 15px 10px; }
 
-.daily-missions .mission-card { position: relative; margin: 0 auto; border-radius: 4px; background-color: #2F69F8; overflow: hidden; }
+.daily-missions .mission-card { position: relative; margin: 0 auto; border-radius: 4px; overflow: hidden; color: #262228; -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); box-shadow: 0 0 2px rgba(0, 0, 0, 0.5); }
 
-.daily-missions .mission-card a { display: block; }
+.daily-missions .mission-card a { display: block; color: #262228; }
 
 .daily-missions .mission-card .image { display: block; position: absolute; top: 0; right: 0; width: 25%; height: 100%; z-index: 1; }
 
-.daily-missions .mission-card .content { width: 75%; padding: 40px; color: #fff; }
+.daily-missions .mission-card .content { width: 75%; padding: 40px; }
 
-.daily-missions .mission-card .content h4 { margin-bottom: 15px; color: #fff; }
-
-.daily-missions .mission-card .content h6 { color: #fff; }
-
-.daily-missions .mission-card .content .btn { margin-top: 30px; background-color: #FFB701; color: #262228; }
+.daily-missions .mission-card .content h4 { margin-bottom: 15px; color: #262228; }
 
 .daily-missions .mission-card + .mission-card { margin-top: 40px; }
 
