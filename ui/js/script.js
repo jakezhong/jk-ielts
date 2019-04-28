@@ -97,6 +97,19 @@ var app = new Vue({
             { text: '不满意', value: 'bad' }
         ],
         todayTrigger: false,
+        reportHeads: [
+            { text: '名字', value: null },
+            { text: '成绩', value: null },
+            { text: '时间', value: null },
+        ],
+        types: [
+            { text: '刷题', value: 'test' },
+            { text: '听力', value: 'listening' },
+            { text: '阅读', value: 'reading' },
+            { text: '写作', value: 'writing' },
+            { text: '口语', value: 'speaking' },
+            { text: '词汇', value: 'vocabulary' },
+        ]
     },
     methods: {
         onSubmit(evt) {

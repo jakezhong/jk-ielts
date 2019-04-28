@@ -77,13 +77,16 @@
             </div>
         </header>
         <main id="main">
+            <section class="banner general">
+                <h2>今日打卡</h2>
+                <h4>打卡项目: Week 1 Listening</h4>
+            </section>
+            <div class="spacer"></div>
             <section class="report-module">
                 <div class="wrap">
                     <div class="header">
-                        <h2>刷题打卡</h2>
-                        <h4>打卡项目：Week 1 Listening</h4>
                         <div>
-                            <b-button v-b-modal.report-form-modal>立即打卡！</b-button>
+                            <b-button v-b-modal.report-form-modal class="btn blue">立即打卡！</b-button>
                             <b-modal id="report-form-modal" title="Report Form" size="xl">
                                 <template>
                                     <div>
@@ -271,6 +274,7 @@
                     </div>
                 </div>
             </section>
+            <div class="spacer"></div>
         </main>
         <footer id="footer">
             <div class="wrap">

@@ -77,27 +77,66 @@
             </div>
         </header>
         <main id="main">
+            <section class="banner general">
+                <h2>本周时间表</h2>
+                <h4>2019年4月19日</h4>
+            </section>
+            <div class="spacer"></div>
             <section class="missions-module">
                 <div class="wrap">
                     <div class="header">
-                        <h2>本周雅思团任务表</h2>
-                        <h4>周目标：Listening 刷题 x 3， Reading 刷题 x 3，作文段落练习 x 5，口语练习 x 6，作文 x 1</h4>
+                        <h2>本周目标</h2>
+                        <ol>
+                            <li><h4>背范文，录音读范文<span> x 3</span></h4></li>
+                            <li><h4>Listening 刷题 x 3</h4></li>
+                            <li><h4>Reading 刷题 x 3</h4></li>
+                            <li><h4>作文段落练习 x 5</h4></li>
+                            <li><h4>口语练习 x 6</h4></li>
+                            <li><h4>作文 x 1</h4></li>
+                        </ol>
                     </div>
+                    <div class="spacer"></div>
+                    <h2>时间表</h2>
+                    <div class="spacer"></div>
+                    <b-form-checkbox v-model="todayTrigger" name="check-button" switch>
+                        只看今天
+                    </b-form-checkbox>
+                    <div class="spacer"></div>
                     <div class="main-sheet">
-                        <table>
+                        <table v-bind:class="{ active: todayTrigger }">
                             <tr>
                                 <th>Time</th>
                                 <th>Monday</th>
-                                <th>Tuesday</th>
-                                <th>Wednesday</th>
-                                <th>Thursday</th>
-                                <th>Friday</th>
-                                <th>Saturday</th>
-                                <th>Sunday</th>
+                                <th v-show="!todayTrigger">Tuesday</th>
+                                <th v-show="!todayTrigger">Wednesday</th>
+                                <th v-show="!todayTrigger">Thursday</th>
+                                <th v-show="!todayTrigger">Friday</th>
+                                <th v-show="!todayTrigger">Saturday</th>
+                                <th v-show="!todayTrigger">Sunday</th>
                             </tr>
                             <tr>
                                 <td class="listening">Listening</td>
-                                <td v-for="n in 7">
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <ol>
+                                                <li>
+                                                    <p>剑桥12 Test 2</p>
+                                                    <div class="resources">
+                                                        <small>参考资料：</small>
+                                                        <ul>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td v-for="n in 6" v-show="!todayTrigger">
                                     <ul>
                                         <li>
                                             <ol>
@@ -120,7 +159,34 @@
                             </tr>
                             <tr>
                                 <td class="reading">Reading</td>
-                                <td v-for="n in 7">
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <ol>
+                                                <li>
+                                                    <p>剑桥12 Test 2</p>
+                                                    <div class="resources">
+                                                        <small>参考资料：</small>
+                                                        <ul>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <p>剑桥12 Test 2</p>
+                                                    <div class="resources">
+                                                        <small>参考资料：</small>
+                                                        <ul>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td v-for="n in 6" v-show="!todayTrigger">
                                     <ul>
                                         <li>
                                             <ol>
@@ -150,10 +216,46 @@
                             </tr>
                             <tr>
                                 <td class="writing">Writing</td>
-                                <td v-for="n in 7">
+                                <td>
                                     <ul>
                                         <li>
                                             <ol>
+                                                <li>
+                                                    <p>剑桥12 Test 2</p>
+                                                    <div class="resources">
+                                                        <small>参考资料：</small>
+                                                        <ul>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <p>剑桥12 Test 2</p>
+                                                    <div class="resources">
+                                                        <small>参考资料：</small>
+                                                        <ul>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td v-for="n in 6" v-show="!todayTrigger">
+                                    <ul>
+                                        <li>
+                                            <ol>
+                                                <li>
+                                                    <p>剑桥12 Test 2</p>
+                                                    <div class="resources">
+                                                        <small>参考资料：</small>
+                                                        <ul>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
                                                 <li>
                                                     <p>剑桥12 Test 2</p>
                                                     <div class="resources">
@@ -171,7 +273,25 @@
                             </tr>
                             <tr>
                                 <td class="speaking">Speaking</td>
-                                <td v-for="n in 7">
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <ol>
+                                                <li>
+                                                    <p>剑桥12 Test 2</p>
+                                                    <div class="resources">
+                                                        <small>参考资料：</small>
+                                                        <ul>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td v-for="n in 6" v-show="!todayTrigger">
                                     <ul>
                                         <li>
                                             <ol>
@@ -192,7 +312,25 @@
                             </tr>
                             <tr>
                                 <td class="vocabulary">Vocabulary</td>
-                                <td v-for="n in 7">
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <ol>
+                                                <li>
+                                                    <p>剑桥12 Test 2</p>
+                                                    <div class="resources">
+                                                        <small>参考资料：</small>
+                                                        <ul>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                            <li><a href="#">剑桥雅思12</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td v-for="n in 6" v-show="!todayTrigger">
                                     <ul>
                                         <li>
                                             <ol>
@@ -215,6 +353,7 @@
                     </div>
                 </div>
             </section>
+            <div class="spacer"></div>
         </main>
         <footer id="footer">
             <div class="wrap">
