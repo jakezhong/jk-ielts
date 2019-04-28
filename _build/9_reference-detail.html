@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8" />
+    <meta name="MSSmartTagsPreventParsing" content="true" /><!--[if lte IE 9]><meta http-equiv="X-UA-Compatible" content="IE=Edge"/><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Title</title>
+    <link type="text/plain" rel="author" href="../authors.txt" />
+    <link type="image/x-icon" rel="shortcut icon" href="../favicon.ico" />
+    <!-- Remove When Adding <?php wp_head(); ?> -->
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="../ui/css/style.css" />
+    <script src="../ui/js/jquery.js" type="text/javascript"></script>
+    <!-- End Remove -->
+</head>
+
+<body>
+<!--
+    When starting wp replace body with this
+    <body <?php body_class(); ?>>
+-->
+    <div class="site" id="app">
+        <header id="header">
+            <div class="wrap">
+                <nav id="nav" role="nav">
+                    <a class="logo">
+                        <img src="../ui/svg/logo.svg" alt="">
+                    </a>
+                    <div class="desktop">
+                        <ul id="main-menu">
+                            <li><a href="#">主页</a></li>
+                            <li class="menu-item-has-children" @hover="">
+                                <a href="#">任务表</a>
+                                <ul v-show="">
+                                    <li><a href="#">听力</a></li>
+                                    <li><a href="#">阅读</a></li>
+                                    <li><a href="#">写作</a></li>
+                                    <li><a href="#">口语</a></li>
+                                    <li><a href="#">词汇</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">时间表</a>
+                                <ul>
+                                    <li><a href="#">听力</a></li>
+                                    <li><a href="#">阅读</a></li>
+                                    <li><a href="#">写作</a></li>
+                                    <li><a href="#">口语</a></li>
+                                    <li><a href="#">词汇</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">学习计划</a></li>
+                            <li><a href="#">相关资料</a></li>
+                        </ul>
+                    </div>
+                    <div class="mobile">
+                        <button id="mobile-menu-toggle" aria-expanded=false><span></span></button>
+                        <div class="mobile-menu-container">
+                            <ul id="mobile-menu">
+                                <li class="menu-item-has-children">
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                                <li>
+                                    <a href="#">Parent Menu</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main id="main">
+            <section class="banner image" style="background-image: url(https://picsum.photos/900/450);"></section>
+            <section class="mission-detail">
+                <div class="wrap">
+                    <div class="main-detail main-frame">
+                        <div class="main-content detail-upper">
+                            <div class="header">
+                                <h2>剑桥雅思真题2</h2>
+                                <ul>
+                                    <li>类型: <span><a href="#">刷题</a></span></li>
+                                    <li>标签: <span><a href="#">#刷题</a><a href="#">#刷题</a><a href="#">#刷题</a></span></li>
+                                    <li>作者: <span>Cambridge IELTS</span></li>
+                                    <li>出版社: <span>Cambridge IELTS</span></li>
+                                    <li>出版时间: <span>2019.4.27</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="main-content right-sidebar detail-lower">
+                            <div class="content-main">
+                                <h3>资料简介</h3>
+                                <p>The International English Language Testing System (IELTS) is widely recognised as  reliable means of assessi ng the Ian guage ability of can didates who n eed to study or work where English is the Ianguage of communication. These Practice Tests are desig ned to give future IELTS can didates an idea of whether their En glish is at the required level.</p>
+                                <p>IELTS is owned by three partners: Cambridge Assessment English, part of the University of Cambridge; the British Council; IDP Education Pty Limited (through its subsidiary company, IELTS Australia Pty Limited). Further information on IELTS can be found on the IELTS website www.ielts.org.</p>
+                            </div>
+                            <aside class="content-sub">
+                                <div class="sidebar sidebar-list">
+                                    <h3>下载文件</h3>
+                                    <b-list-group class="links-list">
+                                        <b-list-group-item v-for="n in 5" href="#" class="link gray">剑桥雅思8 - 13</b-list-group-item>
+                                    </b-list-group>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="spacer"></div>
+        </main>
+        <footer id="footer">
+            <div class="wrap">
+                <p>@2019 Copyright <a href="#">屠鸭抱抱团</a></p>
+            </div>
+        </footer>
+    </div>
+    <!-- Remove when adding <?php wp_footer(); ?> -->
+    <script src="../ui/js/modernizr.js"></script>
+    <script src="../ui/js/svgxuse.js"></script> <!-- SVG Polyfill -->
+    <script src="../ui/js/plugins.js" type="text/javascript"></script>
+    <script src="../ui/js/script.js" type="text/javascript"></script>
+    <!-- End Remove -->
+</body>
+</html>
