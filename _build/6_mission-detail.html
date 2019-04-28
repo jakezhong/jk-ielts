@@ -55,45 +55,39 @@
                         </ul>
                     </div>
                     <div class="mobile">
-                        <button id="mobile-menu-toggle" aria-expanded=false><span></span></button>
-                        <div class="mobile-menu-container">
-                            <ul id="mobile-menu">
-                                <li>
-                                    <a href="#">主页</a>
-                                    <button aria-expanded=false></button>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">任务表</a>
-                                    <button aria-expanded=false></button>
-                                    <ul>
-                                        <li><a href="#">听力</a></li>
-                                        <li><a href="#">阅读</a></li>
-                                        <li><a href="#">写作</a></li>
-                                        <li><a href="#">口语</a></li>
-                                        <li><a href="#">词汇</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">时间表</a>
-                                    <button aria-expanded=false></button>
-                                    <ul>
-                                        <li><a href="#">听力</a></li>
-                                        <li><a href="#">阅读</a></li>
-                                        <li><a href="#">写作</a></li>
-                                        <li><a href="#">口语</a></li>
-                                        <li><a href="#">词汇</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">学习计划</a>
-                                    <button aria-expanded=false></button>
-                                </li>
-                                <li>
-                                    <a href="#">相关资料</a>
-                                    <button aria-expanded=false></button>
-                                </li>
-                            </ul>
-                        </div>
+                        <h1 class="title">屠鸭抱抱团</h1>
+                        <ul id="mobile-menu">
+                            <li class="current-menu-item">
+                                <a class="#">
+                                    <svg class="icon_home"><use xlink:href="../ui/svg/sprites.svg#icon_home"></use></svg>
+                                    首页
+                                </a>
+                            </li>
+                            <li>
+                                <a class="#">
+                                    <svg class="icon_schedule"><use xlink:href="../ui/svg/sprites.svg#icon_schedule"></use></svg>
+                                    时间表
+                                </a>
+                            </li>
+                            <li>
+                                <a class="#">
+                                    <svg class="icon_missions"><use xlink:href="../ui/svg/sprites.svg#icon_missions"></use></svg>
+                                    任务表
+                                </a>
+                            </li>
+                            <li>
+                                <a class="#">
+                                    <svg class="icon_plans"><use xlink:href="../ui/svg/sprites.svg#icon_plans"></use></svg>
+                                    学习计划
+                                </a>
+                            </li>
+                            <li>
+                                <a class="#">
+                                    <svg class="icon_resources"><use xlink:href="../ui/svg/sprites.svg#icon_resources"></use></svg>
+                                    参考资料
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
             </div>
@@ -497,7 +491,7 @@
             </section>
             <div class="spacer"></div>
         </main>
-        <footer id="footer">
+        <footer id="footer" class="desktop">
             <div class="wrap">
                 <p>@2019 Copyright <a href="#">屠鸭抱抱团</a></p>
             </div>

@@ -1,7 +1,7 @@
     </main>
     <!-- END MAIN -->
     <!-- START FOOTER -->
-    <footer id="footer">
+    <footer id="footer" class="desktop">
         <div class="wrap">
             <p>&copy;<?php echo date('Y'); ?> Copyright <a href="<?php echo get_home_url(); ?>">屠鸭抱抱团</a></p>
         </div>

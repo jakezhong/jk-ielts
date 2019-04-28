@@ -25,27 +25,44 @@
                     <div class="desktop">
                     <?php
                         wp_nav_menu( array(
-                            'menu'              => "Main Menu",
-                            'menu_class'        => "",
-                            'menu_id'           => "main-menu",
-                            'container'         => "div",
-                            'container_class'   => "desktop",
-                            'theme_location'    => "main-menu",
+                            'menu'              => 'Main Menu',
+                            'menu_class'        => '',
+                            'menu_id'           => 'main-menu',
+                            'container'         => 'div',
+                            'container_class'   => 'desktop',
+                            'theme_location'    => 'main-menu',
                         ) );
                     ?>
                     </div>
                     <div class="mobile">
-                        <button id="mobile-menu-toggle" aria-expanded=false><span></span></button>
+                        <h1 class="title"><?php echo get_bloginfo(); ?></h1>
                         <?php
                             wp_nav_menu( array(
-                                'menu'              => "Main Menu",
-                                'menu_class'        => "",
-                                'menu_id'           => "mobile-menu",
-                                'container'         => "div",
-                                'container_class'   => "mobile-menu-container",
-                                'theme_location'    => "main-menu",
-                                'after'             => "<button aria-expanded=false></button>",
+                                'menu'              =>  'Main Menu',
+                                'menu_class'        =>  '',
+                                'menu_id'           =>  'mobile-menu',
+                                'container'         =>  'div',
+                                'container_class'   =>  'mobile-menu-container',
+                                'theme_location'    =>  'main-menu',
+                                'walker'            =>  new Menu_Walker(),
+                                'link_before'       =>  '<svg class="icon_%3$s"><use xlink:href="../ui/svg/sprites.svg#icon_%3$s"></use></svg>',
                             ) );
+
+                            class Menu_Walker extends Walker_Nav_Menu {
+                                function start_el(&$output, $item, $depth=0, $args=array(), $id = 0) {
+                                    $title = $item->title;
+                                    $attr_title = $item->attr_title;
+                                    $permalink = $item->url;
+                                    $output .= "<li class='" .  implode(" ", $item->classes) . "'>";
+                                    if( $permalink && $permalink != '#' ) {
+                                        $output .= '<a href="' . $permalink . '">';
+                                        $output .= '<svg class="icon_'.$attr_title.'"><use xlink:href="../ui/svg/sprites.svg#icon_'.$attr_title.'"></use></svg>';
+                                        $output .= $title;
+                                        $output .= '</a>';
+                                    }
+
+                                }
+                            }
                         ?>
                     </div>
                 </nav>
