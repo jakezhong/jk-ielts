@@ -627,7 +627,7 @@
                 width: 120px;
                 min-height: 25px;
                 border: 1px solid $color_border;
-                padding: 3px 10px;
+                padding: 3px 20px;
                 background-color: $color_blue;
                 color: $white;
                 font-weight: 500;
@@ -635,7 +635,7 @@
             td {
                 min-height: 25px;
                 border: 1px solid $color_border;
-                padding: 3px 10px;
+                padding: 3px 20px;
                 text-align: center;
                 &.good {
                     background-color: $color_light_blue;
@@ -737,11 +737,13 @@
     background-color: $color_dark_gray;
     z-index: 100;
     .logo {
+        position: relative;
         display: block;
         width: 40px;
         height: 60px;
         line-height: 60px;
         font-size: 0;
+        z-index: 10;
         img {
             width: 100%;
             vertical-align: middle;
@@ -1067,7 +1069,7 @@
             position: fixed;
             width: 100%;
             left: 0;
-            bottom: 0;
+            bottom: 50px;
             padding: 15px 20px;
             background-color: $white;
             border: 0;
@@ -1119,10 +1121,20 @@
                 border: 0;
                 box-shadow: 0 0 0;
                 .field {
-                    padding: 5px 10px;
-                    &:first-child { width: 80px; }
-                    &:nth-child(2) { width: 80px; }
-                    &::last-child { width: calc(100% - 200px); }
+                    padding: 5px 20px;
+                    text-align: left;
+                    &:nth-child(2) { min-width: 150px; padding-left: 30px; text-align: center; }
+                    &:last-child { padding-left: 30px; }
+                }
+                @include break(768) {
+                    .field {
+                        &:nth-child(2) { min-width: 100px; }
+                    }
+                }
+                @include break(480) {
+                    .field {
+                        &:nth-child(2) { min-width: 80px; }
+                    }
                 }
             }
             &:first-child {
@@ -1151,6 +1163,9 @@
                 }
             }
         }
+    }
+    @include break(768) {
+        margin-bottom: 80px;
     }
 }
 .report-modal {
