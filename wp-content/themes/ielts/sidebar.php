@@ -7,9 +7,9 @@
             if ( get_row_layout() == 'resources' ) :
 ?>
     <div class="sidebar sidebar-list">
-        <h4>参考资料:</h4>
+        <h3>参考资料:</h3>
         <?php if ( have_rows('resources') ) : ?>
-        <ul>
+        <b-list-group class="links-list">
             <?php
                 while ( have_rows('resources') ) : the_row();
                     if ( get_sub_field('type') == 'internal' ) :
@@ -17,22 +17,23 @@
                         if ( $post_object ) :
                             $post = $post_object;
                             setup_postdata( $post ); 
-                            echo '<li><a href="'.get_the_permalink().'">'.get_sub_field('name').'</a></li>';
+                            echo '<b-list-group-item href="'.get_the_permalink().'" class="link gray">'.get_sub_field('name').'</b-list-group-item>';
                             wp_reset_postdata();
                         endif;
                     elseif ( get_sub_field('type') == 'external' ) :
-                        echo '<li><a href="'.get_sub_field('external_link').'" target="_blank">'.get_sub_field('name').'</a></li>';
+                        echo '<b-list-group-item href="'.get_sub_field('external_link').'" class="link gray">'.get_sub_field('name').'</b-list-group-item>';
                     endif;
                 endwhile;
             ?>
-        </ul>
+        </b-list-group>
         <?php endif; ?>
     </div>
-</aside>
-<?php
+    <?php 
             endif;
         endwhile;
-?>
+    ?>
+</aside>
+
 <?php
     endif;
 ?>

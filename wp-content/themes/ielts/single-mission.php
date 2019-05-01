@@ -11,15 +11,14 @@
         'post_parent'   =>      $mission_ID,
     );
     $missions = new WP_Query($mission_args);
-    if( $missions -> have_posts() ) :
 ?>
+    <section class="banner image" style="background-image: url(https://picsum.photos/900/450);"></section>
+
     <section class="mission-detail">
         <div class="wrap">
             <div class="main-detail main-frame">
-                <div class="main-content right-sidebar detail-upper">
-                    <picture class="content-main image full-bg" style="background-image: url(https://picsum.photos/900/450);">
-                    </picture>
-                    <div class="content-sub title">
+                <div class="main-content detail-upper">
+                    <div class="header">
                         <?php echo tag_wrap(get_the_title(), 'h3'); ?>
                         <ul>
                             <li>类型: <?php echo $type[0] -> name; ?></li>
@@ -27,45 +26,31 @@
                         </ul>
                     </div>
                 </div>
-                <div class="main-content right-sidebar detail-lower">
-                    <div class="content-main">
-                        <h3>选择内容</h3>
-                        <ul class="links-list">
-                            <?php
-                                while( $missions -> have_posts() ) : $missions -> the_post();
-                            ?>
-                            <li class="link"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-                            <?php
-                                endwhile; wp_reset_postdata();
-                            ?>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<?php
-    else :
-?>
-    <section class="mission-detail">
-        <div class="wrap">
-            <div class="main-detail main-frame">
-                <div class="main-content right-sidebar detail-upper">
-                    <picture class="content-main image full-bg" style="background-image: url(https://picsum.photos/900/450);">
-                    </picture>
-                    <div class="content-sub title">
-                        <?php echo tag_wrap(get_the_title(), 'h3'); ?>
-                        <ul>
-                            <li>类型: <?php echo $type[0] -> name; ?></li>
-                            <li>时间: <?php echo $display_time->format('g:i A') ?></li>
-                        </ul>
-                    </div>
-                </div>
+                <?php
+                    if( $missions -> have_posts() ) :
+                ?>
                 <!-- <div class="main-content right-sidebar detail-center">
                     <aside class="content-sub">
                         <b-button v-b-modal.report-form-modal class="blue">立即打卡！</b-button>
                     </aside>
                 </div> -->
+                <div class="main-content right-sidebar detail-lower">
+                    <div class="content-main">
+                        <h3>选择内容</h3>
+                        <b-list-group class="links-list">
+                            <?php
+                                while( $missions -> have_posts() ) : $missions -> the_post();
+                            ?>
+                            <b-list-group-item href="<?php the_permalink(); ?>" class="link gray"><?php the_title(); ?></b-list-group-item>
+                            <?php
+                                endwhile; wp_reset_postdata();
+                            ?>
+                        </b-list-group>
+                    </div>
+                </div>
+                <?php
+                    else :
+                ?>
                 <div class="main-content right-sidebar detail-lower">
                     <div class="content-main">
                         <?php
@@ -99,31 +84,31 @@
                             if( $resources ) :
                         ?>
                         <div class="sidebar sidebar-list">
-                            <h4>参考资料</h4>
-                            <ul>
+                            <h3>参考资料:</h3>
+                            <b-list-group class="links-list">
                                 <?php
                                     foreach( $resources as $post ) :
                                     setup_postdata($post);
                                 ?>
-                                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                                <b-list-group-item href="<?php the_permalink(); ?>" class="link gray"><?php the_title(); ?></b-list-group-item>
                                 <?php
                                     endforeach;
                                     wp_reset_postdata();
                                 ?>
-                            </ul>
+                            </b-list-group>
                         </div>
                         <?php
                             endif;
                         ?>
                     </aside>
                 </div>
+                <?php
+                    endif;
+                ?>
             </div>
         </div>
     </section>
     <div class="spacer"></div>
     <?php //get_template_part('inc/inc', 'report'); ?>
     <?php //get_template_part('inc/inc', 'report-modal'); ?>
-<?php
-    endif;
-?>
 <?php get_footer(); ?>
