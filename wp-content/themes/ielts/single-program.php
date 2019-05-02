@@ -5,14 +5,14 @@
     $type = get_the_terms( get_the_ID(), 'program-type' );
     $missions = get_field('missions');
     $start_time = get_field('start_time');
+    $img = get_field('image')
 ?>
+    <section class="banner image" style="background-image: url(<?php echo $img['url']; ?>);"></section>
     <section class="mission-detail">
         <div class="wrap">
             <div class="main-detail main-frame">
-                <div class="main-content right-sidebar detail-upper">
-                    <picture class="content-main image full-bg" style="background-image: url(https://picsum.photos/900/450);">
-                    </picture>
-                    <div class="content-sub title">
+                <div class="main-content detail-upper">
+                    <div class="header">
                         <?php echo tag_wrap(get_the_title(), 'h3'); ?>
                         <ul>
                             <li>类型: <?php echo $type[0] -> name; ?></li>
@@ -26,19 +26,17 @@
                             if( $missions ) :
                         ?>
                         <h3>任务列表</h3>
-                        <ul class="links-list">
+                        <b-list-group class="links-list">
                         <?php
                             foreach( $missions as $post ) :
                                 setup_postdata($post);
                         ?>
-                            <li class="link">
-                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                            </li>
+                            <b-list-group-item href="<?php the_permalink(); ?>" class="link gray"><?php the_title(); ?></b-list-group-item>
                         <?php
                             endforeach;
                             wp_reset_postdata();
                         ?>
-                        </ul>
+                        </b-list-group>
                         <?php
                             endif;
                         ?>
@@ -70,4 +68,5 @@
             </div>
         </div>
     </section>
+    <div class="spacer"></div>
 <?php get_footer(); ?>

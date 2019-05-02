@@ -1,9 +1,6 @@
 <div class="daily-missions">
-    <div class="wrap">
-        <div class="header section-header">
-            <h2>今日打卡任务</h2>
-            <h4><?php echo date('Y年m月d日'); ?></h4>
-        </div>
+    <div class="wrapper">
+        <div class="spacer"></div>
         <?php
             $terms = get_terms( array(
                 'taxonomy'      => 'program-type',
@@ -13,7 +10,7 @@
                 foreach ($terms as $term) :
         ?>
         <div class="cards">
-            <div class="header">
+            <div class="header wrap">
                 <h3><?php echo $term -> name; ?>打卡</h3>
             </div>
             <ul>
@@ -26,14 +23,17 @@
                         $type = get_the_terms( get_the_ID(), 'program-type' );
                         if( $type[0] -> slug == $term -> slug ) :
                             $start_time = get_field('start_time');
+                            $img = get_field('image');
                 ?>
                 <li class="mission-card">
                     <a href="<?php the_permalink(); ?>">
+                        <picture class="image" style="background-image: url(<?php echo $img['url']; ?>)"></picture>
                         <div class="content">
                             <?php echo tag_wrap(get_the_title(), 'h4'); ?>
-                            <h6>时间: <?php echo $start_time; ?></h6>
+                            <ul>
+                                <li>时间: <?php echo $start_time; ?></li>
+                            </ul>
                         </div>
-                        <picture class="image" style="background-image: url(https://picsum.photos/600/300)"></picture>
                     </a>
                 </li>
                 <?php

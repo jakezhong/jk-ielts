@@ -350,23 +350,6 @@
                     margin-top: 10px;
                 }
             }
-            .links-list {
-                .link {
-                    padding-left: 0;
-                    &::before { display: none; }
-                    a {
-                        display: block;
-                        padding: 10px 20px;
-                        border: 1px solid $color_blue;
-                        border-radius: 4px;
-                        color: $color_blue;
-                        &:hover {
-                            border-color: $color_green;
-                            color: $color_green;
-                        }
-                    }
-                }
-            }
         }
         .content-sub {
             width: 32%;
@@ -966,6 +949,9 @@
                 display: block;
                 width: 120px;
                 height: 120px;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
             }
             .content {
                 margin-left: 20px;

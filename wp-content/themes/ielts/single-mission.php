@@ -11,8 +11,9 @@
         'post_parent'   =>      $mission_ID,
     );
     $missions = new WP_Query($mission_args);
+    $img = get_field('image')
 ?>
-    <section class="banner image" style="background-image: url(https://picsum.photos/900/450);"></section>
+    <section class="banner image" style="background-image: url(<?php echo $img['url']; ?>);"></section>
 
     <section class="mission-detail">
         <div class="wrap">
