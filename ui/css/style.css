@@ -100,7 +100,7 @@ input[type=text]::-ms-clear { display: none; }
 /* ========================================================================= */
 /* !STYLES */
 /* ========================================================================= */
-html, body { background-color: #262228; font-family: "OpenSans"; font-size: 16px; font-color: #262228; line-height: 1.5; }
+html, body { background-color: #fff; font-family: "OpenSans"; font-size: 16px; font-color: #262228; line-height: 1.5; }
 
 /* != SELECTION STYLES (Leaving these blank will show no indication of text selection) ===== */
 /* ::selection         { background: #aaa; color: #fff; } ::-moz-selection    { background: #aaa; color: #fff; } ::-webkit-selection { background: #aaa; color: #fff; } */
@@ -249,11 +249,11 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .header ul, .header ol { margin-top: 15px; }
 
-.header ul li, .header ol li { font-size: 16px; font-weight: 500; letter-spacing: 1px; overflow: hidden; }
+.header ul li, .header ol li { display: -webkit-box; display: -ms-flexbox; display: flex; font-size: 16px; font-weight: 500; letter-spacing: 1px; overflow: hidden; white-space: nowrap; word-break: break-all; }
 
-.header ul li span, .header ol li span { float: right; font-weight: 400; }
+.header ul li span, .header ol li span { float: right; font-weight: 400; word-break: break-all; }
 
-.header ul li a, .header ol li a { display: inline-block; }
+.header ul li a, .header ol li a { display: inline-block; word-break: break-all; }
 
 .header ul li a + a, .header ol li a + a { margin-left: 8px; }
 
@@ -278,6 +278,35 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 @media screen and (max-width: 768px) { .section-header { margin-bottom: 35px; } }
 
 @media screen and (max-width: 480px) { .section-header { margin-bottom: 30px; } }
+
+.cards { border-bottom: 1px solid #DADADA; }
+
+.cards h3 { color: #262228; }
+
+.cards .card { position: relative; margin: 0 auto; padding: 40px 20px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; border-radius: 4px; color: #262228; border: 0; border-top: 1px solid #DADADA; }
+
+.cards .card > a { display: -webkit-box; display: -ms-flexbox; display: flex; color: #262228; }
+
+.cards .card .image { display: block; width: 120px; height: 120px; background-size: cover; background-position: center center; background-repeat: no-repeat; }
+
+.cards .card .content { width: calc(100% - 140px); margin-left: 20px; }
+
+.cards .card .content h4 { margin-bottom: 15px; }
+
+.cards .card .content h4 a { color: #262228; }
+
+.cards .card .content h4 a:hover { color: #2F69F8; }
+
+.cards .card .content ul li a { word-break: break-all; }
+
+@media screen and (max-width: 768px) { .cards .card { padding: 25px 20px; }
+  .cards .card .image { width: 80px; height: 80px; }
+  .cards .card .content { width: calc(100% - 100px); } }
+
+@media screen and (max-width: 480px) { .cards .card { padding: 15px; }
+  .cards .card .image { width: 55px; height: 55px; }
+  .cards .card .content { width: calc(100% - 75px); }
+  .cards .card .content h4 { margin-bottom: 5px; } }
 
 .main-sheet { overflow-x: scroll; }
 
@@ -447,34 +476,13 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 /* ========================================================================= */
 /* MAIN CONTENT MODULES */
 /* ========================================================================= */
-#main { padding-top: 60px; }
+#main { min-height: 100vh; padding-top: 60px; background-color: #fff; }
 
 @media screen and (max-width: 768px) { #main { padding-bottom: 50px; } }
 
 .missions-module .main-sheet table tr td { padding: 15px 10px 50px 10px; }
 
 .missions-module .main-sheet table tr td:nth-child(1) { padding: 15px 10px; }
-
-.daily-missions .cards { border-bottom: 1px solid #DADADA; }
-
-.daily-missions .cards h3 { color: #262228; }
-
-.daily-missions .cards .mission-card { position: relative; margin: 0 auto; padding: 40px 20px; border-radius: 4px; color: #262228; border-top: 1px solid #DADADA; }
-
-.daily-missions .cards .mission-card a { display: -webkit-box; display: -ms-flexbox; display: flex; color: #262228; }
-
-.daily-missions .cards .mission-card .image { display: block; width: 120px; height: 120px; background-size: cover; background-position: center center; background-repeat: no-repeat; }
-
-.daily-missions .cards .mission-card .content { margin-left: 20px; }
-
-.daily-missions .cards .mission-card .content h4 { margin-bottom: 15px; color: #262228; }
-
-@media screen and (max-width: 768px) { .daily-missions .cards .mission-card { padding: 25px 20px; }
-  .daily-missions .cards .mission-card .image { width: 80px; height: 80px; } }
-
-@media screen and (max-width: 480px) { .daily-missions .cards .mission-card { padding: 15px; }
-  .daily-missions .cards .mission-card .image { width: 55px; height: 55px; }
-  .daily-missions .cards .mission-card .content h4 { margin-bottom: 5px; } }
 
 .main-detail .detail-upper { position: relative; padding: 40px 40px 0; overflow: hidden; }
 

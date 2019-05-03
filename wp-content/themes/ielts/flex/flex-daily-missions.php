@@ -25,7 +25,7 @@
                             $start_time = get_field('start_time');
                             $img = get_field('image');
                 ?>
-                <li class="mission-card">
+                <li class="card">
                     <a href="<?php the_permalink(); ?>">
                         <picture class="image" style="background-image: url(<?php echo $img['url']; ?>)"></picture>
                         <div class="content">
@@ -44,10 +44,11 @@
                 ?>
             </ul>
         </div>
-        <div class="divider"></div>
+        <div class="spacer"></div>
         <?php
                 endforeach;
             endif;
         ?>
     </div>
 </div>
+<div class="spacer"></div>

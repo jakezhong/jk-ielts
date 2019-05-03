@@ -13,7 +13,7 @@
                 <?php
                     $plan_args = array(
                         'post_type'         =>  'plan',
-                        'order'             =>  'DESC',
+                        'order'             =>  'ASC',
                         'posts_per_page'    =>  -1,
                     );
                     $plans = new WP_Query($plan_args);

@@ -44,8 +44,7 @@
                                 'container'         =>  'div',
                                 'container_class'   =>  'mobile-menu-container',
                                 'theme_location'    =>  'main-menu',
-                                'walker'            =>  new Menu_Walker(),
-                                'link_before'       =>  '<svg class="icon_%3$s"><use xlink:href="../ui/svg/sprites.svg#icon_%3$s"></use></svg>',
+                                'walker'            =>  new Menu_Walker()
                             ) );
 
                             class Menu_Walker extends Walker_Nav_Menu {
@@ -56,7 +55,7 @@
                                     $output .= "<li class='" .  implode(" ", $item->classes) . "'>";
                                     if( $permalink && $permalink != '#' ) {
                                         $output .= '<a href="' . $permalink . '">';
-                                        $output .= '<svg class="icon_'.$attr_title.'"><use xlink:href="../ui/svg/sprites.svg#icon_'.$attr_title.'"></use></svg>';
+                                        $output .= '<svg class="icon_'.$attr_title.'"><use xlink:href="'.get_home_url().'/ui/svg/sprites.svg#icon_'.$attr_title.'"></use></svg>';
                                         $output .= $title;
                                         $output .= '</a>';
                                     }

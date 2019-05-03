@@ -7,7 +7,7 @@
             if ( get_row_layout() == 'resources' ) :
 ?>
     <div class="sidebar sidebar-list">
-        <h3>参考资料:</h3>
+        <h3>参考资料</h3>
         <?php if ( have_rows('resources') ) : ?>
         <b-list-group class="links-list">
             <?php

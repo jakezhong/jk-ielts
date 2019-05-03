@@ -11,7 +11,7 @@
         'post_parent'   =>      $mission_ID,
     );
     $missions = new WP_Query($mission_args);
-    $img = get_field('image')
+    $img = get_field('image');
 ?>
     <section class="banner image" style="background-image: url(<?php echo $img['url']; ?>);"></section>
 
@@ -42,7 +42,7 @@
                             <?php
                                 while( $missions -> have_posts() ) : $missions -> the_post();
                             ?>
-                            <b-list-group-item href="<?php the_permalink(); ?>" class="link gray"><?php the_title(); ?></b-list-group-item>
+                            <b-list-group-item href="<?php the_permalink(); ?>" class="link gray"><?php echo get_field('name') ? get_field('name') : get_the_title(); ?></b-list-group-item>
                             <?php
                                 endwhile; wp_reset_postdata();
                             ?>
@@ -91,7 +91,7 @@
                                     foreach( $resources as $post ) :
                                     setup_postdata($post);
                                 ?>
-                                <b-list-group-item href="<?php the_permalink(); ?>" class="link gray"><?php the_title(); ?></b-list-group-item>
+                                <b-list-group-item href="<?php the_permalink(); ?>" class="link gray"><?php echo get_field('name') ? get_field('name') : get_the_title(); ?></b-list-group-item>
                                 <?php
                                     endforeach;
                                     wp_reset_postdata();

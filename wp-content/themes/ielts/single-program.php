@@ -31,7 +31,7 @@
                             foreach( $missions as $post ) :
                                 setup_postdata($post);
                         ?>
-                            <b-list-group-item href="<?php the_permalink(); ?>" class="link gray"><?php the_title(); ?></b-list-group-item>
+                            <b-list-group-item href="<?php the_permalink(); ?>" class="link gray"><?php echo get_field('name') ? get_field('name') : get_the_title(); ?></b-list-group-item>
                         <?php
                             endforeach;
                             wp_reset_postdata();

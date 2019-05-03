@@ -9,7 +9,7 @@
 /* ========================================================================= */
 
 	html, body {
-        background-color: $color_dark_gray;
+        background-color: $white;
         font: {
             family: $font_open;
             size: 16px;
@@ -399,16 +399,21 @@
     ul, ol {
         margin-top: 15px;
         li {
+            display: flex;
             font-size: 16px;
             font-weight: 500;
             letter-spacing: 1px;
             overflow: hidden;
+            white-space: nowrap;
+            word-break: break-all;
             span {
                 float: right;
                 font-weight: 400;
+                word-break: break-all;
             }
             a {
                 display: inline-block;
+                word-break: break-all;
                 & + a {
                     margin-left: 8px;
                 }
@@ -468,6 +473,77 @@
     }
     @include break(480) {
         margin-bottom: 30px;
+    }
+}
+.cards {
+    border-bottom: 1px solid $color_border;
+    h3 {
+        color: $color_dark_gray;
+    }
+    .card {
+        position: relative;
+        margin: 0 auto;
+        padding: 40px 20px;
+        flex-direction: row;
+        border-radius: 4px;
+        color: $color_dark_gray;
+        border: 0;
+        border-top: 1px solid $color_border;
+        > a {
+            display: flex;
+            color: $color_dark_gray;
+        }
+        .image {
+            display: block;
+            width: 120px;
+            height: 120px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        .content {
+            width: calc(100% - 140px);
+            margin-left: 20px;
+            h4 {
+                margin-bottom: 15px;
+                a {
+                    color: $color_dark_gray;
+                    &:hover {
+                        color: $color_blue;
+                    }
+                }
+            }
+            ul {
+                li {
+                    a {
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+        @include break(768) {
+            padding: 25px 20px;
+            .image {
+                width: 80px;
+                height: 80px;
+            }
+            .content {
+                width: calc(100% - 100px);
+            }
+        }
+        @include break(480) {
+            padding: 15px;
+            .image {
+                width: 55px;
+                height: 55px;
+            }
+            .content {
+                width: calc(100% - 75px);
+                h4 {
+                    margin-bottom: 5px;
+                }
+            }
+        }
     }
 }
 .main-sheet {
@@ -909,7 +985,9 @@
 /* MAIN CONTENT MODULES */
 /* ========================================================================= */
 #main {
+    min-height: 100vh;
     padding-top: 60px;
+    background-color: $white;
     @include break(768) {
         padding-bottom: 50px;
     }
@@ -928,60 +1006,7 @@
         }
     }
 }
-.daily-missions {
-    .cards {
-        border-bottom: 1px solid $color_border;
-        h3 {
-            color: $color_dark_gray;
-        }
-        .mission-card {
-            position: relative;
-            margin: 0 auto;
-            padding: 40px 20px;
-            border-radius: 4px;
-            color: $color_dark_gray;
-            border-top: 1px solid $color_border;
-            a {
-                display: flex;
-                color: $color_dark_gray;
-            }
-            .image {
-                display: block;
-                width: 120px;
-                height: 120px;
-                background-size: cover;
-                background-position: center center;
-                background-repeat: no-repeat;
-            }
-            .content {
-                margin-left: 20px;
-                h4 {
-                    margin-bottom: 15px;
-                    color: $color_dark_gray;
-                }
-            }
-            @include break(768) {
-                padding: 25px 20px;
-                .image {
-                    width: 80px;
-                    height: 80px;
-                }
-            }
-            @include break(480) {
-                padding: 15px;
-                .image {
-                    width: 55px;
-                    height: 55px;
-                }
-                .content {
-                    h4 {
-                        margin-bottom: 5px;
-                    }
-                }
-            }
-        }
-    }
-}
+
 .main-detail {
     .detail-upper {
         position: relative;
