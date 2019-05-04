@@ -1,17 +1,34 @@
 <?php
+    // Start the session
+    session_start();
+
     get_header();
     the_post();
     $mission_ID = get_the_ID();
     $type = get_the_terms( get_the_ID(), 'mission-type' );
-    $start_time = get_field('start_time', false, false);
-    $display_time = get_field('start_time');
-    $cache_time = new DateTime($start_time);
     $mission_args = array(
         'post_type'     =>      'mission',
         'post_parent'   =>      $mission_ID,
     );
     $missions = new WP_Query($mission_args);
     $img = get_field('image');
+
+    // Update current time with program time
+    if( $_SESSION["start_time"] ) {
+        if( $_SESSION["mission_ID"] == $mission_ID ) { 
+            // Come back to same mission, use the program time
+            $start_time = $_SESSION["start_time"];
+        } else {
+            // Come to other missions, use their own time
+            $start_time = get_field('start_time', false, false);
+        }
+    } else {
+        $start_time = get_field('start_time', false, false);
+    }
+    if( $start_time ) {
+        $display_time = new DateTime($start_time);
+        $cache_time = $display_time;
+    }
 ?>
     <section class="banner image" style="background-image: url(<?php echo $img['url']; ?>);"></section>
 
@@ -23,7 +40,7 @@
                         <?php echo tag_wrap(get_the_title(), 'h3'); ?>
                         <ul>
                             <li>类型: <?php echo $type[0] -> name; ?></li>
-                            <li>时间: <?php echo $display_time; ?></li>
+                            <?php echo $start_time ? '<li>时间: '.$display_time->format('g:i A').'</li>' : ''; ?>
                         </ul>
                     </div>
                 </div>

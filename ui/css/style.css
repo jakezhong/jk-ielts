@@ -310,7 +310,7 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .main-sheet { overflow-x: scroll; }
 
-.main-sheet table { margin: 0 auto; font-size: 14px; table-layout: fixed; }
+.main-sheet table { min-width: 100%; font-size: 14px; table-layout: fixed; }
 
 .main-sheet table time { display: block; font-weight: 500; letter-spacing: 1px; }
 
@@ -483,6 +483,8 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 .missions-module .main-sheet table tr td { padding: 15px 10px 50px 10px; }
 
 .missions-module .main-sheet table tr td:nth-child(1) { padding: 15px 10px; }
+
+.schedule-module .spacer { margin: 20px 0; }
 
 .main-detail .detail-upper { position: relative; padding: 40px 40px 0; overflow: hidden; }
 

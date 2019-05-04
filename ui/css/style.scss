@@ -545,7 +545,7 @@
 .main-sheet {
     overflow-x: scroll;
     table {
-        margin: 0 auto;
+        min-width: 100%;
         font-size: 14px;
         table-layout: fixed;
         time {
@@ -1002,7 +1002,11 @@
         }
     }
 }
-
+.schedule-module {
+    .spacer {
+        margin: 20px 0;
+    }
+}
 .main-detail {
     .detail-upper {
         position: relative;

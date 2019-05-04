@@ -3,218 +3,104 @@
     if( $post_object ):
         $post = $post_object;
         setup_postdata( $post );
-        $morning = get_field('morning');
-        $afternoon = get_field('afternoon');
-        $evening = get_field('evening');
+        $today = date('w');
+        $days = array(
+            'Monday'    =>  '1',
+            'Tuesday'   =>  '2',
+            'Wednesday' =>  '3',
+            'Thursday'  =>  '4',
+            'Friday'    =>  '5',
+            'Saturday'  =>  '6',
+            'Sunday'    =>  '7',
+        );
 ?>
 <section class="schedule-module">
     <div class="wrap">
+        <h2>本周目标</h2>
+        <?php
+            if( have_rows('missions') ) :
+        ?>
         <div class="header">
-            <?php the_content(); ?>
+            <ol>
+            <?php
+                while( have_rows('missions') ) : the_row();
+                    echo '<li>'.get_sub_field('content').'<span>x '.get_sub_field('times').'</span></li>';
+                endwhile;
+            ?>
+            </ol>
         </div>
+        <?php
+            endif;
+        ?>
+        <div class="spacer"></div>
+        <h2>时间表</h2>
+        <div class="spacer"></div>
+        <b-form-checkbox v-model="todayTrigger" name="check-button" switch>
+            只看今天
+        </b-form-checkbox>
+        <div class="spacer"></div>
         <div class="main-sheet">
-            <table>
+            <table v-bind:class="{ active: todayTrigger }">
                 <tr>
                     <th>Time</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
+                    <?php
+                        foreach( $days as $key => $value ) {
+                            $output  = '<th';
+                            if( $value !== $today ) {
+                                $output .= ' v-show="!todayTrigger"';
+                            }
+                            $output .= '>';
+                            $output .= $key;
+                            $output .= '</th>';
+                            echo $output;
+                        }
+                    ?>
                 </tr>
-                <?php
-                    if( $morning ) :
-                ?>
                 <tr>
                     <td class="morning">Morning</td>
                     <?php
-                        $monday = $morning['monday'];
-                        $tuesday = $morning['tuesday'];
-                        $wednesday = $morning['wednesday'];
-                        $thursday = $morning['thursday'];
-                        $friday = $morning['friday'];
-                        $saturday = $morning['saturday'];
-                        $sunday = $morning['sunday'];
-                        $index = 0;
-                        foreach( $morning as $day ) :
-                            if( $index == 0 ) :
-                                $items = $monday['items'];
-                            elseif( $index == 1 ) :
-                                $items = $tuesday['items'];
-                            elseif( $index == 2 ) :
-                                $items = $wednesday['items'];
-                            elseif( $index == 3 ) :
-                                $items = $thursday['items'];
-                            elseif( $index == 4 ) :
-                                $items = $friday['items'];
-                            elseif( $index == 5 ) :
-                                $items = $saturday['items'];
-                            elseif( $index == 6 ) :
-                                $items = $sunday['items'];
-                            endif;
+                        for( $i = 0; $i <7; $i++ ) {
+                            $output = '<td';
+                            if( (string)$i !== $today ) {
+                                $output .= ' v-show="!todayTrigger"';
+                            }
+                            $output .= '>';
+                            $output .= get_the_title();
+                            $output .= '</td>';
+                            echo $output;
+                        }
                     ?>
-                    <td>
-                        <?php
-                            if( $items ):
-                        ?>
-                        <ul>
-                            <?php
-                                foreach( $items as $item ) :
-                                    $time = $item['time'];
-                                    $post_object = $item['item'];
-                                    if( $post_object ):
-                                        $post = $post_object;
-                                        setup_postdata( $post );
-                                        $name = get_the_title();
-                                        $note = get_field('note');
-                                        wp_reset_postdata();
-                                    endif;
-                                    $item = '<li>';
-                                    $item .= '<time>'.$time.'</time>';
-                                    $item .= '<p>'.$name.'</p>';
-                                    $item .= '<small>'.$note.'</small>';
-                                    echo $item;
-                                endforeach;
-                            ?>
-                        </ul>
-                <?php
-                            endif;
-                            $index ++;
-                        endforeach;
-                ?>
-                    </td>
                 </tr>
-                <?php
-                    endif;
-                    if( $afternoon ) :
-                ?>
                 <tr>
-                    <td class="afternoon">Afternoon</td>
-                <?php
-                        $monday = $afternoon['monday'];
-                        $tuesday = $afternoon['tuesday'];
-                        $wednesday = $afternoon['wednesday'];
-                        $thursday = $afternoon['thursday'];
-                        $friday = $afternoon['friday'];
-                        $saturday = $afternoon['saturday'];
-                        $sunday = $afternoon['sunday'];
-                        $index = 0;
-                        foreach( $afternoon as $day ) :
-                            if( $index == 0 ) :
-                                $items = $monday['items'];
-                            elseif( $index == 1 ) :
-                                $items = $tuesday['items'];
-                            elseif( $index == 2 ) :
-                                $items = $wednesday['items'];
-                            elseif( $index == 3 ) :
-                                $items = $thursday['items'];
-                            elseif( $index == 4 ) :
-                                $items = $friday['items'];
-                            elseif( $index == 5 ) :
-                                $items = $saturday['items'];
-                            elseif( $index == 6 ) :
-                                $items = $sunday['items'];
-                            endif;
-                ?>
-                    <td>
-                        <?php
-                            if( $items ):
-                        ?>
-                        <ul>
-                            <?php
-                                foreach( $items as $item ) :
-                                    $time = $item['time'];
-                                    $post_object = $item['item'];
-                                    if( $post_object ):
-                                        $post = $post_object;
-                                        setup_postdata( $post );
-                                        $name = get_the_title();
-                                        $note = get_field('note');
-                                        wp_reset_postdata();
-                                    endif;
-                                    $item = '<li>';
-                                    $item .= '<time>'.$time.'</time>';
-                                    $item .= '<p>'.$name.'</p>';
-                                    $item .= '<small>'.$note.'</small>';
-                                    echo $item;
-                                endforeach;
-                            ?>
-                        </ul>
-                <?php
-                            endif;
-                            $index ++;
-                        endforeach;
-                ?>
-                    </td>
+                    <td>Afternoon</td>
+                    <?php
+                        for( $i = 0; $i <7; $i++ ) {
+                            $output = '<td';
+                            if( (string)$i !== $today ) {
+                                $output .= ' v-show="!todayTrigger"';
+                            }
+                            $output .= '>';
+                            $output .= get_the_title();
+                            $output .= '</td>';
+                            echo $output;
+                        }
+                    ?>
                 </tr>
-                <?php
-                    endif;
-                    if( $evening ) :
-                ?>
                 <tr>
-                    <td class="evening">Evening</td>
-                <?php
-                        $monday = $evening['monday'];
-                        $tuesday = $evening['tuesday'];
-                        $wednesday = $evening['wednesday'];
-                        $thursday = $evening['thursday'];
-                        $friday = $evening['friday'];
-                        $saturday = $evening['saturday'];
-                        $sunday = $evening['sunday'];
-                        $index = 0;
-                        foreach( $evening as $day ) :
-                            if( $index == 0 ) :
-                                $items = $monday['items'];
-                            elseif( $index == 1 ) :
-                                $items = $tuesday['items'];
-                            elseif( $index == 2 ) :
-                                $items = $wednesday['items'];
-                            elseif( $index == 3 ) :
-                                $items = $thursday['items'];
-                            elseif( $index == 4 ) :
-                                $items = $friday['items'];
-                            elseif( $index == 5 ) :
-                                $items = $saturday['items'];
-                            elseif( $index == 6 ) :
-                                $items = $sunday['items'];
-                            endif;
-                ?>
-                    <td>
-                        <?php
-                            if( $items ):
-                        ?>
-                        <ul>
-                            <?php
-                                foreach( $items as $item ) :
-                                    $time = $item['time'];
-                                    $post_object = $item['item'];
-                                    if( $post_object ):
-                                        $post = $post_object;
-                                        setup_postdata( $post );
-                                        $name = get_the_title();
-                                        $note = get_field('note');
-                                        wp_reset_postdata();
-                                    endif;
-                                    $item = '<li>';
-                                    $item .= '<time>'.$time.'</time>';
-                                    $item .= '<p>'.$name.'</p>';
-                                    $item .= '<small>'.$note.'</small>';
-                                    echo $item;
-                                endforeach;
-                            ?>
-                        </ul>
-                <?php
-                            endif;
-                            $index ++;
-                        endforeach;
-                ?>
-                    </td>
+                    <td>Evening</td>
+                    <?php
+                        for( $i = 0; $i <7; $i++ ) {
+                            $output = '<td';
+                            if( (string)$i !== $today ) {
+                                $output .= ' v-show="!todayTrigger"';
+                            }
+                            $output .= '>';
+                            $output .= get_the_title();
+                            $output .= '</td>';
+                            echo $output;
+                        }
+                    ?>
                 </tr>
-                <?php
-                    endif;
-                ?>
             </table>
         </div>
     </div>

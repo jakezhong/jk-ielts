@@ -1,11 +1,18 @@
 <?php
+    // Start the session
+    session_start();
     get_header();
     the_post();
     $program_id = get_the_ID();
     $type = get_the_terms( get_the_ID(), 'program-type' );
     $missions = get_field('missions');
-    $start_time = get_field('start_time');
-    $img = get_field('image')
+    $start_time = get_field('start_time', false, false);
+    $display_time = new DateTime($start_time);
+    $img = get_field('image');
+    
+    // Set mission time based on current program time
+    $_SESSION["start_time"] = $start_tim;
+    $_SESSION["mission_ID"] = "";
 ?>
     <section class="banner image" style="background-image: url(<?php echo $img['url']; ?>);"></section>
     <section class="mission-detail">
@@ -16,7 +23,7 @@
                         <?php echo tag_wrap(get_the_title(), 'h3'); ?>
                         <ul>
                             <li>类型: <?php echo $type[0] -> name; ?></li>
-                            <li>时间: <?php echo $start_time; ?></li>
+                            <?php echo $start_time ? '<li>时间: '.$display_time->format('g:i A').'</li>' : ''; ?>
                         </ul>
                     </div>
                 </div>

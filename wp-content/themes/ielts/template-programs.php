@@ -31,7 +31,8 @@
                     while( $programs -> have_posts() ) : $programs -> the_post();
                     $type = get_the_terms( get_the_ID(), 'program-type' );
                         if( $type[0] -> slug == $term -> slug ) :
-                            $start_time = get_field('start_time');
+                            $start_time = get_field('start_time', false, false);
+                            $display_time = new DateTime($start_time);
                             $img = get_field('image');
                 ?>
                 <li class="card">
@@ -39,6 +40,9 @@
                         <picture class="image" style="background-image: url(<?php echo $img['url']; ?>)"></picture>
                         <div class="content">
                             <?php echo tag_wrap(get_the_title(), 'h4'); ?>
+                            <ul>
+                                <?php echo $start_time ? '<li>时间: '.$display_time->format('g:i A').'</li>' : ''; ?>
+                            </ul>
                         </div>
                     </a>
                 </li>
@@ -56,7 +60,9 @@
         ?>
     </div>
 </div>
+
 <div class="spacer"></div>
+
 <?php
     get_footer();
 ?>

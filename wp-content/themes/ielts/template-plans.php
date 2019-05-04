@@ -5,7 +5,9 @@
 <section class="banner general">
     <?php echo tag_wrap(get_the_title(), 'h2'); ?>
 </section>
+
 <div class="spacer"></div>
+
 <section class="plans-module">
     <div class="wrap">
         <b-card no-body>
@@ -36,7 +38,9 @@
         </b-card>
     </div>
 </section>
+
 <div class="spacer"></div>
+
 <?php
     get_footer();
 ?>
