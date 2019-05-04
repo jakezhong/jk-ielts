@@ -1,4 +1,12 @@
-<div class="daily-missions">
+<?php
+    /* Template Name: Programs */
+    get_header(); the_post();
+?>
+<section class="banner general">
+    <h2>打卡任务列表</h2>
+</section>
+
+<div class="missions-module">
     <div class="wrapper">
         <div class="spacer"></div>
         <?php
@@ -6,21 +14,22 @@
                 'taxonomy'      => 'program-type',
                 'hide_empty'    => true,
             ) );
-            if( have_rows('items') ) :
+            $program_args = array(
+                'post_type'         =>  'program',
+                'posts_per_page'    =>  -1
+            );
+            $programs = new WP_Query($program_args);
+            if( $programs -> have_posts() && $terms ) :
                 foreach ($terms as $term) :
         ?>
         <div class="cards">
             <div class="header wrap">
-                <h3><?php echo $term -> name; ?>打卡</h3>
+                <h3><?php echo $term -> name; ?>任务</h3>
             </div>
             <ul>
                 <?php
-                while( have_rows('items') ) : the_row();
-                    $item = get_sub_field('item');
-                    if( $item ) :
-                        $post = $item;
-                        setup_postdata( $post );
-                        $type = get_the_terms( get_the_ID(), 'program-type' );
+                    while( $programs -> have_posts() ) : $programs -> the_post();
+                    $type = get_the_terms( get_the_ID(), 'program-type' );
                         if( $type[0] -> slug == $term -> slug ) :
                             $start_time = get_field('start_time');
                             $img = get_field('image');
@@ -30,17 +39,13 @@
                         <picture class="image" style="background-image: url(<?php echo $img['url']; ?>)"></picture>
                         <div class="content">
                             <?php echo tag_wrap(get_the_title(), 'h4'); ?>
-                            <ul>
-                                <li>时间: <?php echo $start_time ? $start_time : ''; ?></li>
-                            </ul>
                         </div>
                     </a>
                 </li>
                 <?php
                         endif;
-                        wp_reset_postdata();
-                    endif;
-                endwhile;
+                    endwhile;
+                    wp_reset_postdata();
                 ?>
             </ul>
         </div>
@@ -52,3 +57,6 @@
     </div>
 </div>
 <div class="spacer"></div>
+<?php
+    get_footer();
+?>

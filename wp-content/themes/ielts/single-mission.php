@@ -4,8 +4,8 @@
     $mission_ID = get_the_ID();
     $type = get_the_terms( get_the_ID(), 'mission-type' );
     $start_time = get_field('start_time', false, false);
-    $display_time = new DateTime($start_time);
-    $cache_time = $display_time;
+    $display_time = get_field('start_time');
+    $cache_time = new DateTime($start_time);
     $mission_args = array(
         'post_type'     =>      'mission',
         'post_parent'   =>      $mission_ID,
@@ -23,7 +23,7 @@
                         <?php echo tag_wrap(get_the_title(), 'h3'); ?>
                         <ul>
                             <li>类型: <?php echo $type[0] -> name; ?></li>
-                            <li>时间: <?php echo $display_time->format('g:i A') ?></li>
+                            <li>时间: <?php echo $display_time; ?></li>
                         </ul>
                     </div>
                 </div>

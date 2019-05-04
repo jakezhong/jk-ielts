@@ -33,8 +33,8 @@
                 <?php
                     while( $resources -> have_posts() ) : $resources -> the_post();
                     $type = get_the_terms( get_the_ID(), 'resource-type' );
-                    $img = get_field('image');
-                    if( $type[0] -> slug == $term -> slug ) :
+                        if( $type[0] -> slug == $term -> slug ) :
+                            $img = get_field('image');
                 ?>
                 <li class="card">
                     <picture class="image" style="background-image: url(<?php echo $img['url']; ?>)"></picture>
@@ -65,7 +65,7 @@
                     </div>
                 </li>
                 <?php
-                    endif;
+                        endif;
                     endwhile;
                     wp_reset_postdata();
                 ?>
