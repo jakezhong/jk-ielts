@@ -29,6 +29,8 @@
                 </div>
                 <div class="main-content right-sidebar detail-lower">
                     <div class="content-main">
+                        <?php the_content(); ?>
+                        <div class="spacer"></div>
                         <?php
                             if( $missions ) :
                         ?>

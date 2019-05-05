@@ -54,6 +54,8 @@
                 </div> -->
                 <div class="main-content right-sidebar detail-lower">
                     <div class="content-main">
+                        <?php the_content(); ?>
+                        <div class="spacer"></div>
                         <h3>选择内容</h3>
                         <b-list-group class="links-list">
                             <?php
@@ -71,6 +73,8 @@
                 ?>
                 <div class="main-content right-sidebar detail-lower">
                     <div class="content-main">
+                        <?php the_content(); ?>
+                        <div class="spacer"></div>
                         <?php
                             if( have_rows('steps') ) :
                         ?>

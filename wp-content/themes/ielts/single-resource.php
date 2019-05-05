@@ -45,6 +45,8 @@
                 ?>
                 <div class="main-content right-sidebar detail-lower">
                     <div class="content-main">
+                        <?php the_content(); ?>
+                        <div class="spacer"></div>
                         <h3>选择资料</h3>
                         <b-list-group class="links-list">
                             <?php
@@ -62,25 +64,31 @@
                 ?>
                 <div class="main-content right-sidebar detail-lower">
                     <div class="content-main">
-                        <p><?php the_field('introduction'); ?></p>
                         <?php the_content(); ?>
-                        <div class="spacer"></div>
                     </div>
+                    <?php
+                        $file = get_field('file');
+                        $video = get_field('video_link');
+                        if( $file || $video ) :
+                            if( $file ) {
+                                $link = $file;
+                                $title = $file['title'];
+                            } elseif( $video ) {
+                                $link = $video;
+                                $title = '观看视频';
+                            }
+                    ?>
                     <aside class="content-sub">
                         <div class="sidebar sidebar-list">
-                            <h3>参考文件</h3>
-                            <?php
-                                $file = get_field('file');
-                                if( $file ) :
-                            ?>
+                            <h3>相关文件</h3>
                             <b-list-group class="links-list">
-                                <b-list-group-item href="<?php echo $file['url']; ?>" class="link gray" target="_blank"><?php echo $file['title']; ?></b-list-group-item>
+                                <b-list-group-item href="<?php echo $link; ?>" class="link gray" target="_blank"><?php echo $title; ?></b-list-group-item>
                             </b-list-group>
-                            <?php
-                                endif;
-                            ?>
                         </div>
                     </aside>
+                    <?php
+                        endif;
+                    ?>
                 </div>
                 <?php
                     endif;
