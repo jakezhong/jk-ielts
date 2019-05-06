@@ -71,7 +71,7 @@
                         $video = get_field('video_link');
                         if( $file || $video ) :
                             if( $file ) {
-                                $link = $file;
+                                $link = $file['url'];
                                 $title = $file['title'];
                             } elseif( $video ) {
                                 $link = $video;
