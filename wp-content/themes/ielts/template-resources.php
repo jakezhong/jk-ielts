@@ -42,22 +42,11 @@
                         <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?>
                     </a></h4>
                         <?php
-                            if( have_rows('information') ) :
+                            $information = get_field('information');
+                            if( $information ) :
                         ?>
                         <ul>
-                            <?php
-                                while( have_rows('information') ) : the_row();
-                            ?>
-                            <li><?php the_sub_field('title'); ?>: <?php
-                                if( get_sub_field('type') == 'link' ) :
-                                    echo '<a href="'.get_sub_field('content').'" target="_blank">'.get_sub_field('content').'</a>';
-                                else :
-                                    the_sub_field('content');
-                                endif;
-                                ?></li>
-                            <?php
-                                endwhile;
-                            ?>
+                            <li><?php echo $information[0]['title'].': '.$information[0]['content']; ?></li>
                         </ul>
                         <?php
                             endif;
