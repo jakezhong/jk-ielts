@@ -8,7 +8,6 @@
     <h4><?php echo date('Y年n月j日'); ?></h4>
 </section>
 
-<?php
-    get_template_part('flex/flex','loop');
-    get_footer();
-?>
+<?php get_template_part('flex/flex','loop'); ?>
+
+<?php get_footer(); ?>

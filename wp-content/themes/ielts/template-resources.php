@@ -4,7 +4,7 @@
     the_post();
 ?>
 <section class="banner general">
-    <h2>参考资料</h2>
+    <h2>资料库</h2>
 </section>
 
 <div class="spacer"></div>
