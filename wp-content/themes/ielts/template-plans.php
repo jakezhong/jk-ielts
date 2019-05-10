@@ -2,9 +2,8 @@
     /* Template Name: Plans */
     get_header(); the_post();
 ?>
-<section class="banner general">
-    <?php echo tag_wrap(get_the_title(), 'h2'); ?>
-</section>
+
+<?php get_template_part('inc/inc', 'banner'); ?>
 
 <div class="spacer"></div>
 

@@ -1,11 +1,9 @@
 <?php
     /* Template Name: Resources */
-    get_header();
-    the_post();
+    get_header(); the_post();
 ?>
-<section class="banner general">
-    <h2>资料库</h2>
-</section>
+
+<?php get_template_part('inc/inc', 'banner'); ?>
 
 <div class="spacer"></div>
 

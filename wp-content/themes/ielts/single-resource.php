@@ -1,6 +1,6 @@
 <?php
-    get_header();
-    the_post();
+    get_header(); the_post();
+    
     $resource_ID = get_the_ID();
     $resource_args = array(
         'post_type'     =>      'resource',
@@ -10,7 +10,7 @@
     $img = get_field('image');
 ?>
     <section class="banner image" style="background-image: url(<?php echo $img['url']; ?>);"></section>
-    
+
     <section class="mission-detail">
         <div class="wrap">
             <div class="main-detail main-frame">

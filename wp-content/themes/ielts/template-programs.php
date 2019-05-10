@@ -2,9 +2,8 @@
     /* Template Name: Programs */
     get_header(); the_post();
 ?>
-<section class="banner general">
-    <h2>打卡任务列表</h2>
-</section>
+
+<?php get_template_part('inc/inc', 'banner'); ?>
 
 <div class="missions-module">
     <div class="wrapper">

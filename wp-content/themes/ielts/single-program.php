@@ -1,8 +1,9 @@
 <?php
     // Start the session
     session_start();
-    get_header();
-    the_post();
+    
+    get_header(); the_post();
+
     $program_id = get_the_ID();
     $type = get_the_terms( get_the_ID(), 'program-type' );
     $missions = get_field('missions');
@@ -15,6 +16,7 @@
     $_SESSION["mission_ID"] = "";
 ?>
     <section class="banner image" style="background-image: url(<?php echo $img['url']; ?>);"></section>
+
     <section class="mission-detail">
         <div class="wrap">
             <div class="main-detail main-frame">

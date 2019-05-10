@@ -2,8 +2,8 @@
     // Start the session
     session_start();
 
-    get_header();
-    the_post();
+    get_header(); the_post();
+    
     $mission_ID = get_the_ID();
     $type = get_the_terms( get_the_ID(), 'mission-type' );
     $mission_args = array(
