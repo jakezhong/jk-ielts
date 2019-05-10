@@ -354,10 +354,29 @@
         .content-sub {
             width: 32%;
             float: right;
-            .sidebar {
-                &.sidebar-list {
-                    .links-list {
-                        margin-top: 20px;
+            &.sidebar {
+                .sidebar-field {
+                    & + .sidebar-field {
+                        margin-top: 40px;
+                    }
+                    &.sidebar-list {
+                        .links-list {
+                            margin-top: 20px;
+                        }
+                    }
+                    &.sidebar-image {
+                        .title {
+                            margin-top: 20px;
+                        }
+                        .image {
+                            margin-bottom: 20px;
+                            img {
+                                width: 100%;
+                            }
+                        }
+                        .content {
+                            text-align: center;
+                        }
                     }
                 }
             }

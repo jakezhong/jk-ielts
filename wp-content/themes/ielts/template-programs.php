@@ -16,7 +16,7 @@
             $program_args = array(
                 'post_type'         =>  'program',
                 'posts_per_page'    =>  -1,
-                'order'             =>  'DESC'
+                'order'             =>  'ASC'
             );
             $programs = new WP_Query($program_args);
             if( $programs -> have_posts() && $terms ) :

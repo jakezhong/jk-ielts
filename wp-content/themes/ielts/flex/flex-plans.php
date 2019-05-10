@@ -11,9 +11,10 @@
                     );
                     $plans = new WP_Query($plan_args);
                     if ( $plans -> have_posts() ) :
+                        $count = 0;
                         while ( $plans -> have_posts() ) : $plans -> the_post();
                 ?>
-                <b-tab title="<?php the_title(); ?>" active>
+                <b-tab title="<?php the_title(); ?>"<?php $count == 0 ? ' active' : ''; ?>>
                     <div class="plan-field main-content right-sidebar">
                         <div class="content-main">
                             <?php the_content(); ?>
@@ -22,6 +23,7 @@
                     </div>
                 </b-tab>
                 <?php
+                        $count ++;
                         endwhile; wp_reset_postdata();
                     endif;
                 ?>

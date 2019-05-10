@@ -1,4 +1,9 @@
 <?php get_header(); the_post(); ?>
+
+<?php get_template_part('inc/inc', 'banner'); ?>
+
+<div class="spacer"></div>
+
 <section class="plans-module">
     <div class="wrap">
         <div class="header">
@@ -12,4 +17,7 @@
         </div>
     </div>
 </section>
+
+<div class="spacer"></div>
+
 <?php get_footer(); ?>

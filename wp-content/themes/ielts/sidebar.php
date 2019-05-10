@@ -1,39 +1,22 @@
 <?php 
-    if ( have_rows('sidebars') ) :
+    if ( have_rows('sidebar') ) :
 ?>
-<aside class="content-sub">
+<aside class="content-sub sidebar">
 <?php
-        while ( have_rows('sidebars') ) : the_row();
-            if ( get_row_layout() == 'resources' ) :
+        while ( have_rows('sidebar') ) : the_row();
+            if ( get_row_layout() == 'image_sidebar' ) :
+                $img = get_sub_field('image');
 ?>
-    <div class="sidebar sidebar-list">
-        <h3>参考资料</h3>
-        <?php if ( have_rows('resources') ) : ?>
-        <b-list-group class="links-list">
-            <?php
-                while ( have_rows('resources') ) : the_row();
-                    if ( get_sub_field('type') == 'internal' ) :
-                        $post_object = get_field('internal_resource');
-                        if ( $post_object ) :
-                            $post = $post_object;
-                            setup_postdata( $post ); 
-                            echo '<b-list-group-item href="'.get_the_permalink().'" class="link gray">'.get_sub_field('name').'</b-list-group-item>';
-                            wp_reset_postdata();
-                        endif;
-                    elseif ( get_sub_field('type') == 'external' ) :
-                        echo '<b-list-group-item href="'.get_sub_field('external_link').'" class="link gray">'.get_sub_field('name').'</b-list-group-item>';
-                    endif;
-                endwhile;
-            ?>
-        </b-list-group>
-        <?php endif; ?>
+    <div class="sidebar-field sidebar-image">
+        <h4><?php the_sub_field('title'); ?></h4>
+        <img src="<?php echo $img['url']; ?>" alt="<?php echo $img['alt']; ?>">
+        <p class="content"><?php the_sub_field('content'); ?></p>
     </div>
-    <?php 
+    <?php
             endif;
         endwhile;
     ?>
 </aside>
-
 <?php
     endif;
 ?>
