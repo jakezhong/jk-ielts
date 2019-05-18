@@ -1231,6 +1231,27 @@
         opacity: 1;
     }
 }
+.filter {
+    margin-bottom: 50px;
+    .search-bar {
+
+    }
+    .select-bar {
+        margin-top: 10px;
+    }
+    .btn {
+        margin-top: 10px;
+    }
+    @include break(768) {
+        margin-bottom: 40px;
+    }
+    @include break(480) {
+        margin-bottom: 30px;
+        .btn {
+            width: 100%;
+        }
+    }
+}
 /* ========================================================================= */
 /* FLEXIBLE CONTENT MODULES */
 /* ========================================================================= */

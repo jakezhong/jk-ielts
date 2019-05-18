@@ -586,6 +586,17 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .report-modal .modal-backdrop { background-color: #fff; opacity: 1; }
 
+.filter { margin-bottom: 50px; }
+
+.filter .select-bar { margin-top: 10px; }
+
+.filter .btn { margin-top: 10px; }
+
+@media screen and (max-width: 768px) { .filter { margin-bottom: 40px; } }
+
+@media screen and (max-width: 480px) { .filter { margin-bottom: 30px; }
+  .filter .btn { width: 100%; } }
+
 /* ========================================================================= */
 /* FLEXIBLE CONTENT MODULES */
 /* ========================================================================= */

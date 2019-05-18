@@ -1,11 +1,45 @@
 <?php
     /* Template Name: Resources */
     get_header(); the_post();
+    $types = get_terms( array(
+        'taxonomy'      =>  'resource-type',
+        'hide_empty'    =>  false,
+        'parent'        =>  0
+    ) );
+    if( isset($_GET['search']) && $_GET['searcg'] != '' ) {
+        $search = $_GET['search'];
+    }
+    if( isset($_GET['type']) && $_GET['type'] != '' ) {
+        $program_type = $_GET['type'];
+    }
 ?>
 
 <?php get_template_part('inc/inc', 'banner'); ?>
 
 <div class="spacer"></div>
+
+<div class="filter">
+    <div class="wrap">
+        <template>
+            <b-form action="<?php the_permalink() ?>" method="get">
+                <input type="text" name="search" class="search-bar form-control" aria-describedby="emailHelp" placeholder="搜索关键字..." <?php echo isset($_GET['search']) ? "value='{$_GET['search']}'" : '' ?>>
+                <?php
+                    if( $types ) :
+                ?>
+                <b-form-select class="select-bar" name="type" v-model="selected">
+                    <option :value="null">选择一个类别</option>
+                    <?php foreach ($types as $type) : ?>
+                    <option value="<?php echo $type->slug; ?>"><?php echo $type->name; ?></option>
+                    <?php endforeach; ?>
+                </b-form-select>
+                <?php
+                    endif;
+                ?>
+                <b-button class="btn" type="submit" variant="primary">搜索</b-button>
+            </b-form>
+        </template>
+    </div>
+</div>
 
 <section class="resources-module">
     <div class="wrapper">
