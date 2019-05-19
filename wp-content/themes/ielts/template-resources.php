@@ -3,8 +3,8 @@
     get_header(); the_post();
     $types = get_terms( array(
         'taxonomy'      =>  'resource-type',
-        'hide_empty'    =>  false,
-        'parent'        =>  0
+        'hide_empty'    =>  true,
+        'parent'        =>  0,
     ) );
     if( isset($_GET['search']) && $_GET['searcg'] != '' ) {
         $search = $_GET['search'];
@@ -23,7 +23,7 @@
     <div class="wrap">
         <template>
             <b-form action="<?php the_permalink() ?>" method="get">
-                <input type="text" name="search" class="search-bar form-control" aria-describedby="emailHelp" placeholder="搜索关键字..." <?php echo isset($_GET['search']) ? "value='{$_GET['search']}'" : '' ?>>
+                <input type="text" name="search" class="form-control search-bar" aria-describedby="emailHelp" placeholder="搜索关键字..." <?php echo isset($_GET['search']) ? "value='{$_GET['search']}'" : '' ?>>
                 <?php if( $types ) : ?>
                 <select name="type"  class="form-control select-bar">
                     <option value="all" selected>选择一个类别</option>
