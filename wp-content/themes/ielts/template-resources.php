@@ -14,6 +14,7 @@
     }
 ?>
 
+
 <?php get_template_part('inc/inc', 'banner'); ?>
 
 <div class="spacer"></div>
@@ -26,12 +27,12 @@
                 <?php
                     if( $types ) :
                 ?>
-                <b-form-select class="select-bar" name="type" v-model="selected">
-                    <option :value="null">选择一个类别</option>
+                <select name="type"  class="form-control select-bar">
+                    <option value="null" selected>选择一个类别</option>
                     <?php foreach ($types as $type) : ?>
-                    <option value="<?php echo $type->slug; ?>"><?php echo $type->name; ?></option>
+                    <option value="<?php echo $type->slug; ?>"<?php echo $type->slug == $program_type ? ' selected' : ''; ?>><?php echo $type->name; ?></option>
                     <?php endforeach; ?>
-                </b-form-select>
+                </select>
                 <?php
                     endif;
                 ?>
@@ -48,12 +49,34 @@
                 'taxonomy'      => 'resource-type',
                 'hide_empty'    => true,
             ) );
+
             $resource_args = array(
                 'post_type'         =>      'resource',
                 'post_parent'       =>      0,
-                'posts_per_page'    =>  -1
+                'posts_per_page'    =>      -1,
             );
+
+            if( $program_type ) {
+                $filter = array(
+                    'tax_query' => array(
+                        array(
+                            'taxonomy'  => 'resource-type',
+                            'field'     => 'slug',
+                            'terms'     => $program_type,
+                        ),
+                    ),
+                );
+                $resource_args = array_merge($resource_args, $filter);
+            }
+
+            if( $search ) {
+                $resource_args = array_merge($resource_args, array(
+                    's' => $search,
+                ));
+            }
+
             $resources = new WP_Query($resource_args);
+
             if( $resources -> have_posts() && $terms ) :
                 foreach ($terms as $term) :
         ?>
