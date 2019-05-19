@@ -603,6 +603,12 @@
                 padding: 25px 15px 50px 15px;
                 border: 1px solid $color_border;
                 overflow: hidden;
+                a {
+                    color: $color_dark_gray;
+                    &:hover {
+                        color: $color_blue;
+                    }
+                }
                 ul {
                     li {
                         & + li {
@@ -1233,13 +1239,12 @@
 }
 .filter {
     margin-bottom: 50px;
-    .search-bar {
-
-    }
     .select-bar {
         margin-top: 10px;
     }
     .btn {
+        width: 200px;
+        text-align: center;
         margin-top: 10px;
     }
     @include break(768) {

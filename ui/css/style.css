@@ -28,8 +28,6 @@ input, button, textarea, select, label, img { display: inline-block; max-width: 
 
 input, button, textarea, select, optgroup, option { font-family: inherit; font-size: inherit; font-style: inherit; font-weight: inherit; }
 
-input, button, textarea, select { -webkit-appearance: none; outline: 1px solid transparent; }
-
 textarea { resize: none; overflow: auto; }
 
 button, a span { cursor: pointer; }
@@ -41,8 +39,6 @@ button::-moz-focus-inner { padding: 0; border: 0; }
 table { table-layout: fixed; }
 
 a[href^=tel] { color: inherit; }
-
-select { -moz-appearance: none; -webkit-appearance: none; -ms-appearance: none; }
 
 select:-moz-focusring { color: transparent; }
 
@@ -334,6 +330,10 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .main-sheet table tr td { padding: 25px 15px 50px 15px; border: 1px solid #DADADA; overflow: hidden; }
 
+.main-sheet table tr td a { color: #262228; }
+
+.main-sheet table tr td a:hover { color: #2F69F8; }
+
 .main-sheet table tr td ul li + li { margin-top: 20px; }
 
 .main-sheet table tr td ol { counter-reset: li; }
@@ -590,7 +590,7 @@ input[type=submit].blue:hover, button.blue:hover, .btn.blue:hover { background-c
 
 .filter .select-bar { margin-top: 10px; }
 
-.filter .btn { margin-top: 10px; }
+.filter .btn { width: 200px; text-align: center; margin-top: 10px; }
 
 @media screen and (max-width: 768px) { .filter { margin-bottom: 40px; } }
 

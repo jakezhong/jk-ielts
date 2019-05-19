@@ -4,6 +4,7 @@
         $post = $post_object;
         setup_postdata( $post );
         $today = date('w');
+        // Define days in a week, from M - S
         $week_title = array(
             'Monday'    =>  '0',
             'Tuesday'   =>  '1',
@@ -13,6 +14,7 @@
             'Saturday'  =>  '5',
             'Sunday'    =>  '6',
         );
+        // Programs in one day of a week, from M - S
         $week_programs = array(
             '0'     =>  array(),
             '1'     =>  array(),
@@ -22,76 +24,21 @@
             '5'     =>  array(),
             '6'     =>  array(),
         );
+        // Save programs into each day of a week according to their frequence, from M - S
         if( have_rows('programs') ) {
             while( have_rows('programs') ) {
                 the_row();
                 $program_days = get_sub_field('day');
                 foreach( $program_days as $day ) {
-                    switch ($day) {
-                        case '1':
-                            $program = get_sub_field('program');
-                            $title = $program -> post_title;
-                            array_push($week_programs[0], array(
-                                'time'      =>  get_sub_field('time', false, false),
-                                'title'     =>  $title,
-                                'note'      =>  get_sub_field('note'),
-                            ));
-                            break;
-                        case '2':
-                            $program = get_sub_field('program');
-                            $title = $program -> post_title;
-                            array_push($week_programs[1], array(
-                                'time'      =>  get_sub_field('time', false, false),
-                                'title'     =>  $title,
-                                'note'      =>  get_sub_field('note'),
-                            ));
-                            break;
-                        case '3':
-                            $program = get_sub_field('program');
-                            $title = $program -> post_title;
-                            array_push($week_programs[2], array(
-                                'time'      =>  get_sub_field('time', false, false),
-                                'title'     =>  $title,
-                                'note'      =>  get_sub_field('note'),
-                            ));
-                            break;
-                        case '4':
-                            $program = get_sub_field('program');
-                            $title = $program -> post_title;
-                            array_push($week_programs[3], array(
-                                'time'      =>  get_sub_field('time', false, false),
-                                'title'     =>  $title,
-                                'note'      =>  get_sub_field('note'),
-                            ));
-                            break;
-                        case '5':
-                            $program = get_sub_field('program');
-                            $title = $program -> post_title;
-                            array_push($week_programs[4], array(
-                                'time'      =>  get_sub_field('time', false, false),
-                                'title'     =>  $title,
-                                'note'      =>  get_sub_field('note'),
-                            ));
-                            break;
-                        case '6':
-                            $program = get_sub_field('program');
-                            $title = $program -> post_title;
-                            array_push($week_programs[5], array(
-                                'time'      =>  get_sub_field('time', false, false),
-                                'title'     =>  $title,
-                                'note'      =>  get_sub_field('note'),
-                            ));
-                            break;
-                        case '7':
-                            $program = get_sub_field('program');
-                            $title = $program -> post_title;
-                            array_push($week_programs[6], array(
-                                'time'      =>  get_sub_field('time', false, false),
-                                'title'     =>  $title,
-                                'note'      =>  get_sub_field('note'),
-                            ));
-                            break;
-                    }
+                    $program = get_sub_field('program');
+                    // print_r($program);
+                    $title = $program->post_title;
+                    array_push($week_programs[((int)$day)-1], array(
+                        'time'      =>  get_sub_field('time', false, false),
+                        'title'     =>  $title,
+                        'note'      =>  get_sub_field('note'),
+                        'link'      =>  $program->guid,
+                    ));
                 }
             }
         }
@@ -126,6 +73,7 @@
                 <tr>
                     <th>Time</th>
                     <?php
+                        // Loop table week title from M - S
                         foreach( $week_title as $key => $value ) {
                             $output  = '<th';
                             if( $value !== $today ) {
@@ -136,32 +84,46 @@
                             $output .= '</th>';
                             echo $output;
                         }
+
+                        
                     ?>
                 </tr>
                 <tr>
                     <td class="morning">Morning</td>
                     <?php
-                        for( $i = 0; $i < 7; $i++ ) {
+                        foreach( $week_programs as $index => $day_programs ) :
                             $output = '<td';
-                            if( (string)$i !== $today ) {
+                            if( $index !== $today ) {
                                 $output .= ' v-show="!todayTrigger"';
                             }
                             $output .= '>';
-                            if( $week_programs[$i] ) {
+                            if( $day_programs ) {
                                 $output .= '<ul>';
-                                foreach( $week_programs[$i] as $programs ) {
+                                foreach( $day_programs as $programs ) {
                                     $time = new DateTime($programs[time]);
                                     if( $time->format('a') == 'am' ) {
-                                        $output .= '<li>';
                                         foreach( $programs as $key => $value ) {
                                             if( $key == 'time' ) {
                                                 $time = new DateTime($value);
-                                                $output .= "<time>{$time->format('g:i A')}</time>";
                                             } elseif( $key == 'title' ) {
-                                                $output .= "<p>{$value}</p>";
+                                                $title = $value;
                                             } elseif( $key == 'note' ) {
-                                                $output .= "<small>{$value}</small>";
+                                                $note = $value;
+                                            } elseif( $key == 'link' ) {
+                                                $link = $value;
                                             }
+                                        }
+                                        $output .= '<li>';
+                                        if( $time ) {
+                                            $output .= "<time>{$time->format('g:i A')}</time>";
+                                        }
+                                        if( $title && $link ) {
+                                            $output .= "<p><a href='{$link}'>{$title}</a></p>";
+                                        } elseif( $title ) {
+                                            $output .= "<p>{$title}</p>";
+                                        }
+                                        if( $note ) {
+                                            $output .= "<small>{$note}</small>";
                                         }
                                         $output .= '</li>';
                                     }
@@ -170,33 +132,45 @@
                             }
                             $output .= '</ul></td>';
                             echo $output;
-                        }
+                        endforeach;
                     ?>
                 </tr>
                 <tr>
                     <td>Afternoon</td>
                     <?php
-                        for( $i = 0; $i < 7; $i++ ) {
+                        foreach( $week_programs as $index => $day_programs ) :
                             $output = '<td';
-                            if( (string)$i !== $today ) {
+                            if( $index !== $today ) {
                                 $output .= ' v-show="!todayTrigger"';
                             }
                             $output .= '>';
-                            if( $week_programs[$i] ) {
+                            if( $day_programs ) {
                                 $output .= '<ul>';
-                                foreach( $week_programs[$i] as $programs ) {
+                                foreach( $day_programs as $programs ) {
                                     $time = new DateTime($programs[time]);
                                     if( $time->format('a') == 'pm' && $time->format('g')  < 6 ) {
-                                        $output .= '<li>';
                                         foreach( $programs as $key => $value ) {
                                             if( $key == 'time' ) {
                                                 $time = new DateTime($value);
-                                                $output .= "<time>{$time->format('g:i A')}</time>";
                                             } elseif( $key == 'title' ) {
-                                                $output .= "<p>{$value}</p>";
+                                                $title = $value;
                                             } elseif( $key == 'note' ) {
-                                                $output .= "<small>{$value}</small>";
+                                                $note = $value;
+                                            } elseif( $key == 'link' ) {
+                                                $link = $value;
                                             }
+                                        }
+                                        $output .= '<li>';
+                                        if( $time ) {
+                                            $output .= "<time>{$time->format('g:i A')}</time>";
+                                        }
+                                        if( $title && $link ) {
+                                            $output .= "<p><a href='{$link}'>{$title}</a></p>";
+                                        } elseif( $title ) {
+                                            $output .= "<p>{$title}</p>";
+                                        }
+                                        if( $note ) {
+                                            $output .= "<small>{$note}</small>";
                                         }
                                         $output .= '</li>';
                                     }
@@ -205,33 +179,45 @@
                             }
                             $output .= '</ul></td>';
                             echo $output;
-                        }
+                        endforeach;
                     ?>
                 </tr>
                 <tr>
                     <td>Evening</td>
                     <?php
-                        for( $i = 0; $i < 7; $i++ ) {
+                        foreach( $week_programs as $index => $day_programs ) :
                             $output = '<td';
-                            if( (string)$i !== $today ) {
+                            if( $index !== $today ) {
                                 $output .= ' v-show="!todayTrigger"';
                             }
                             $output .= '>';
-                            if( $week_programs[$i] ) {
+                            if( $day_programs ) {
                                 $output .= '<ul>';
-                                foreach( $week_programs[$i] as $programs ) {
+                                foreach( $day_programs as $programs ) {
                                     $time = new DateTime($programs[time]);
                                     if( $time->format('a') == 'pm' && $time->format('g')  >= 6 ) {
-                                        $output .= '<li>';
                                         foreach( $programs as $key => $value ) {
                                             if( $key == 'time' ) {
                                                 $time = new DateTime($value);
-                                                $output .= "<time>{$time->format('g:i A')}</time>";
                                             } elseif( $key == 'title' ) {
-                                                $output .= "<p>{$value}</p>";
+                                                $title = $value;
                                             } elseif( $key == 'note' ) {
-                                                $output .= "<small>{$value}</small>";
+                                                $note = $value;
+                                            } elseif( $key == 'link' ) {
+                                                $link = $value;
                                             }
+                                        }
+                                        $output .= '<li>';
+                                        if( $time ) {
+                                            $output .= "<time>{$time->format('g:i A')}</time>";
+                                        }
+                                        if( $title && $link ) {
+                                            $output .= "<p><a href='{$link}'>{$title}</a></p>";
+                                        } elseif( $title ) {
+                                            $output .= "<p>{$title}</p>";
+                                        }
+                                        if( $note ) {
+                                            $output .= "<small>{$note}</small>";
                                         }
                                         $output .= '</li>';
                                     }
@@ -240,7 +226,7 @@
                             }
                             $output .= '</ul></td>';
                             echo $output;
-                        }
+                        endforeach;
                     ?>
                 </tr>
             </table>

@@ -66,7 +66,6 @@ jQuery(function($){
 var app = new Vue({
     el: '#app',
     data: {
-        selected: null,
         form: {
             name: '',
             amount: null,
