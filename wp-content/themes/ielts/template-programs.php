@@ -10,29 +10,39 @@
     <div class="wrapper">
 
         <?php
-            $terms = get_terms( array(
-                'taxonomy'      => 'program-type',
-                'hide_empty'    => true,
-            ) );
             $program_args = array(
                 'post_type'         =>  'program',
                 'posts_per_page'    =>  -1,
                 'order'             =>  'ASC'
             );
             $programs = new WP_Query($program_args);
-            if( $programs -> have_posts() && $terms ) :
-                foreach ($terms as $term) :
+
+            if( $programs -> have_posts() ) :
+                    // Loop post terms and slugs and save them into new arraies
+                    $post_terms = [];
+                    $term_slugs = [];
+                    while( $programs -> have_posts() ) : $programs -> the_post();
+                        $type = get_the_terms( get_the_ID(), 'program-type' );
+                        if( !in_array($type[0]->slug, $term_slugs, true) ) {
+                            $term_slugs[] = $type[0]->slug;
+                            $post_terms[] = array(
+                                'slug'  =>  $type[0]->slug,
+                                'name'  =>  $type[0]->name,
+                            );
+                        }
+                    endwhile; wp_reset_postdata();
+                    foreach( $post_terms as $post_term ) :
         ?>
 
         <div class="cards">
             <div class="header wrap">
-                <h3><?php echo $term -> name; ?>任务</h3>
+                <h3><?php echo $post_term['name']; ?>任务</h3>
             </div>
             <ul>
                 <?php
                     while( $programs -> have_posts() ) : $programs -> the_post();
                     $type = get_the_terms( get_the_ID(), 'program-type' );
-                        if( $type[0] -> slug == $term -> slug ) :
+                        if( $type[0]->slug == $post_term['slug'] ) :
                             $start_time = get_field('start_time', false, false);
                             $display_time = new DateTime($start_time);
                             $img = get_field('image');

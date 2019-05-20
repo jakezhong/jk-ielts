@@ -6,23 +6,23 @@
         $today = date('w');
         // Define days in a week, from M - S
         $week_title = array(
-            'Monday'    =>  '0',
-            'Tuesday'   =>  '1',
-            'Wednesday' =>  '2',
-            'Thursday'  =>  '3',
-            'Friday'    =>  '4',
-            'Saturday'  =>  '5',
-            'Sunday'    =>  '6',
+            'Monday'    =>  0,
+            'Tuesday'   =>  1,
+            'Wednesday' =>  2,
+            'Thursday'  =>  3,
+            'Friday'    =>  4,
+            'Saturday'  =>  5,
+            'Sunday'    =>  6,
         );
         // Programs in one day of a week, from M - S
         $week_programs = array(
-            '0'     =>  array(),
-            '1'     =>  array(),
-            '2'     =>  array(),
-            '3'     =>  array(),
-            '4'     =>  array(),
-            '5'     =>  array(),
-            '6'     =>  array(),
+            0     =>  array(),
+            1     =>  array(),
+            2     =>  array(),
+            3     =>  array(),
+            4     =>  array(),
+            5     =>  array(),
+            6     =>  array(),
         );
         // Save programs into each day of a week according to their frequence, from M - S
         if( have_rows('programs') ) {
@@ -31,9 +31,8 @@
                 $program_days = get_sub_field('day');
                 foreach( $program_days as $day ) {
                     $program = get_sub_field('program');
-                    // print_r($program);
                     $title = $program->post_title;
-                    array_push($week_programs[((int)$day)-1], array(
+                    array_push($week_programs[(int)$day-1], array(
                         'time'      =>  get_sub_field('time', false, false),
                         'title'     =>  $title,
                         'note'      =>  get_sub_field('note'),
@@ -76,7 +75,7 @@
                         // Loop table week title from M - S
                         foreach( $week_title as $key => $value ) {
                             $output  = '<th';
-                            if( $value !== $today ) {
+                            if( $value !== (int)$today-1 ) {
                                 $output .= ' v-show="!todayTrigger"';
                             }
                             $output .= '>';
@@ -93,7 +92,7 @@
                     <?php
                         foreach( $week_programs as $index => $day_programs ) :
                             $output = '<td';
-                            if( $index !== $today ) {
+                            if( $index !== (int)$today-1 ) {
                                 $output .= ' v-show="!todayTrigger"';
                             }
                             $output .= '>';
@@ -140,7 +139,7 @@
                     <?php
                         foreach( $week_programs as $index => $day_programs ) :
                             $output = '<td';
-                            if( $index !== $today ) {
+                            if( $index !== (int)$today-1 ) {
                                 $output .= ' v-show="!todayTrigger"';
                             }
                             $output .= '>';
@@ -187,7 +186,7 @@
                     <?php
                         foreach( $week_programs as $index => $day_programs ) :
                             $output = '<td';
-                            if( $index !== $today ) {
+                            if( $index !== (int)$today-1 ) {
                                 $output .= ' v-show="!todayTrigger"';
                             }
                             $output .= '>';
